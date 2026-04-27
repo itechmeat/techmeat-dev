@@ -1,0 +1,34 @@
+{
+  "name": "techmeat-dev",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "6.0.1",
+    "astro": "^6.1.9",
+    "solid-js": "1.9.12"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "bun-types": "1.3.13",
+    "lefthook": "2.1.6",
+    "oxfmt": "0.47.0",
+    "oxlint": "1.61.0",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "bun@1.3.13"
+}
