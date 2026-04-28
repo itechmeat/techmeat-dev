@@ -20,7 +20,7 @@ describe("resolveOgImage", () => {
     );
   });
 
-  test("falls back to site-wide default", () => {
-    expect(resolveOgImage({ kind: "page" })).toBe("/og/default.png");
+  test("falls back to home poster as the site-wide default", () => {
+    expect(resolveOgImage({ kind: "page" })).toBe("/posters/og/pages/home.png");
   });
 });

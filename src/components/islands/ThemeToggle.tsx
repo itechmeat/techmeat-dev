@@ -1,35 +1,30 @@
 // src/components/islands/ThemeToggle.tsx
-import { createSignal, onMount } from "solid-js";
-
-type Theme = "light" | "dark";
+//
+// The icon is driven by CSS (`:root[data-theme="dark"]` selector), not by a
+// Solid signal, so the correct icon paints on first render — including SSR
+// and the no-FOUC bootstrap script in BaseLayout. There is no flash from
+// "moon → sun" after hydration.
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = createSignal<Theme>("light");
-
-  onMount(() => {
-    const current = (document.documentElement.dataset.theme as Theme) ?? "light";
-    setTheme(current);
-  });
-
   const toggle = () => {
-    const next: Theme = theme() === "light" ? "dark" : "light";
+    const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const next = current === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem("theme", next);
     } catch (error) {
       console.warn("Failed to persist theme preference", error);
     }
-    setTheme(next);
   };
 
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      aria-label={theme() === "light" ? "Switch to dark theme" : "Switch to light theme"}
-      data-theme-toggle
-    >
-      {theme() === "light" ? "🌙" : "☀️"}
+    <button type="button" onClick={toggle} aria-label="Toggle theme" data-theme-toggle>
+      <span class="theme-icon theme-icon-light" aria-hidden="true">
+        🌙
+      </span>
+      <span class="theme-icon theme-icon-dark" aria-hidden="true">
+        ☀️
+      </span>
     </button>
   );
 }

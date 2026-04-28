@@ -13,18 +13,6 @@ const labels: Record<string, Partial<Record<Locale, string>>> = {
     zh: "AI 编码",
     bn: "AI কোডিং",
   },
-  meta: {
-    en: "Meta",
-    es: "Meta",
-    fr: "Meta",
-    de: "Meta",
-    pt: "Meta",
-    ru: "Мета",
-    ar: "ميتا",
-    hi: "मेटा",
-    zh: "元",
-    bn: "মেটা",
-  },
   astro: {
     en: "Astro",
     es: "Astro",
@@ -36,6 +24,18 @@ const labels: Record<string, Partial<Record<Locale, string>>> = {
     hi: "Astro",
     zh: "Astro",
     bn: "Astro",
+  },
+  bun: {
+    en: "Bun",
+    es: "Bun",
+    fr: "Bun",
+    de: "Bun",
+    pt: "Bun",
+    ru: "Bun",
+    ar: "Bun",
+    hi: "Bun",
+    zh: "Bun",
+    bn: "Bun",
   },
   // Add more tags as posts introduce them.
 };

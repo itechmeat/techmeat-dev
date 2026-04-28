@@ -1,0 +1,50 @@
+{
+  "name": "techmeat.dev",
+  "tagline": "Building real projects with AI-assisted coding",
+  "description": "A working journal on the engineering practice of AI-assisted coding: how to brief agents, which specs and prompts hold up, and where the line sits between human judgment and agent execution.",
+  "url": "https://techmeat.dev",
+  "type": "personal-blog",
+  "primary_language": "en",
+  "available_languages": ["en", "es", "fr", "de", "pt", "ru", "ar", "hi", "zh", "bn"],
+  "canonical_policy": "All translated pages set <link rel=\"canonical\"> to the English version of the same article.",
+  "author": {
+    "name": "Sergey Eroshenkov",
+    "url": "https://techmeat.dev/about/",
+    "sameAs": [
+      "https://github.com/itechmeat",
+      "https://x.com/techmeat",
+      "https://www.linkedin.com/in/techmeat/"
+    ]
+  },
+  "topics": [
+    {
+      "name": "AI-assisted software development",
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/AI-assisted_software_development",
+        "https://www.wikidata.org/wiki/Q135423070"
+      ]
+    },
+    {
+      "name": "Astro (web framework)",
+      "sameAs": ["https://www.wikidata.org/wiki/Q114769542"]
+    }
+  ],
+  "feeds": {
+    "rss": "https://techmeat.dev/rss.xml",
+    "sitemap": "https://techmeat.dev/sitemap-index.xml",
+    "llms": "https://techmeat.dev/llms.txt"
+  },
+  "key_pages": {
+    "home": "https://techmeat.dev/",
+    "posts": "https://techmeat.dev/posts/",
+    "about": "https://techmeat.dev/about/",
+    "stack": "https://techmeat.dev/stack/",
+    "tags": "https://techmeat.dev/tags/"
+  },
+  "ai_policy": {
+    "indexing": "allowed",
+    "citation": "required",
+    "training": "allowed",
+    "derivative_works": "allowed-with-attribution"
+  }
+}

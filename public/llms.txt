@@ -1,0 +1,26 @@
+# techmeat.dev
+
+> A working journal on the engineering practice of AI-assisted coding: how to brief agents, which specs and prompts hold up, and where the line sits between human judgment and agent execution. Authored by Sergey Eroshenkov.
+
+The site is multilingual (English canonical, plus Spanish, French, German, Portuguese, Russian, Arabic, Hindi, Chinese, and Bengali translations). All translated pages set `<link rel="canonical">` to the English version of the same article.
+
+## Posts
+
+- [All posts (English)](https://techmeat.dev/posts/): the full archive of long-form articles.
+- [How I built this blog with coding agents](https://techmeat.dev/posts/building-techmeat-dev-with-coding-agents/): the story of launching techmeat.dev — from a spontaneous idea and a set of skills to Astro, Cloudflare Pages, brainstorming, and the first version of the blog.
+
+## About the author
+
+- [About](https://techmeat.dev/about/): who Sergey Eroshenkov is, what he works on, and what this blog tries to do.
+- [Stack](https://techmeat.dev/stack/): tools, AI assistants, and the workflow used to ship posts and features with coding agents.
+
+## Feeds
+
+- [RSS — English (canonical)](https://techmeat.dev/rss.xml)
+- [Privacy notice](https://techmeat.dev/privacy/)
+
+## Optional
+
+- [GitHub profile](https://github.com/itechmeat)
+- [X / Twitter](https://x.com/techmeat)
+- [LinkedIn](https://www.linkedin.com/in/techmeat/)

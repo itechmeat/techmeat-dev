@@ -4,6 +4,7 @@ export const zh: Partial<Record<DictionaryKey, string>> = {
   "nav.posts": "文章",
   "nav.about": "关于",
   "nav.stack": "技术栈",
+  "nav.skipToContent": "跳到主要内容",
   "footer.privacy": "隐私",
   "footer.copyright": "© {year} Sergey Eroshenkov",
   "post.readMore": "阅读更多 →",

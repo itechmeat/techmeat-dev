@@ -4,6 +4,7 @@ export const ar: Partial<Record<DictionaryKey, string>> = {
   "nav.posts": "المقالات",
   "nav.about": "عن",
   "nav.stack": "البنية التقنية",
+  "nav.skipToContent": "تخطّي إلى المحتوى",
   "footer.privacy": "الخصوصية",
   "footer.copyright": "© {year} Sergey Eroshenkov",
   "post.readMore": "اقرأ المزيد →",

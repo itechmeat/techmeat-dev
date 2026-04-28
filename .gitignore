@@ -16,9 +16,15 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+!.env.example
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# wrangler / cloudflared workspace files
+.wrangler
+.dev.vars*
+!.dev.vars.example

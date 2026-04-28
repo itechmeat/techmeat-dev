@@ -5,7 +5,6 @@ import PostCard from "../../components/PostCard.astro";
 import SchemaJsonLd from "../../components/SchemaJsonLd.astro";
 import { locales, defaultLocale, type Locale } from "../../i18n/config";
 import { t } from "../../i18n/t";
-import { tagLabel } from "../../i18n/tags";
 import { RECENTLY_UPDATED_DAYS, RECENTLY_UPDATED_LIMIT } from "../../lib/recentlyUpdated";
 import { isVisiblePost } from "../../lib/postVisibility";
 import { AUTHOR, resolveSite } from "../../lib/site";
@@ -31,10 +30,6 @@ const recentlyUpdated = sorted
   .sort((a, b) => (b.data.updatedDate?.getTime() ?? 0) - (a.data.updatedDate?.getTime() ?? 0))
   .slice(0, RECENTLY_UPDATED_LIMIT);
 
-const tagSet = new Set<string>();
-for (const entry of all) for (const tag of entry.data.tags) tagSet.add(tag);
-const allTags = Array.from(tagSet).sort();
-
 const description = t("home.metaDescription", locale);
 const site = resolveSite(Astro.site);
 
@@ -44,75 +39,60 @@ const websiteSchema = {
   description,
   inLanguage: locale,
   author: AUTHOR,
+  publisher: AUTHOR,
 };
 ---
 
-<BaseLayout title="techmeat.dev" description={description} locale={locale}>
+<BaseLayout title="techmeat.dev" description={description} locale={locale} ogImage="/posters/og/pages/home.png">
   <SchemaJsonLd type="WebSite" data={websiteSchema} />
   <section class="hero">
-    <h1>techmeat.dev</h1>
-    <p>{t("home.heroTagline", locale)}</p>
-  </section>
+      <h1>techmeat.dev</h1>
+      <p>{t("home.heroTagline", locale)}</p>
+    </section>
 
-  <section class="latest-posts">
-    <h2>{t("home.latestPostsHeading", locale)}</h2>
-    <ul class="post-list">
-      {
-        latest.map((entry) => {
-          const slug = entry.id.split("/")[0];
-          return (
-            <li>
-              <PostCard
-                href={`${localePrefix}/posts/${slug}`}
-                title={entry.data.title}
-                description={entry.data.description}
-                pubDate={entry.data.pubDate}
-                tags={entry.data.tags}
-                locale={locale}
-              />
-            </li>
-          );
-        })
-      }
-    </ul>
-  </section>
-
-  {
-    recentlyUpdated.length > 0 && (
-      <section class="recently-updated">
-        <h2>{t("home.recentlyUpdated", locale)}</h2>
-        <ul>
-          {recentlyUpdated.map((entry) => {
+    <section class="latest-posts">
+      <h2>{t("home.latestPostsHeading", locale)}</h2>
+      <ul class="post-list">
+        {
+          latest.map((entry) => {
             const slug = entry.id.split("/")[0];
             return (
               <li>
-                <a href={`${localePrefix}/posts/${slug}`}>{entry.data.title}</a>
+                <PostCard
+                  href={`${localePrefix}/posts/${slug}`}
+                  title={entry.data.title}
+                  description={entry.data.description}
+                  pubDate={entry.data.pubDate}
+                  locale={locale}
+                />
               </li>
             );
-          })}
-        </ul>
-      </section>
-    )
-  }
+          })
+        }
+      </ul>
+    </section>
 
-  {
-    allTags.length > 0 && (
-      <section class="all-tags">
-        <h2>{t("home.allTags", locale)}</h2>
-        <ul class="tag-pills">
-          {allTags.map((tag) => (
-            <li>
-              <a href={`${localePrefix}/tags/${encodeURIComponent(tag)}`}>#{tagLabel(tag, locale)}</a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+    {
+      recentlyUpdated.length > 0 && (
+        <section class="recently-updated">
+          <h2>{t("home.recentlyUpdated", locale)}</h2>
+          <ul>
+            {recentlyUpdated.map((entry) => {
+              const slug = entry.id.split("/")[0];
+              return (
+                <li>
+                  <a href={`${localePrefix}/posts/${slug}`}>{entry.data.title}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )
+    }
 
   {
     totalPosts > 10 && (
-      <p>
+      <p class="view-all">
         <a href={`${localePrefix}/posts`}>{t("home.viewAllPosts", locale)}</a>
       </p>
     )

@@ -21,7 +21,7 @@ const all = await getCollection("posts", ({ data }) => data.locale === locale &&
 const sorted = all.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale}>
+<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale} ogImage="/posters/og/pages/posts.png">
   <h1>{heading}</h1>
   <ul class="post-list">
     {
@@ -34,7 +34,6 @@ const sorted = all.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getT
               title={entry.data.title}
               description={entry.data.description}
               pubDate={entry.data.pubDate}
-              tags={entry.data.tags}
               locale={locale}
             />
           </li>

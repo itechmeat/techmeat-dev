@@ -1,0 +1,734 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "d6WmVB",
+      "x": -1500,
+      "y": 0,
+      "name": "PosterMaster (component)",
+      "reusable": true,
+      "clip": true,
+      "width": 1080,
+      "height": 1350,
+      "fill": "$color-surface",
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "yFCFw",
+          "x": 96,
+          "y": 96,
+          "name": "mWordmark",
+          "fill": "$color-text-muted",
+          "content": "techmeat.dev",
+          "fontFamily": "Newsreader",
+          "fontSize": 80,
+          "fontWeight": "500",
+          "letterSpacing": -1.2
+        },
+        {
+          "type": "text",
+          "id": "vldwr",
+          "x": 60,
+          "y": 200,
+          "name": "mBackdrop",
+          "fill": "$color-surface-sunken",
+          "textGrowth": "fixed-width",
+          "width": 1000,
+          "content": "01",
+          "lineHeight": 0.85,
+          "fontFamily": "Newsreader",
+          "fontSize": 920,
+          "fontWeight": "500",
+          "letterSpacing": -40
+        },
+        {
+          "type": "frame",
+          "id": "e62pLp",
+          "x": 96,
+          "y": 600,
+          "name": "mHeadFrame",
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "text",
+              "id": "Gwhpd",
+              "name": "mHead1",
+              "fill": "$color-text",
+              "content": "Headline line one",
+              "lineHeight": 1.05,
+              "fontFamily": "Newsreader",
+              "fontSize": 108,
+              "fontWeight": "500",
+              "letterSpacing": -3
+            },
+            {
+              "type": "text",
+              "id": "x7YX7S",
+              "name": "mHead2",
+              "fill": "$color-text",
+              "content": "Headline line two",
+              "lineHeight": 1.05,
+              "fontFamily": "Newsreader",
+              "fontSize": 108,
+              "fontWeight": "500",
+              "letterSpacing": -3
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oLXRg",
+          "x": 96,
+          "y": 1010,
+          "name": "mMetaFrame",
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "gap": 18,
+          "children": [
+            {
+              "type": "text",
+              "id": "WFt1u",
+              "name": "mMeta1",
+              "fill": "$color-text",
+              "content": "Meta line one",
+              "fontFamily": "Inter",
+              "fontSize": 56,
+              "fontWeight": "500",
+              "letterSpacing": -0.6
+            },
+            {
+              "type": "text",
+              "id": "D2X07m",
+              "name": "mMeta2",
+              "fill": "$color-text-muted",
+              "content": "Meta line two",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 48,
+              "fontWeight": "500",
+              "letterSpacing": 0.4
+            },
+            {
+              "type": "text",
+              "id": "z3GUZ",
+              "name": "mMeta3",
+              "fill": "$color-text-muted",
+              "content": "Meta line three",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 48,
+              "fontWeight": "500",
+              "letterSpacing": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "C7s8B",
+      "x": 0,
+      "y": 0,
+      "name": "Pages",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "R3NEFV",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "Home",
+          "descendants": {
+            "vldwr": {
+              "content": "ai",
+              "x": 107,
+              "y": 118,
+              "fontSize": 1260
+            },
+            "Gwhpd": {
+              "content": "Building real projects",
+              "fontSize": 96,
+              "letterSpacing": -2.6
+            },
+            "x7YX7S": {
+              "content": "with AI-assisted coding",
+              "fontSize": 96,
+              "letterSpacing": -2.6
+            },
+            "WFt1u": {
+              "content": "Sergey Eroshenkov"
+            },
+            "D2X07m": {
+              "content": "Writing code since 2006"
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "id": "oKsZn",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "Posts archive",
+          "descendants": {
+            "vldwr": {
+              "content": "P"
+            },
+            "Gwhpd": {
+              "content": "Archive",
+              "fontSize": 200,
+              "letterSpacing": -6
+            },
+            "x7YX7S": {
+              "enabled": false
+            },
+            "WFt1u": {
+              "content": "Every article, every locale"
+            },
+            "D2X07m": {
+              "content": "Since April 2026"
+            },
+            "z3GUZ": {
+              "content": "#ai-coding · #astro · #bun"
+            }
+          }
+        },
+        {
+          "id": "jYdwT",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "Tags index",
+          "descendants": {
+            "vldwr": {
+              "content": "#"
+            },
+            "Gwhpd": {
+              "content": "Tags",
+              "fontSize": 200,
+              "letterSpacing": -6
+            },
+            "x7YX7S": {
+              "enabled": false
+            },
+            "WFt1u": {
+              "content": "Topics across the archive"
+            },
+            "D2X07m": {
+              "content": "3 topics indexed"
+            },
+            "z3GUZ": {
+              "content": "#ai-coding · #astro · #bun"
+            }
+          }
+        },
+        {
+          "id": "oSwzJ",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "About",
+          "descendants": {
+            "vldwr": {
+              "content": "@"
+            },
+            "Gwhpd": {
+              "content": "About",
+              "fontSize": 200,
+              "letterSpacing": -6
+            },
+            "x7YX7S": {
+              "enabled": false
+            },
+            "WFt1u": {
+              "content": "Sergey Eroshenkov"
+            },
+            "D2X07m": {
+              "content": "Software engineer · Frontend"
+            },
+            "z3GUZ": {
+              "content": "@techmeat · since 2006"
+            }
+          }
+        },
+        {
+          "id": "z6aFmv",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "Stack",
+          "descendants": {
+            "vldwr": {
+              "content": "</>",
+              "width": 1296,
+              "height": 1564,
+              "flipX": false,
+              "flipY": false,
+              "x": -60,
+              "y": 220
+            },
+            "Gwhpd": {
+              "content": "Stack",
+              "fontSize": 200,
+              "letterSpacing": -6
+            },
+            "x7YX7S": {
+              "enabled": false
+            },
+            "WFt1u": {
+              "content": "Tools, agents, process"
+            },
+            "D2X07m": {
+              "content": "Astro · Solid · Bun"
+            },
+            "z3GUZ": {
+              "content": "Cloudflare Pages"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "m06ob",
+      "x": 0,
+      "y": 1430,
+      "name": "Posts",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "luFOt",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "How I built my blog with coding agents",
+          "descendants": {
+            "yFCFw": {
+              "fill": "#74787eff"
+            },
+            "vldwr": {
+              "content": "01"
+            },
+            "Gwhpd": {
+              "content": "How I built my blog"
+            },
+            "x7YX7S": {
+              "content": "with coding agents"
+            },
+            "WFt1u": {
+              "content": "April 28, 2026"
+            },
+            "D2X07m": {
+              "content": "#ai-coding · #astro · #bun"
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "e4Zd4",
+      "x": -1500,
+      "y": 1700,
+      "name": "PosterMasterWide (component)",
+      "reusable": true,
+      "clip": true,
+      "width": 1200,
+      "height": 630,
+      "fill": "$color-surface",
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "t2UHh0",
+          "x": 80,
+          "y": 64,
+          "name": "wWordmark",
+          "fill": "$color-text-muted",
+          "content": "techmeat.dev",
+          "fontFamily": "Newsreader",
+          "fontSize": 56,
+          "fontWeight": "500",
+          "letterSpacing": -0.8
+        },
+        {
+          "type": "text",
+          "id": "CrwU5",
+          "x": 680,
+          "y": 50,
+          "name": "wBackdrop",
+          "fill": "$color-surface-sunken",
+          "content": "01",
+          "lineHeight": 0.85,
+          "fontFamily": "Newsreader",
+          "fontSize": 540,
+          "fontWeight": "500",
+          "letterSpacing": -20
+        },
+        {
+          "type": "frame",
+          "id": "JA5dh",
+          "x": 80,
+          "y": 230,
+          "name": "wide-headFrame",
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "text",
+              "id": "w98LjB",
+              "name": "wHead1",
+              "fill": "$color-text",
+              "content": "Headline line one",
+              "lineHeight": 1.05,
+              "fontFamily": "Newsreader",
+              "fontSize": 80,
+              "fontWeight": "500",
+              "letterSpacing": -2.4
+            },
+            {
+              "type": "text",
+              "id": "w1luCY",
+              "name": "wHead2",
+              "fill": "$color-text",
+              "content": "Headline line two",
+              "lineHeight": 1.05,
+              "fontFamily": "Newsreader",
+              "fontSize": 80,
+              "fontWeight": "500",
+              "letterSpacing": -2.4
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xBN5R",
+          "x": 80,
+          "y": 430,
+          "name": "wide-metaFrame",
+          "fill": "#FFFFFF00",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "CY8fm",
+              "name": "wMeta1",
+              "fill": "$color-text",
+              "content": "Meta line one",
+              "fontFamily": "Inter",
+              "fontSize": 40,
+              "fontWeight": "500",
+              "letterSpacing": -0.4
+            },
+            {
+              "type": "text",
+              "id": "Igd9v",
+              "name": "wMeta2",
+              "fill": "$color-text-muted",
+              "content": "Meta line two",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 32,
+              "fontWeight": "500",
+              "letterSpacing": 0.4
+            },
+            {
+              "type": "text",
+              "id": "FTrZW",
+              "name": "wMeta3",
+              "fill": "$color-text-muted",
+              "content": "Meta line three",
+              "fontFamily": "IBM Plex Mono",
+              "fontSize": 32,
+              "fontWeight": "500",
+              "letterSpacing": 0.4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "h3Qcfl",
+      "x": 0,
+      "y": 2860,
+      "name": "Pages wide",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "cSiZH",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "Home (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "ai",
+              "fontSize": 700,
+              "x": 680,
+              "y": 10
+            },
+            "w98LjB": {
+              "content": "Building real projects",
+              "fontSize": 64,
+              "letterSpacing": -1.6
+            },
+            "w1luCY": {
+              "content": "with AI-assisted coding",
+              "fontSize": 64,
+              "letterSpacing": -1.6
+            },
+            "CY8fm": {
+              "content": "Sergey Eroshenkov"
+            },
+            "Igd9v": {
+              "content": "Writing code since 2006"
+            },
+            "FTrZW": {
+              "enabled": false
+            }
+          }
+        },
+        {
+          "id": "s4qWX",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "Posts archive (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "P"
+            },
+            "w98LjB": {
+              "content": "Archive",
+              "fontSize": 160,
+              "letterSpacing": -4.5
+            },
+            "w1luCY": {
+              "enabled": false
+            },
+            "CY8fm": {
+              "content": "Every article, every locale"
+            },
+            "Igd9v": {
+              "content": "Since April 2026"
+            },
+            "FTrZW": {
+              "content": "#ai-coding · #astro · #bun"
+            }
+          }
+        },
+        {
+          "id": "nnDLO",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "Tags index (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "#"
+            },
+            "w98LjB": {
+              "content": "Tags",
+              "fontSize": 160,
+              "letterSpacing": -4.5
+            },
+            "w1luCY": {
+              "enabled": false
+            },
+            "CY8fm": {
+              "content": "Topics across the archive"
+            },
+            "Igd9v": {
+              "content": "3 topics indexed"
+            },
+            "FTrZW": {
+              "content": "#ai-coding · #astro · #bun"
+            }
+          }
+        },
+        {
+          "id": "oS0vd",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "About (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "@"
+            },
+            "w98LjB": {
+              "content": "About",
+              "fontSize": 160,
+              "letterSpacing": -4.5
+            },
+            "w1luCY": {
+              "enabled": false
+            },
+            "CY8fm": {
+              "content": "Sergey Eroshenkov"
+            },
+            "Igd9v": {
+              "content": "Software engineer · Frontend"
+            },
+            "FTrZW": {
+              "content": "@techmeat · since 2006"
+            }
+          }
+        },
+        {
+          "id": "P0w93a",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "Stack (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "</>",
+              "x": 580,
+              "y": 50
+            },
+            "w98LjB": {
+              "content": "Stack",
+              "fontSize": 160,
+              "letterSpacing": -4.5
+            },
+            "w1luCY": {
+              "enabled": false
+            },
+            "CY8fm": {
+              "content": "Tools, agents, process"
+            },
+            "Igd9v": {
+              "content": "Astro · Solid · Bun"
+            },
+            "FTrZW": {
+              "content": "Cloudflare Pages"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "keJ2C",
+      "x": 0,
+      "y": 3570,
+      "name": "Posts wide",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "f4aXpC",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "How I built my blog with coding agents (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "01"
+            },
+            "w98LjB": {
+              "content": "How I built my blog"
+            },
+            "w1luCY": {
+              "content": "with coding agents"
+            },
+            "CY8fm": {
+              "content": "April 28, 2026"
+            },
+            "Igd9v": {
+              "content": "#ai-coding · #astro · #bun"
+            },
+            "FTrZW": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-accent": {
+      "type": "color",
+      "value": "#2C3F8C"
+    },
+    "color-rule": {
+      "type": "color",
+      "value": "#DEE0E4"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FBFBFD"
+    },
+    "color-surface-sunken": {
+      "type": "color",
+      "value": "#F2F3F6"
+    },
+    "color-text": {
+      "type": "color",
+      "value": "#2D3036"
+    },
+    "color-text-muted": {
+      "type": "color",
+      "value": "#74787E"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Newsreader"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "IBM Plex Mono"
+    },
+    "pad-edge": {
+      "type": "number",
+      "value": 96
+    },
+    "rule-thin": {
+      "type": "number",
+      "value": 1
+    },
+    "color-indigo": {
+      "type": "color",
+      "value": "#2C3F8C"
+    },
+    "color-indigo-deep": {
+      "type": "color",
+      "value": "#1E2A5C"
+    },
+    "color-ink-deep": {
+      "type": "color",
+      "value": "#1E2128"
+    },
+    "color-oxblood": {
+      "type": "color",
+      "value": "#7C2A2E"
+    },
+    "color-paper-cream": {
+      "type": "color",
+      "value": "#EAE5D6"
+    },
+    "color-paper-warm": {
+      "type": "color",
+      "value": "#F4EFE6"
+    },
+    "color-riso-blue": {
+      "type": "color",
+      "value": "#1B4FA0"
+    },
+    "color-riso-pink": {
+      "type": "color",
+      "value": "#E5407A"
+    },
+    "color-riso-yellow": {
+      "type": "color",
+      "value": "#F0C84B"
+    },
+    "color-terracotta": {
+      "type": "color",
+      "value": "#B14A3C"
+    }
+  }
+}

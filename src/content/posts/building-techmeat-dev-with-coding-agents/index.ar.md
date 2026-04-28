@@ -2,7 +2,8 @@
 title: "كيف بنيت هذه المدونة بمساعدة وكلاء البرمجة"
 description: "قصة إطلاق techmeat.dev: من فكرة عفوية ومجموعة من الـ skills إلى Astro و Cloudflare Pages وجلسة عصف ذهني وأول إصدار من المدونة."
 pubDate: 2026-04-28
-tags: [ai-coding, astro, meta]
+tags: [ai-coding, astro, bun]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: ar
 ---
 
