@@ -1,0 +1,574 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { locales, defaultLocale, type Locale } from "../../i18n/config";
+import { t } from "../../i18n/t";
+
+export async function getStaticPaths() {
+  return locales
+    .filter((l) => l !== defaultLocale)
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const heading = t("nav.stack", locale);
+const description = t("stack.description", locale);
+---
+
+<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale}>
+  <h1>{heading}</h1>
+  {
+    locale === "ru" ? (
+      <>
+        <p>
+          <em>(Сгенерировано AI. Будет переписано человеком позже.)</em>
+        </p>
+
+        <p>
+          Слепок того, на чём построен techmeat.dev, какими инструментами я пользуюсь каждый день
+          и какой воркфлоу применяю, чтобы выпускать посты и фичи в связке с кодинг-агентами.
+        </p>
+
+        <h2>Технологический стек</h2>
+        <ul>
+          <li>
+            <strong>Astro 6</strong> в режиме <code>output: 'static'</code>. Посты — Markdown,
+            рендерятся через Astro Content Collections.
+          </li>
+          <li>
+            <strong>Solid.js</strong> через <code>@astrojs/solid-js</code> для немногих
+            интерактивных островов: переключатель темы, переключатель языка, кнопка копирования
+            кода.
+          </li>
+          <li>
+            <strong>Bun</strong> как рантайм, пакетный менеджер и тест-раннер. Никакого npm и pnpm.
+          </li>
+          <li>
+            <strong>Cloudflare Pages</strong> для хостинга; <strong>Cloudflare Web Analytics</strong>
+            для аналитики, без cookies.
+          </li>
+          <li>
+            <strong>satori</strong> + <strong>resvg</strong> для генерации OG-картинок на
+            билд-тайме — отдельная картинка под каждый пост и каждую локаль.
+          </li>
+          <li>
+            <strong>@vite-pwa/astro</strong> (Workbox) — устанавливаемое PWA с offline-fallback.
+          </li>
+          <li>
+            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap и
+            пер-локальные RSS-фиды.
+          </li>
+        </ul>
+
+        <h2>Инструменты</h2>
+        <ul>
+          <li>
+            <strong>oxlint</strong> + <strong>oxfmt</strong> — линтер и форматтер на Rust. Без
+            ESLint и Prettier.
+          </li>
+          <li>
+            <strong>@astrojs/check</strong> — типизация для <code>.astro</code> файлов.
+          </li>
+          <li>
+            <strong>lefthook</strong> — pre-commit хуки: линт, форматирование и typecheck на каждом
+            коммите.
+          </li>
+          <li>
+            <strong>bun:test</strong> — встроенный тест-фреймворк.
+          </li>
+        </ul>
+
+        <h2>AI-ассистенты</h2>
+        <ul>
+          <li>
+            <strong>Claude Code</strong> — основной кодинг-агент. Контекст проекта живёт в{" "}
+            <code>CLAUDE.md</code> и <code>AGENTS.md</code>.
+          </li>
+          <li>
+            <strong>Superpowers skills</strong> — brainstorming, writing-plans,
+            subagent-driven-development для нетривиальных фич.
+          </li>
+          <li>
+            <strong>GPT-5.5</strong> — второй проход ревью на крупных изменениях.
+          </li>
+          <li>
+            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
+            markup, on-page audit, content-quality auditor (CORE-EEAT), GEO content optimizer для
+            цитируемости в AI-движках.
+          </li>
+        </ul>
+
+        <h2>Железо</h2>
+        <ul>
+          <li>(Placeholder — заполнит человек.)</li>
+        </ul>
+
+        <h2>Воркфлоу</h2>
+        <p>Каждый пост и каждая фича проходят примерно один и тот же цикл:</p>
+        <ol>
+          <li>
+            Зафиксировать цель и ограничения в <code>CLAUDE.md</code> / <code>AGENTS.md</code>,
+            чтобы у агента был стабильный контекст.
+          </li>
+          <li>Сделать брейншторминг через Superpowers, получить дизайн-спецификацию.</li>
+          <li>Перевести спецификацию в план реализации с конкретными шагами.</li>
+          <li>
+            Subagent-driven выполнение с двухступенчатым ревью (соответствие спеке, потом качество
+            кода) на каждой задаче.
+          </li>
+          <li>Для постов — многоступенчатый SEO + GEO пайплайн перед публикацией.</li>
+        </ol>
+
+        <p>
+          Смысл этой страницы — открыто показать тулчейн, чтобы посты могли быть про <em>процесс</em>,
+          а не каждый раз заново объяснять сетап.
+        </p>
+      </>
+    ) : locale === "es" ? (
+      <>
+        <p><em>(Borrador generado por IA. Será reescrito por un humano más adelante.)</em></p>
+
+        <p>
+          Una instantánea de con qué está construido techmeat.dev, las herramientas en las que me apoyo día a día y el
+          flujo de trabajo que uso para publicar artículos y enviar funcionalidades con agentes de codificación.
+        </p>
+
+        <h2>Stack tecnológico</h2>
+        <ul>
+          <li><strong>Astro 6</strong> en modo <code>output: 'static'</code>. Los artículos están en Markdown, renderizados a través de las colecciones de contenido de Astro.</li>
+          <li><strong>Solid.js</strong> mediante <code>@astrojs/solid-js</code> para las pocas islas interactivas: el conmutador de tema, el selector de idioma y el botón de copiar en los bloques de código.</li>
+          <li><strong>Bun</strong> como runtime, gestor de paquetes y ejecutor de pruebas. Sin npm, sin pnpm.</li>
+          <li><strong>Cloudflare Pages</strong> para el hosting; <strong>Cloudflare Web Analytics</strong> para el tráfico, sin cookies.</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> para la generación en tiempo de compilación de tarjetas OG por artículo y por idioma.</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) para una PWA instalable con un fallback sin conexión.</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> para el sitemap y los feeds RSS por idioma.</li>
+        </ul>
+
+        <h2>Herramientas</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong>: linter y formateador basados en Rust. Sin ESLint, sin Prettier.</li>
+          <li><strong>@astrojs/check</strong> para la comprobación de TypeScript dentro de los archivos <code>.astro</code>.</li>
+          <li><strong>lefthook</strong> para los hooks de pre-commit (lint + formato + comprobación de tipos en cada commit).</li>
+          <li><strong>bun:test</strong> como framework de pruebas.</li>
+        </ul>
+
+        <h2>Asistentes de IA</h2>
+        <ul>
+          <li><strong>Claude Code</strong>: el agente de codificación principal. El contexto del proyecto vive en <code>CLAUDE.md</code> y <code>AGENTS.md</code>.</li>
+          <li><strong>Superpowers skills</strong>: brainstorming, writing-plans, subagent-driven-development para funcionalidades no triviales.</li>
+          <li><strong>GPT-5.5</strong>: utilizado para una segunda revisión de código en cambios más grandes.</li>
+          <li><strong>Suite de skills de SEO / GEO</strong>: investigación de palabras clave, optimización de meta-tags, schema markup, auditoría on-page, auditor de calidad de contenido (CORE-EEAT) y optimizador de contenido GEO para motores de IA.</li>
+        </ul>
+
+        <h2>Hardware</h2>
+        <ul>
+          <li>(Marcador de posición: lo rellenará el humano.)</li>
+        </ul>
+
+        <h2>Flujo de trabajo</h2>
+        <p>Cada artículo y cada funcionalidad pasa aproximadamente por el mismo ciclo:</p>
+        <ol>
+          <li>Capturar el objetivo y las restricciones en <code>CLAUDE.md</code> / <code>AGENTS.md</code> para que el agente tenga un contexto estable.</li>
+          <li>Hacer brainstorming sobre la forma del trabajo con Superpowers; producir una especificación de diseño.</li>
+          <li>Convertir la especificación en un plan de implementación con pasos concretos.</li>
+          <li>Ejecución dirigida por subagentes, con una revisión en dos etapas (cumplimiento de la especificación y luego calidad del código) por cada tarea.</li>
+          <li>Para los artículos: un pipeline de SEO + GEO en varias etapas antes de publicar.</li>
+        </ol>
+
+        <p>
+          El sentido de esta página es ser honesto sobre la cadena de herramientas para que los artículos puedan mantenerse centrados en
+          el <em>proceso</em> en lugar de volver a explicar la configuración cada vez.
+        </p>
+      </>
+    ) : locale === "fr" ? (
+      <>
+        <p><em>(Brouillon généré par IA. À réécrire ultérieurement par un humain.)</em></p>
+
+        <p>
+          Un aperçu de ce qui fait tourner techmeat.dev, des outils sur lesquels je m'appuie au quotidien, et du
+          workflow que j'utilise pour publier des articles et livrer des fonctionnalités avec des agents de coding.
+        </p>
+
+        <h2>Stack technique</h2>
+        <ul>
+          <li><strong>Astro 6</strong> en mode <code>output: 'static'</code>. Les articles sont en Markdown, rendus via les content collections d'Astro.</li>
+          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> pour les rares îlots interactifs — bascule de thème, sélecteur de langue, bouton de copie des blocs de code.</li>
+          <li><strong>Bun</strong> comme runtime, gestionnaire de paquets et test runner. Pas de npm, pas de pnpm.</li>
+          <li><strong>Cloudflare Pages</strong> pour l'hébergement ; <strong>Cloudflare Web Analytics</strong> pour le trafic, sans cookies.</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> pour la génération des cartes OG au build, par article et par locale.</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) pour une PWA installable avec un repli hors ligne.</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> pour le sitemap et les flux RSS par locale.</li>
+        </ul>
+
+        <h2>Outillage</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — linter et formateur basés sur Rust. Pas d'ESLint, pas de Prettier.</li>
+          <li><strong>@astrojs/check</strong> pour la vérification TypeScript à l'intérieur des fichiers <code>.astro</code>.</li>
+          <li><strong>lefthook</strong> pour les hooks de pre-commit (lint + format + vérification de types à chaque commit).</li>
+          <li><strong>bun:test</strong> comme framework de tests.</li>
+        </ul>
+
+        <h2>Assistants IA</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — l'agent de coding principal. Le contexte projet vit dans <code>CLAUDE.md</code> et <code>AGENTS.md</code>.</li>
+          <li><strong>Superpowers skills</strong> — brainstorming, writing-plans, subagent-driven-development pour les fonctionnalités non triviales.</li>
+          <li><strong>GPT-5.5</strong> — utilisé pour une seconde passe de revue de code sur les changements plus conséquents.</li>
+          <li><strong>Suite de skills SEO / GEO</strong> — recherche de mots-clés, optimisation des meta tags, balisage schema, audit on-page, auditeur de qualité de contenu (CORE-EEAT), optimiseur de contenu GEO pour les moteurs IA.</li>
+        </ul>
+
+        <h2>Matériel</h2>
+        <ul>
+          <li>(Espace réservé — à compléter par l'humain.)</li>
+        </ul>
+
+        <h2>Workflow</h2>
+        <p>Chaque article et chaque fonctionnalité passe à peu près par la même boucle :</p>
+        <ol>
+          <li>Consigner l'objectif et les contraintes dans <code>CLAUDE.md</code> / <code>AGENTS.md</code> pour que l'agent dispose d'un contexte stable.</li>
+          <li>Faire un brainstorming sur la forme du travail avec Superpowers ; produire une spec de conception.</li>
+          <li>Transformer la spec en plan d'implémentation avec des étapes concrètes.</li>
+          <li>Exécution menée par sous-agents, avec une revue en deux temps (conformité à la spec, puis qualité du code) par tâche.</li>
+          <li>Pour les articles : un pipeline SEO + GEO en plusieurs étapes avant publication.</li>
+        </ol>
+
+        <p>
+          L'intérêt de cette page est d'être honnête sur la chaîne d'outils, afin que les articles restent centrés sur le
+          <em>processus</em> au lieu de réexpliquer la configuration à chaque fois.
+        </p>
+      </>
+    ) : locale === "de" ? (
+      <>
+        <p><em>(KI-generierter Entwurf. Wird später von einem Menschen überarbeitet.)</em></p>
+
+        <p>
+          Eine Momentaufnahme dessen, womit techmeat.dev gebaut ist, der Tools, auf die ich mich Tag für Tag stütze, und des
+          Workflows, mit dem ich Beiträge und Features mit Coding-Agents ausliefere.
+        </p>
+
+        <h2>Tech-Stack</h2>
+        <ul>
+          <li><strong>Astro 6</strong> im <code>output: 'static'</code>-Modus. Beiträge sind Markdown, gerendert über Astros Content Collections.</li>
+          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> für die wenigen interaktiven Islands — Theme-Umschalter, Sprachumschalter, Copy-Button für Codeblöcke.</li>
+          <li><strong>Bun</strong> als Runtime, Paketmanager und Test-Runner. Kein npm, kein pnpm.</li>
+          <li><strong>Cloudflare Pages</strong> fürs Hosting; <strong>Cloudflare Web Analytics</strong> für Traffic, ohne Cookies.</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> für die Generierung von OG-Cards zur Build-Zeit, pro Beitrag und pro Sprache.</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) für eine installierbare PWA mit Offline-Fallback.</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> für Sitemap und sprachspezifische RSS-Feeds.</li>
+        </ul>
+
+        <h2>Tooling</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-basierter Linter und Formatter. Kein ESLint, kein Prettier.</li>
+          <li><strong>@astrojs/check</strong> für TypeScript-Prüfung in <code>.astro</code>-Dateien.</li>
+          <li><strong>lefthook</strong> für Pre-Commit-Hooks (Lint + Format + Typprüfung bei jedem Commit).</li>
+          <li><strong>bun:test</strong> als Test-Framework.</li>
+        </ul>
+
+        <h2>KI-Assistenten</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — der primäre Coding-Agent. Der Projektkontext liegt in <code>CLAUDE.md</code> und <code>AGENTS.md</code>.</li>
+          <li><strong>Superpowers-Skills</strong> — brainstorming, writing-plans, subagent-driven-development für nicht-triviale Features.</li>
+          <li><strong>GPT-5.5</strong> — eingesetzt für ein zweites Code-Review bei größeren Änderungen.</li>
+          <li><strong>SEO-/GEO-Skill-Suite</strong> — Keyword-Recherche, Meta-Tag-Optimierung, Schema Markup, On-Page-Audit, Content-Quality-Auditor (CORE-EEAT), GEO Content Optimizer für AI-Engines.</li>
+        </ul>
+
+        <h2>Hardware</h2>
+        <ul>
+          <li>(Platzhalter — wird vom Menschen ausgefüllt.)</li>
+        </ul>
+
+        <h2>Workflow</h2>
+        <p>Jeder Beitrag und jedes Feature durchläuft im Wesentlichen denselben Kreislauf:</p>
+        <ol>
+          <li>Ziel und Rahmenbedingungen in <code>CLAUDE.md</code> / <code>AGENTS.md</code> festhalten, damit der Agent einen stabilen Kontext hat.</li>
+          <li>Die Form der Arbeit mit Superpowers durchdenken; eine Design-Spezifikation erstellen.</li>
+          <li>Die Spezifikation in einen Umsetzungsplan mit konkreten Schritten überführen.</li>
+          <li>Subagenten-getriebene Ausführung, mit zweistufigem Review (Spec-Konformität, dann Codequalität) pro Aufgabe.</li>
+          <li>Bei Beiträgen: eine mehrstufige SEO- + GEO-Pipeline vor der Veröffentlichung.</li>
+        </ol>
+
+        <p>
+          Der Sinn dieser Seite ist, ehrlich über die Toolchain zu sein, damit sich die Beiträge auf den
+          <em>Prozess</em> konzentrieren können, statt jedes Mal das Setup neu zu erklären.
+        </p>
+      </>
+    ) : locale === "pt" ? (
+      <>
+        <p><em>(Rascunho gerado por AI. A ser reescrito por um humano depois.)</em></p>
+
+        <p>
+          Um panorama do que o techmeat.dev usa por baixo dos panos, das ferramentas com que conto no dia a dia e do
+          fluxo de trabalho que adoto para publicar posts e entregar features com agentes de coding.
+        </p>
+
+        <h2>Stack técnica</h2>
+        <ul>
+          <li><strong>Astro 6</strong> no modo <code>output: 'static'</code>. Os posts são Markdown, renderizados pelas content collections do Astro.</li>
+          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> para as poucas ilhas interativas — alternador de tema, seletor de idioma, botão de copiar bloco de código.</li>
+          <li><strong>Bun</strong> como runtime, gerenciador de pacotes e test runner. Nada de npm, nada de pnpm.</li>
+          <li><strong>Cloudflare Pages</strong> para hospedagem; <strong>Cloudflare Web Analytics</strong> para tráfego, sem cookies.</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> para geração de cards OG em tempo de build, por post e por locale.</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) para um PWA instalável com fallback offline.</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> para sitemap e feeds RSS por locale.</li>
+        </ul>
+
+        <h2>Ferramental</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — lint e formatador escritos em Rust. Sem ESLint, sem Prettier.</li>
+          <li><strong>@astrojs/check</strong> para verificação TypeScript dentro de arquivos <code>.astro</code>.</li>
+          <li><strong>lefthook</strong> para hooks de pre-commit (lint + format + checagem de tipos a cada commit).</li>
+          <li><strong>bun:test</strong> como framework de testes.</li>
+        </ul>
+
+        <h2>Assistentes de AI</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — o agente de coding principal. O contexto do projeto vive em <code>CLAUDE.md</code> e <code>AGENTS.md</code>.</li>
+          <li><strong>Superpowers skills</strong> — brainstorming, writing-plans, subagent-driven-development para features não triviais.</li>
+          <li><strong>GPT-5.5</strong> — usado para uma segunda passada de code review em mudanças maiores.</li>
+          <li><strong>Suíte de skills de SEO / GEO</strong> — pesquisa de keywords, otimização de meta-tags, schema markup, auditoria on-page, auditor de qualidade de conteúdo (CORE-EEAT), otimizador de conteúdo GEO para motores de AI.</li>
+        </ul>
+
+        <h2>Hardware</h2>
+        <ul>
+          <li>(Espaço reservado — a ser preenchido pelo humano.)</li>
+        </ul>
+
+        <h2>Fluxo de trabalho</h2>
+        <p>Cada post e cada feature passa mais ou menos pelo mesmo loop:</p>
+        <ol>
+          <li>Registrar o objetivo e as restrições em <code>CLAUDE.md</code> / <code>AGENTS.md</code> para que o agente tenha um contexto estável.</li>
+          <li>Fazer brainstorming do formato do trabalho com Superpowers; produzir uma especificação de design.</li>
+          <li>Transformar a spec em um plano de implementação com passos concretos.</li>
+          <li>Execução via subagent-driven, com uma revisão em duas etapas (aderência à spec e, depois, qualidade do código) por tarefa.</li>
+          <li>Para os posts: um pipeline SEO + GEO de várias etapas antes da publicação.</li>
+        </ol>
+
+        <p>
+          O propósito desta página é ser honesto sobre o ferramental, para que os posts possam manter o foco em
+          <em>processo</em> em vez de reexplicar a configuração toda hora.
+        </p>
+      </>
+    ) : locale === "ar" ? (
+      <>
+        <p><em>(مسودة من إنتاج AI. سيتم إعادة كتابتها بواسطة إنسان لاحقًا.)</em></p>
+
+        <p>
+          لمحة سريعة عمّا بُني به techmeat.dev، والأدوات التي أعتمد عليها يوميًا،
+          وسير العمل الذي أستخدمه لنشر المقالات وإطلاق الميزات بالاستعانة بوكلاء البرمجة.
+        </p>
+
+        <h2>الحزمة التقنية</h2>
+        <ul>
+          <li><strong>Astro 6</strong> في وضع <code>output: 'static'</code>. المقالات بصيغة Markdown، تُعرض عبر مجموعات المحتوى في Astro.</li>
+          <li><strong>Solid.js</strong> عبر <code>@astrojs/solid-js</code> للجزر التفاعلية القليلة — مبدّل السمة، ومبدّل اللغة، وزر نسخ كتل الكود.</li>
+          <li><strong>Bun</strong> كبيئة تشغيل ومدير حزم ومُشغّل اختبارات. لا npm ولا pnpm.</li>
+          <li><strong>Cloudflare Pages</strong> للاستضافة؛ و<strong>Cloudflare Web Analytics</strong> لقياس الزيارات، دون كوكيز.</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> لتوليد بطاقات OG وقت البناء لكل مقالة ولكل لغة.</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) لتطبيق PWA قابل للتثبيت مع بديل يعمل دون اتصال.</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> لخريطة الموقع وخلاصات RSS لكل لغة.</li>
+        </ul>
+
+        <h2>أدوات التطوير</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — مدقّق ومُنسّق مكتوبان بلغة Rust. لا ESLint ولا Prettier.</li>
+          <li><strong>@astrojs/check</strong> للتحقق من TypeScript داخل ملفات <code>.astro</code>.</li>
+          <li><strong>lefthook</strong> لخطافات ما قبل الالتزام (lint + تنسيق + فحص الأنواع عند كل commit).</li>
+          <li><strong>bun:test</strong> كإطار للاختبارات.</li>
+        </ul>
+
+        <h2>مساعدو الـ AI</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — وكيل البرمجة الأساسي. سياق المشروع موجود في <code>CLAUDE.md</code> و<code>AGENTS.md</code>.</li>
+          <li><strong>مهارات Superpowers</strong> — brainstorming وwriting-plans وsubagent-driven-development للميزات غير البديهية.</li>
+          <li><strong>GPT-5.5</strong> — يُستخدم لمراجعة الكود في تمريرة ثانية على التغييرات الأكبر.</li>
+          <li><strong>طاقم مهارات SEO / GEO</strong> — البحث في الكلمات المفتاحية، وتحسين وسوم الميتا، وschema markup، والتدقيق داخل الصفحة، ومدقّق جودة المحتوى (CORE-EEAT)، ومُحسّن محتوى GEO لمحركات الـ AI.</li>
+        </ul>
+
+        <h2>العتاد</h2>
+        <ul>
+          <li>(عنصر نائب — سيتم تعبئته بواسطة الإنسان.)</li>
+        </ul>
+
+        <h2>سير العمل</h2>
+        <p>كل مقالة وكل ميزة تمرّ تقريبًا بالحلقة نفسها:</p>
+        <ol>
+          <li>تثبيت الهدف والقيود في <code>CLAUDE.md</code> / <code>AGENTS.md</code> ليكون لدى الوكيل سياق ثابت.</li>
+          <li>استكشاف شكل العمل عبر Superpowers؛ ثم إنتاج مواصفات تصميم.</li>
+          <li>تحويل المواصفات إلى خطة تنفيذ بخطوات ملموسة.</li>
+          <li>تنفيذ مدفوع بالوكلاء الفرعيين، مع مراجعة من مرحلتين (التوافق مع المواصفات، ثم جودة الكود) لكل مهمة.</li>
+          <li>للمقالات: خط أنابيب SEO + GEO متعدد المراحل قبل النشر.</li>
+        </ol>
+
+        <p>
+          الغاية من هذه الصفحة أن أكون صريحًا بشأن سلسلة الأدوات حتى تبقى المقالات مركّزة على
+          <em>العملية</em> بدلًا من إعادة شرح الإعداد في كل مرة.
+        </p>
+      </>
+    ) : locale === "hi" ? (
+      <>
+        <p><em>(AI-जनित ड्राफ्ट। बाद में मनुष्य द्वारा फिर से लिखा जाएगा।)</em></p>
+
+        <p>
+          techmeat.dev किस चीज़ से बना है, मैं रोज़मर्रा जिन टूल्स पर भरोसा करता हूँ, और coding एजेंट्स के साथ
+          पोस्ट और फीचर्स शिप करने के लिए जो वर्कफ़्लो इस्तेमाल करता हूँ — उसका एक स्नैपशॉट।
+        </p>
+
+        <h2>टेक स्टैक</h2>
+        <ul>
+          <li><strong>Astro 6</strong> <code>output: 'static'</code> मोड में। पोस्ट्स Markdown में हैं, Astro के content collections के ज़रिए रेंडर होती हैं।</li>
+          <li><strong>Solid.js</strong> <code>@astrojs/solid-js</code> के ज़रिए कुछ इंटरैक्टिव आइलैंड्स के लिए — थीम टॉगल, लैंग्वेज स्विचर, कोड-ब्लॉक कॉपी बटन।</li>
+          <li><strong>Bun</strong> रनटाइम, पैकेज मैनेजर और टेस्ट रनर के रूप में। कोई npm नहीं, कोई pnpm नहीं।</li>
+          <li><strong>Cloudflare Pages</strong> होस्टिंग के लिए; <strong>Cloudflare Web Analytics</strong> ट्रैफ़िक के लिए, कोई कुकीज़ नहीं।</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> बिल्ड-टाइम पर प्रति पोस्ट प्रति लोकेल OG कार्ड जेनरेशन के लिए।</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) इंस्टॉल करने योग्य PWA के लिए, ऑफ़लाइन फ़ॉलबैक के साथ।</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> साइटमैप और प्रति-लोकेल RSS फ़ीड के लिए।</li>
+        </ul>
+
+        <h2>टूलिंग</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-आधारित लिंट और फ़ॉर्मैटर। कोई ESLint नहीं, कोई Prettier नहीं।</li>
+          <li><strong>@astrojs/check</strong> <code>.astro</code> फ़ाइलों के अंदर TypeScript चेकिंग के लिए।</li>
+          <li><strong>lefthook</strong> प्री-कमिट हुक्स के लिए (हर कमिट पर लिंट + फ़ॉर्मैट + टाइप चेक)।</li>
+          <li><strong>bun:test</strong> टेस्ट फ़्रेमवर्क के रूप में।</li>
+        </ul>
+
+        <h2>AI असिस्टेंट्स</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — प्राथमिक coding एजेंट। प्रोजेक्ट कॉन्टेक्स्ट <code>CLAUDE.md</code> और <code>AGENTS.md</code> में रहता है।</li>
+          <li><strong>Superpowers skills</strong> — गैर-तुच्छ फ़ीचर्स के लिए brainstorming, writing-plans, subagent-driven-development।</li>
+          <li><strong>GPT-5.5</strong> — बड़े बदलावों पर सेकंड-पास कोड रिव्यू के लिए इस्तेमाल होता है।</li>
+          <li><strong>SEO / GEO skills suite</strong> — कीवर्ड रिसर्च, मेटा-टैग्स ऑप्टिमाइज़ेशन, स्कीमा मार्कअप, ऑन-पेज ऑडिट, कंटेंट-क्वालिटी ऑडिटर (CORE-EEAT), AI इंजनों के लिए GEO कंटेंट ऑप्टिमाइज़र।</li>
+        </ul>
+
+        <h2>हार्डवेयर</h2>
+        <ul>
+          <li>(प्लेसहोल्डर — मनुष्य द्वारा भरा जाएगा।)</li>
+        </ul>
+
+        <h2>वर्कफ़्लो</h2>
+        <p>हर पोस्ट और हर फ़ीचर लगभग एक जैसे लूप से गुज़रता है:</p>
+        <ol>
+          <li>लक्ष्य और बाधाओं को <code>CLAUDE.md</code> / <code>AGENTS.md</code> में दर्ज करें ताकि एजेंट के पास एक स्थिर कॉन्टेक्स्ट हो।</li>
+          <li>Superpowers के साथ काम के स्वरूप पर brainstorming करें; एक डिज़ाइन स्पेक तैयार करें।</li>
+          <li>स्पेक को ठोस चरणों वाले एक इम्प्लीमेंटेशन प्लान में बदलें।</li>
+          <li>सबएजेंट-संचालित निष्पादन, प्रति टास्क दो-चरणीय रिव्यू के साथ (पहले स्पेक अनुपालन, फिर कोड क्वालिटी)।</li>
+          <li>पोस्ट्स के लिए: प्रकाशन से पहले एक बहु-चरणीय SEO + GEO पाइपलाइन।</li>
+        </ol>
+
+        <p>
+          इस पेज का मकसद टूलचेन के बारे में ईमानदार रहना है, ताकि पोस्ट्स हर बार सेटअप दोबारा समझाने के बजाय
+          <em>प्रक्रिया</em> पर केंद्रित रह सकें।
+        </p>
+      </>
+    ) : locale === "zh" ? (
+      <>
+        <p><em>（AI 生成的草稿，后续将由人工重写。）</em></p>
+
+        <p>
+          techmeat.dev 的构建概览：日常依赖的工具，以及我用编程 Agent 发布文章和功能时所遵循的工作流。
+        </p>
+
+        <h2>技术栈</h2>
+        <ul>
+          <li><strong>Astro 6</strong>，采用 <code>output: 'static'</code> 模式。文章使用 Markdown，通过 Astro 的内容集合渲染。</li>
+          <li><strong>Solid.js</strong>，通过 <code>@astrojs/solid-js</code> 接入，仅用于少量交互式岛屿——主题切换、语言切换器、代码块复制按钮。</li>
+          <li><strong>Bun</strong> 作为运行时、包管理器和测试运行器。不使用 npm，也不使用 pnpm。</li>
+          <li><strong>Cloudflare Pages</strong> 用于托管；<strong>Cloudflare Web Analytics</strong> 用于流量统计，无 cookie。</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> 在构建时为每篇文章的每种语言生成 OG 卡片。</li>
+          <li><strong>@vite-pwa/astro</strong>（Workbox）实现可安装的 PWA，并提供离线兜底页面。</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> 生成站点地图以及各语言的 RSS 订阅。</li>
+        </ul>
+
+        <h2>工具链</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong>——基于 Rust 的代码检查与格式化工具。不使用 ESLint，也不使用 Prettier。</li>
+          <li><strong>@astrojs/check</strong> 用于在 <code>.astro</code> 文件中执行 TypeScript 检查。</li>
+          <li><strong>lefthook</strong> 用于预提交钩子（每次提交都会执行 lint、格式化和类型检查）。</li>
+          <li><strong>bun:test</strong> 作为测试框架。</li>
+        </ul>
+
+        <h2>AI 助手</h2>
+        <ul>
+          <li><strong>Claude Code</strong>——主力编程 Agent。项目上下文写在 <code>CLAUDE.md</code> 和 <code>AGENTS.md</code> 中。</li>
+          <li><strong>Superpowers skills</strong>——在处理复杂功能时使用 brainstorming、writing-plans、subagent-driven-development。</li>
+          <li><strong>GPT-5.5</strong>——用于较大改动的二次代码评审。</li>
+          <li><strong>SEO / GEO 技能套件</strong>——关键词研究、meta 标签优化、schema 标记、页面审计、内容质量审计（CORE-EEAT），以及面向 AI 引擎的 GEO 内容优化。</li>
+        </ul>
+
+        <h2>硬件</h2>
+        <ul>
+          <li>（占位——待人工补充。）</li>
+        </ul>
+
+        <h2>工作流</h2>
+        <p>每篇文章和每个功能基本都遵循同一套循环：</p>
+        <ol>
+          <li>把目标和约束写进 <code>CLAUDE.md</code> / <code>AGENTS.md</code>，让 Agent 拥有稳定的上下文。</li>
+          <li>用 Superpowers 梳理工作的轮廓，产出设计规格。</li>
+          <li>把规格转化为带有具体步骤的实施计划。</li>
+          <li>由子 Agent 驱动执行，每个任务进行两阶段评审（先看是否符合规格，再看代码质量）。</li>
+          <li>文章发布前还要走一遍多阶段的 SEO + GEO 流水线。</li>
+        </ol>
+
+        <p>
+          这个页面的意义在于诚实地交代工具链，这样后续的文章就能专注于<em>过程本身</em>，而不必每次都重新介绍一遍配置。
+        </p>
+      </>
+    ) : locale === "bn" ? (
+      <>
+        <p><em>(AI-জেনারেটেড খসড়া। পরে একজন মানুষ এটি পুনরায় লিখবেন।)</em></p>
+
+        <p>
+          techmeat.dev কী দিয়ে তৈরি, প্রতিদিনের কাজে আমি যেসব টুলের উপর নির্ভর করি, এবং coding এজেন্টদের সাথে পোস্ট ও ফিচার শিপ করার জন্য আমি যে ওয়ার্কফ্লো ব্যবহার করি — তার একটি স্ন্যাপশট।
+        </p>
+
+        <h2>টেক স্ট্যাক</h2>
+        <ul>
+          <li><strong>Astro 6</strong> <code>output: 'static'</code> মোডে। পোস্টগুলো Markdown-এ লেখা, Astro-র কন্টেন্ট কালেকশনের মাধ্যমে রেন্ডার করা হয়।</li>
+          <li><strong>Solid.js</strong> ব্যবহৃত হয় <code>@astrojs/solid-js</code> দিয়ে অল্প কয়েকটি ইন্টারঅ্যাকটিভ আইল্যান্ডের জন্য — থিম টগল, ভাষা সুইচার, কোড-ব্লক কপি বাটন।</li>
+          <li><strong>Bun</strong> রানটাইম, প্যাকেজ ম্যানেজার ও টেস্ট রানার হিসেবে। npm নেই, pnpm নেই।</li>
+          <li><strong>Cloudflare Pages</strong> হোস্টিংয়ের জন্য; <strong>Cloudflare Web Analytics</strong> ট্র্যাফিকের জন্য, কোনো কুকি ছাড়াই।</li>
+          <li><strong>satori</strong> + <strong>resvg</strong> বিল্ড-টাইমে প্রতিটি পোস্টের জন্য প্রতিটি লোকেলে OG কার্ড তৈরির জন্য।</li>
+          <li><strong>@vite-pwa/astro</strong> (Workbox) একটি ইনস্টলযোগ্য PWA-র জন্য, যেখানে অফলাইন ফলব্যাক রয়েছে।</li>
+          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> সাইটম্যাপ এবং প্রতি লোকেলের RSS ফিডের জন্য।</li>
+        </ul>
+
+        <h2>টুলিং</h2>
+        <ul>
+          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-ভিত্তিক লিন্ট ও ফরম্যাটার। ESLint নেই, Prettier নেই।</li>
+          <li><strong>@astrojs/check</strong> <code>.astro</code> ফাইলের ভিতরে TypeScript চেকিংয়ের জন্য।</li>
+          <li><strong>lefthook</strong> প্রি-কমিট হুকের জন্য (প্রতিটি কমিটে লিন্ট + ফরম্যাট + টাইপ চেক)।</li>
+          <li><strong>bun:test</strong> টেস্ট ফ্রেমওয়ার্ক হিসেবে।</li>
+        </ul>
+
+        <h2>AI সহকারী</h2>
+        <ul>
+          <li><strong>Claude Code</strong> — প্রধান coding এজেন্ট। প্রজেক্ট কনটেক্সট থাকে <code>CLAUDE.md</code> ও <code>AGENTS.md</code>-এ।</li>
+          <li><strong>Superpowers skills</strong> — অপ্রচলিত ফিচারগুলোর জন্য brainstorming, writing-plans, subagent-driven-development।</li>
+          <li><strong>GPT-5.5</strong> — বড় পরিবর্তনের ক্ষেত্রে দ্বিতীয় পর্যায়ের কোড রিভিউয়ের জন্য ব্যবহৃত।</li>
+          <li><strong>SEO / GEO skills suite</strong> — কীওয়ার্ড রিসার্চ, মেটা-ট্যাগ অপটিমাইজেশন, স্কিমা মার্কআপ, অন-পেজ অডিট, কন্টেন্ট-কোয়ালিটি অডিটর (CORE-EEAT), AI ইঞ্জিনের জন্য GEO কন্টেন্ট অপটিমাইজার।</li>
+        </ul>
+
+        <h2>হার্ডওয়্যার</h2>
+        <ul>
+          <li>(প্লেসহোল্ডার — মানুষের দ্বারা পূরণ করা হবে।)</li>
+        </ul>
+
+        <h2>ওয়ার্কফ্লো</h2>
+        <p>প্রতিটি পোস্ট এবং প্রতিটি ফিচার মোটামুটি একই লুপের মধ্য দিয়ে যায়:</p>
+        <ol>
+          <li>লক্ষ্য ও সীমাবদ্ধতাগুলো <code>CLAUDE.md</code> / <code>AGENTS.md</code>-এ ধরে রাখা যাতে এজেন্টের একটি স্থিতিশীল কনটেক্সট থাকে।</li>
+          <li>Superpowers-এর সাথে কাজের কাঠামো নিয়ে brainstorming করা; একটি ডিজাইন স্পেক তৈরি করা।</li>
+          <li>স্পেককে সুনির্দিষ্ট ধাপ সহ একটি বাস্তবায়ন পরিকল্পনায় রূপান্তর করা।</li>
+          <li>Subagent-চালিত এক্সিকিউশন, প্রতিটি কাজের জন্য দুই-পর্যায়ের রিভিউ সহ (প্রথমে স্পেক সম্মতি, তারপর কোড কোয়ালিটি)।</li>
+          <li>পোস্টের ক্ষেত্রে: প্রকাশের আগে একটি বহু-স্তরীয় SEO + GEO পাইপলাইন।</li>
+        </ol>
+
+        <p>
+          এই পেজের উদ্দেশ্য হলো টুলচেইন সম্পর্কে সৎ থাকা, যাতে পোস্টগুলো প্রতিবার সেটআপ পুনরায় ব্যাখ্যা করার বদলে <em>প্রক্রিয়ার</em> উপর মনোযোগ ধরে রাখতে পারে।
+        </p>
+      </>
+    ) : (
+      <p>{t("stack.placeholder", locale)}</p>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { defaultLocale } from "../i18n/config";
+import { t } from "../i18n/t";
+
+const locale = defaultLocale;
+const heading = t("nav.stack", locale);
+const description = t("stack.description", locale);
+---
+
+<BaseLayout title={`${heading} — techmeat.dev`} description={description}>
+  <h1>{heading}</h1>
+  <p><em>(AI-generated draft. To be rewritten by a human later.)</em></p>
+
+  <p>
+    A snapshot of what techmeat.dev is built with, the tools I lean on day to day, and the
+    workflow I use to ship posts and features with coding agents.
+  </p>
+
+  <h2>Tech stack</h2>
+  <ul>
+    <li><strong>Astro 6</strong> in <code>output: 'static'</code> mode. Posts are Markdown, rendered through Astro's content collections.</li>
+    <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> for the few interactive islands — theme toggle, language switcher, code-block copy button.</li>
+    <li><strong>Bun</strong> as the runtime, package manager, and test runner. No npm, no pnpm.</li>
+    <li><strong>Cloudflare Pages</strong> for hosting; <strong>Cloudflare Web Analytics</strong> for traffic, no cookies.</li>
+    <li><strong>satori</strong> + <strong>resvg</strong> for build-time OG card generation per post per locale.</li>
+    <li><strong>@vite-pwa/astro</strong> (Workbox) for an installable PWA with an offline fallback.</li>
+    <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> for sitemap and per-locale RSS feeds.</li>
+  </ul>
+
+  <h2>Tooling</h2>
+  <ul>
+    <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-based lint and formatter. No ESLint, no Prettier.</li>
+    <li><strong>@astrojs/check</strong> for TypeScript checking inside <code>.astro</code> files.</li>
+    <li><strong>lefthook</strong> for pre-commit hooks (lint + format + type check on every commit).</li>
+    <li><strong>bun:test</strong> as the test framework.</li>
+  </ul>
+
+  <h2>AI assistants</h2>
+  <ul>
+    <li><strong>Claude Code</strong> — the primary coding agent. Project context lives in <code>CLAUDE.md</code> and <code>AGENTS.md</code>.</li>
+    <li><strong>Superpowers skills</strong> — brainstorming, writing-plans, subagent-driven-development for non-trivial features.</li>
+    <li><strong>GPT-5.5</strong> — used for second-pass code review on larger changes.</li>
+    <li><strong>SEO / GEO skills suite</strong> — keyword research, meta-tags optimization, schema markup, on-page audit, content-quality auditor (CORE-EEAT), GEO content optimizer for AI engines.</li>
+  </ul>
+
+  <h2>Hardware</h2>
+  <ul>
+    <li>(Placeholder — to be filled in by the human.)</li>
+  </ul>
+
+  <h2>Workflow</h2>
+  <p>Each post and each feature goes through roughly the same loop:</p>
+  <ol>
+    <li>Capture the goal and constraints in <code>CLAUDE.md</code> / <code>AGENTS.md</code> so the agent has a stable context.</li>
+    <li>Brainstorm the shape of the work with Superpowers; produce a design spec.</li>
+    <li>Turn the spec into an implementation plan with concrete steps.</li>
+    <li>Subagent-driven execution, with a two-stage review (spec compliance, then code quality) per task.</li>
+    <li>For posts: a multi-stage SEO + GEO pipeline before publishing.</li>
+  </ol>
+
+  <p>
+    The point of this page is to be honest about the toolchain so the posts can stay focused on
+    <em>process</em> instead of re-explaining the setup every time.
+  </p>
+</BaseLayout>

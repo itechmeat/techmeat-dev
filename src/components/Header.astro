@@ -1,0 +1,51 @@
+---
+// src/components/Header.astro
+import { t } from "../i18n/t";
+import type { Locale } from "../i18n/config";
+import ThemeToggle from "./islands/ThemeToggle.tsx";
+import LanguageSwitcher from "./islands/LanguageSwitcher.tsx";
+
+interface Props {
+  locale: Locale;
+  availableLocales?: Locale[];
+  showLanguageSwitcher?: boolean;
+}
+
+const { locale, availableLocales, showLanguageSwitcher = true } = Astro.props;
+const homeHref = locale === "en" ? "/" : `/${locale}/`;
+const navPrefix = locale === "en" ? "" : `/${locale}`;
+
+const navItems = [
+  { href: `${navPrefix}/posts`, key: "nav.posts" as const },
+  { href: `${navPrefix}/about`, key: "nav.about" as const },
+  { href: `${navPrefix}/stack`, key: "nav.stack" as const },
+];
+---
+
+<header>
+  <a href={homeHref} class="wordmark">techmeat.dev</a>
+  <nav>
+    <ul>
+      {
+        navItems.map((item) => (
+          <li>
+            <a href={item.href}>{t(item.key, locale)}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <div class="header-controls">
+    <ThemeToggle client:load />
+    {
+      showLanguageSwitcher && (
+        <LanguageSwitcher
+          client:load
+          currentLocale={locale}
+          pathname={Astro.url.pathname}
+          availableLocales={availableLocales}
+        />
+      )
+    }
+  </div>
+</header>

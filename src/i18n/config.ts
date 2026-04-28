@@ -1,0 +1,32 @@
+export const locales = ["en", "es", "fr", "de", "pt", "ru", "ar", "hi", "zh", "bn"] as const;
+export type Locale = (typeof locales)[number];
+
+export const defaultLocale: Locale = "en";
+
+export const localeLabels: Record<Locale, string> = {
+  en: "English",
+  es: "Español",
+  fr: "Français",
+  de: "Deutsch",
+  pt: "Português",
+  ru: "Русский",
+  ar: "العربية",
+  hi: "हिन्दी",
+  zh: "中文",
+  bn: "বাংলা",
+};
+
+export const rtlLocales: ReadonlySet<Locale> = new Set(["ar"]);
+
+export const localeOgLang: Record<Locale, string> = {
+  en: "en_US",
+  es: "es_ES",
+  fr: "fr_FR",
+  de: "de_DE",
+  pt: "pt_BR",
+  ru: "ru_RU",
+  ar: "ar_AR",
+  hi: "hi_IN",
+  zh: "zh_CN",
+  bn: "bn_BD",
+};

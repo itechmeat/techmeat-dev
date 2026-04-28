@@ -1,0 +1,38 @@
+---
+// src/components/RelatedPosts.astro
+import { getCollection } from "astro:content";
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/t";
+import type { RelatedCandidate } from "../lib/relatedPosts";
+import { isVisiblePost } from "../lib/postVisibility";
+
+interface Props {
+  items: RelatedCandidate[];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+const slugPrefix = locale === "en" ? "/posts" : `/${locale}/posts`;
+
+const all = await getCollection("posts", ({ data }) => data.locale === locale && isVisiblePost(data));
+const lookup = new Map(all.map((p) => [p.id.split("/")[0], p.data]));
+const validItems = items.flatMap((item) => {
+  const data = lookup.get(item.slug);
+  return data ? [{ item, data }] : [];
+});
+---
+
+{
+  validItems.length > 0 && (
+    <aside class="related-posts">
+      <h2>{t("post.relatedPosts", locale)}</h2>
+      <ul>
+        {validItems.map(({ item, data }) => (
+          <li>
+            <a href={`${slugPrefix}/${item.slug}`}>{data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  )
+}

@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { defaultLocale } from "../i18n/config";
+import { t } from "../i18n/t";
+
+const locale = defaultLocale;
+const heading = t("nav.about", locale);
+const description = t("about.description", locale);
+---
+
+<BaseLayout title={`${heading} — techmeat.dev`} description={description}>
+  <h1>{heading}</h1>
+  <p>
+    <em>
+      (AI-generated draft based on project context. To be rewritten
+      by a human later.)
+    </em>
+  </p>
+
+  <p>
+    I'm Sergey Eroshenkov — a software engineer with a long stretch in frontend, now spending most
+    of my time building real products with AI-assisted coding.
+  </p>
+
+  <p>
+    I started out writing JavaScript for the browser and stayed close to the frontend stack for
+    many years: components, design systems, performance, and the boring infrastructural plumbing
+    that quietly makes a UI reliable. Over time my focus drifted toward how teams actually ship —
+    and more recently, toward how a single developer plus a coding agent ships.
+  </p>
+
+  <p>
+    techmeat.dev is the place where I document that shift. It's a working notebook: prompts that
+    worked, prompts that didn't, the boundaries I draw between human judgment and agent execution,
+    and the engineering decisions that fall out of that process. The first post — the story of
+    building this very blog with coding agents — is also the first experiment.
+  </p>
+
+  <p>
+    What I'm interested in publicly: process over hype, repeatable workflows over one-off tricks,
+    and showing the work — including the parts where the agent got it wrong, or where my problem
+    statement wasn't precise enough.
+  </p>
+
+  <h2>{t("about.findMeHeading", locale)}</h2>
+  <ul>
+    <li>
+      <a href="https://github.com/itechmeat">GitHub</a>{t("about.githubSuffix", locale)}
+    </li>
+    <li>
+      <a href="https://x.com/techmeat">X</a>{t("about.twitterSuffix", locale)}
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/techmeat/">LinkedIn</a>{t("about.linkedinSuffix", locale)}
+    </li>
+  </ul>
+</BaseLayout>

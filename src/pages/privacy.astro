@@ -1,0 +1,29 @@
+---
+// src/pages/privacy.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Privacy — techmeat.dev"
+  description="Privacy notice for techmeat.dev."
+  locale="en"
+  showLanguageSwitcher={false}
+>
+  <h1>Privacy</h1>
+  <p>
+    This site uses
+    <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a>,
+    which does not use cookies, does not collect personal data, and does not
+    track users across sites. No consent banner is required because no
+    regulated personal data is processed.
+  </p>
+  <p>
+    The site is delivered via Cloudflare's edge network. Cloudflare may log
+    request metadata (timestamp, IP, user agent) for security and operational
+    purposes; refer to Cloudflare's privacy commitments for details.
+  </p>
+  <p>
+    No accounts, no comments, no email collection, no third-party trackers
+    beyond what is named above.
+  </p>
+</BaseLayout>

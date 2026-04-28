@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { locales, defaultLocale, type Locale } from "../../i18n/config";
+import { t } from "../../i18n/t";
+
+export async function getStaticPaths() {
+  return locales
+    .filter((l) => l !== defaultLocale)
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const localePrefix = `/${locale}`;
+---
+
+<BaseLayout
+  title={`${t("404.title", locale)} — techmeat.dev`}
+  description={t("404.body", locale)}
+  locale={locale}
+>
+  <h1>{t("404.title", locale)}</h1>
+  <p>{t("404.body", locale)}</p>
+  <p>
+    <a href={`${localePrefix}/`}>{t("404.linkHome", locale)}</a>
+    · <a href={`${localePrefix}/posts`}>{t("404.linkPosts", locale)}</a>
+  </p>
+</BaseLayout>

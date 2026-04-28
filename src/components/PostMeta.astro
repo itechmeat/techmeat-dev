@@ -1,0 +1,40 @@
+---
+// src/components/PostMeta.astro
+import { t } from "../i18n/t";
+import { tagLabel } from "../i18n/tags";
+import { formatDate } from "../lib/formatDate";
+import { readingTime } from "../lib/readingTime";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  body: string;
+  locale: Locale;
+}
+
+const { pubDate, updatedDate, tags, body, locale } = Astro.props;
+const minutes = readingTime(body);
+const tagPrefix = locale === "en" ? "" : `/${locale}`;
+---
+
+<div class="post-meta">
+  <time datetime={pubDate.toISOString()}>{formatDate(pubDate, locale)}</time>
+  {
+    updatedDate && (
+      <>
+        <span> · </span>
+        <span>
+          {t("post.updatedOn", locale)} <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, locale)}</time>
+        </span>
+      </>
+    )
+  }
+  <span> · </span>
+  <ul class="tags">
+    {tags.map((tag) => <li><a href={`${tagPrefix}/tags/${encodeURIComponent(tag)}`}>#{tagLabel(tag, locale)}</a></li>)}
+  </ul>
+  <span> · </span>
+  <span>{t("post.readingTime", locale, { min: minutes })}</span>
+</div>
