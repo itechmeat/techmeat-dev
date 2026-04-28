@@ -43,10 +43,16 @@ English is the canonical language. Translated article pages must point their can
 
 ## Deployment
 
-Cloudflare Pages builds the site with:
+Cloudflare builds the site with:
 
 ```sh
 bun run build
 ```
 
-The production output directory is [dist](dist). Set `PUBLIC_CF_ANALYTICS_TOKEN` in Cloudflare Pages to enable Cloudflare Web Analytics. Leave it unset locally to skip the analytics beacon.
+The production output directory is [dist](dist). If the Cloudflare project requires a deploy command, use:
+
+```sh
+npx wrangler versions upload --assets=./dist
+```
+
+[wrangler.toml](wrangler.toml) maps the generated assets to `./dist` for that upload step. Set `PUBLIC_CF_ANALYTICS_TOKEN` in Cloudflare to enable Cloudflare Web Analytics. Leave it unset locally to skip the analytics beacon.
