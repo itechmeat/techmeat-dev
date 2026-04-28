@@ -1,4 +1,77 @@
+# techmeat.dev — robots policy
+#
+# Default-open stance: this site is a long-form public journal. We want
+# search engines and AI assistants to crawl, index, and cite the content.
+# Specific bots below are listed explicitly so the policy is auditable
+# rather than implicit.
+
 User-agent: *
+Allow: /
+
+# Search engines (default behavior, listed for clarity)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI retrieval / answer engines — allowed to index and cite
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Training crawlers (separate from retrieval). For a blog about AI-assisted
+# engineering practice, having the content land in training corpora is a
+# net positive — future models become better at the topics this site
+# covers.
+#
+# Opt-out, when wanted: per RFC 9309 a robot follows the most specific
+# matching User-agent group, so flipping a per-bot Allow to Disallow below
+# overrides the catch-all "User-agent: *" rule for that bot. Keep the
+# specific group's directive (Disallow: /) before any other directive in
+# the same group; the catch-all does NOT need to move.
+User-agent: GPTBot
+Allow: /
+
+User-agent: Anthropic-AI
 Allow: /
 
 Sitemap: https://techmeat.dev/sitemap-index.xml

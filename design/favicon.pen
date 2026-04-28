@@ -1,0 +1,51 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "eZbvO",
+      "x": 0,
+      "y": 0,
+      "name": "Favicon 512",
+      "clip": true,
+      "width": 512,
+      "height": 512,
+      "fill": "$color-surface",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Y2jkK",
+          "layoutPosition": "absolute",
+          "x": 86.5,
+          "y": -97,
+          "name": "mark",
+          "fill": "$color-text",
+          "textGrowth": "fixed-width",
+          "width": "fit_content(399)",
+          "content": "t.",
+          "lineHeight": 1,
+          "fontFamily": "Newsreader",
+          "fontSize": 720,
+          "fontWeight": "600",
+          "letterSpacing": -18
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color-accent": {
+      "type": "color",
+      "value": "#2C3F8C"
+    },
+    "color-surface": {
+      "type": "color",
+      "value": "#FBFBFD"
+    },
+    "color-text": {
+      "type": "color",
+      "value": "#2D3036"
+    }
+  }
+}

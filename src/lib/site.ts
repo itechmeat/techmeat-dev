@@ -9,7 +9,7 @@ export function resolveSite(site: URL | undefined): URL {
 export const AUTHOR = {
   "@type": "Person",
   name: "Sergey Eroshenkov",
-  url: `${SITE_URL}/about`,
+  url: `${SITE_URL}/about/`,
   sameAs: [
     "https://github.com/itechmeat",
     "https://x.com/techmeat",

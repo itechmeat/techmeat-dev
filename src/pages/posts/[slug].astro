@@ -4,7 +4,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostMeta from "../../components/PostMeta.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import SchemaJsonLd from "../../components/SchemaJsonLd.astro";
-import CopyButton from "../../components/islands/CopyButton.tsx";
 import { relatedPosts } from "../../lib/relatedPosts";
 import { resolvePrUrl } from "../../lib/githubLinks";
 import { defaultLocale } from "../../i18n/config";
@@ -13,6 +12,7 @@ import { tagLabel } from "../../i18n/tags";
 import { resolveOgImage } from "../../lib/resolveOgImage";
 import { isVisiblePost } from "../../lib/postVisibility";
 import { AUTHOR, resolveSite } from "../../lib/site";
+import { tagsToAboutThings } from "../../lib/tagEntities";
 
 const locale = defaultLocale;
 
@@ -75,15 +75,18 @@ const publishedTime = entry.data.pubDate.toISOString();
 const modifiedTime = (entry.data.updatedDate ?? entry.data.pubDate).toISOString();
 const localizedTags = entry.data.tags.map((tag) => tagLabel(tag, locale));
 
+const aboutThings = tagsToAboutThings(entry.data.tags);
 const articleSchema = {
   headline: entry.data.title,
   description: entry.data.description,
   datePublished: publishedTime,
   dateModified: modifiedTime,
   author: AUTHOR,
+  publisher: AUTHOR,
   keywords,
   inLanguage: locale,
   mainEntityOfPage: canonicalUrl,
+  ...(aboutThings.length > 0 && { about: aboutThings }),
 };
 ---
 
@@ -98,7 +101,7 @@ const articleSchema = {
   availableLocales={availableLocales}
 >
   <SchemaJsonLd type="Article" data={articleSchema} />
-  <article>
+  <article class="post">
     <h1>{entry.data.title}</h1>
     <PostMeta
       pubDate={entry.data.pubDate}
@@ -108,7 +111,6 @@ const articleSchema = {
       locale={locale}
     />
     <Content />
-    <CopyButton client:load copyLabel={t("code.copy", locale)} copiedLabel={t("code.copied", locale)} />
   </article>
 
   {related.length > 0 && <RelatedPosts items={related} locale={locale} />}
@@ -116,10 +118,10 @@ const articleSchema = {
   {
     prUrl && (
       <footer class="post-footer">
-        <p>
-          💬 <a href={prUrl}>{t("post.discuss", locale)}</a>
-          <small> — {t("post.discussHint", locale)}</small>
+        <p class="post-footer-cta">
+          <a href={prUrl} target="_blank" rel="noopener noreferrer">{t("post.discuss", locale)}</a>
         </p>
+        <p class="post-footer-hint">{t("post.discussHint", locale)}</p>
       </footer>
     )
   }

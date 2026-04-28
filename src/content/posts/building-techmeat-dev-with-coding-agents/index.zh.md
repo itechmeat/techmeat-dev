@@ -2,7 +2,8 @@
 title: "我是如何用编程 Agent 搭建这个博客的"
 description: "techmeat.dev 上线的故事：从一个临时起意和一组 skills，一路走到 Astro、Cloudflare Pages、头脑风暴和博客的第一个版本。"
 pubDate: 2026-04-28
-tags: [ai-coding, astro, meta]
+tags: [ai-coding, astro, bun]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: zh
 ---
 

@@ -1,0 +1,21 @@
+# /.well-known/ai.txt — AI usage policy for techmeat.dev
+# Companion file to /robots.txt and /llms.txt.
+# https://techmeat.dev
+
+# Default-open stance: this site welcomes AI search engines, assistants,
+# and training crawlers. The author considers AI citation a primary
+# distribution channel and AI training a net positive for the field.
+
+User-agent: *
+Training: allowed
+Indexing: allowed
+Citation: required
+Derivative-works: allowed-with-attribution
+
+Author: Sergey Eroshenkov
+Contact: https://techmeat.dev/about/
+Sitemap: https://techmeat.dev/sitemap-index.xml
+LLMs-Index: https://techmeat.dev/llms.txt
+Summary: https://techmeat.dev/ai/summary.json
+
+# Source: https://github.com/itechmeat/techmeat-dev

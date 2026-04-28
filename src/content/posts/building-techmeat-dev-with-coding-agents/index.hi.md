@@ -2,7 +2,8 @@
 title: "मैंने यह ब्लॉग कोडिंग एजेंट्स की मदद से कैसे बनाया"
 description: "techmeat.dev की शुरुआत की कहानी: एक स्वतःस्फूर्त विचार और skills के एक सेट से लेकर Astro, Cloudflare Pages, ब्रेनस्टॉर्मिंग और ब्लॉग के पहले संस्करण तक।"
 pubDate: 2026-04-28
-tags: [ai-coding, astro, meta]
+tags: [ai-coding, astro, bun]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: hi
 ---
 

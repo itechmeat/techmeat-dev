@@ -1,0 +1,1117 @@
+/* ==========================================================================
+   techmeat.dev — global styles
+   Authored hand to the rules in DESIGN.md and PRODUCT.md.
+   No frameworks, no UI kits, no Tailwind. Plain CSS only.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens (Cool Slate palette, two-voice type, scale)
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Surface roles — Cool Slate, hue 250°, micro-chroma. Never warm. */
+  --color-surface: oklch(99% 0.003 250);
+  --color-surface-sunken: oklch(96% 0.004 250);
+  --color-text: oklch(20% 0.006 250);
+  --color-text-muted: oklch(48% 0.006 250);
+  --color-rule: oklch(90% 0.005 250);
+
+  /* Working Accent — quiet midnight indigo */
+  --color-accent: oklch(38% 0.11 245);
+  --color-accent-strong: oklch(30% 0.13 245);
+  --color-accent-soft: oklch(94% 0.03 245);
+
+  --color-selection-bg: oklch(88% 0.05 245);
+  --color-selection-text: oklch(20% 0.006 250);
+
+  /* Typography —
+     Display: Source Serif 4 Variable (opsz axis), self-hosted via @fontsource.
+     Latin + Cyrillic are covered; for scripts outside that subset (ar, hi, zh, bn)
+     headings fall back through the same humanist sans stack as body. */
+  --font-display: "Source Serif 4 Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Type scale — mobile-first, fluid where it earns it */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-body: 1.0625rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+
+  --leading-body: 1.65;
+  --leading-tight: 1.2;
+  --leading-headline: 1.25;
+
+  /* Spacing scale (4px steps) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Layout */
+  --measure: 70ch;
+  --measure-narrow: 60ch;
+  --page-pad-x: var(--space-4);
+  --page-pad-x-wide: var(--space-6);
+
+  /* Subtle structural pieces */
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --rule-width: 1px;
+
+  /* The single sanctioned shadow (for popovers / dropdowns when we add them) */
+  --shadow-ambient: 0 6px 24px -8px oklch(20% 0.006 250 / 0.16);
+
+  /* Motion (used sparingly) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Dark scene — its own anchor, cool slate, not an inversion of light. */
+  --color-surface: oklch(15% 0.006 250);
+  --color-surface-sunken: oklch(20% 0.006 250);
+  --color-text: oklch(93% 0.004 250);
+  --color-text-muted: oklch(65% 0.006 250);
+  --color-rule: oklch(27% 0.006 250);
+
+  --color-accent: oklch(76% 0.1 245);
+  --color-accent-strong: oklch(83% 0.11 245);
+  --color-accent-soft: oklch(28% 0.05 245);
+
+  --color-selection-bg: oklch(38% 0.1 245);
+  --color-selection-text: oklch(96% 0.004 250);
+
+  --shadow-ambient: 0 6px 24px -8px oklch(0% 0 0 / 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset / base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  hanging-punctuation: first last;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: 0;
+  border-top: var(--rule-width) solid var(--color-rule);
+  margin-block: var(--space-7);
+}
+
+/* --------------------------------------------------------------------------
+   3. Typography
+   -------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: var(--leading-headline);
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+/* Display-tier headings: Source Serif 4 Variable, optical-size driven */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: "opsz" 60;
+  font-feature-settings: "ss01", "kern";
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.1;
+  letter-spacing: -0.018em;
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+}
+
+/* Title-tier and below: stay in the humanist sans family */
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.003em;
+}
+
+h4 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+figure,
+table {
+  margin: 0;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.18em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-accent-strong);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+}
+
+/* The Multilingual Equality Rule —
+   Source Serif 4 covers Latin + Cyrillic (and Greek/Vietnamese). Locales with
+   scripts outside that subset (ar, hi, zh, bn) get the same body sans for
+   headings, so each language renders in a script-correct family rather than
+   forcing a serif fallback that doesn't exist. */
+:lang(ar) h1,
+:lang(ar) h2,
+:lang(hi) h1,
+:lang(hi) h2,
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(bn) h1,
+:lang(bn) h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-variation-settings: normal;
+  font-feature-settings: "kern";
+}
+
+/* --------------------------------------------------------------------------
+   4. Code
+   -------------------------------------------------------------------------- */
+
+code,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+:not(pre) > code {
+  background-color: var(--color-surface-sunken);
+  padding: 0.125em 0.4em;
+  border-radius: var(--radius-sm);
+  border: var(--rule-width) solid var(--color-rule);
+  /* Short fragments stay on one line because there is nothing to break,
+     long ones (URLs, wide signatures) wrap instead of overflowing the
+     reading column. */
+  overflow-wrap: anywhere;
+}
+
+/* Bare <pre> outside of expressive-code's frame keeps a hairline chrome.
+   Code fences in markdown are rendered by astro-expressive-code and own their
+   own frame, copy button, and dual-theme switching, so we do not style them
+   here. */
+:not(.expressive-code) > pre {
+  background-color: var(--color-surface-sunken);
+  border: var(--rule-width) solid var(--color-rule);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  overflow-x: auto;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  tab-size: 2;
+  -webkit-overflow-scrolling: touch;
+}
+
+:not(.expressive-code) > pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  white-space: pre;
+  font-size: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   5. Quotes, lists, tables
+   -------------------------------------------------------------------------- */
+
+blockquote {
+  border-inline-start: var(--rule-width) solid var(--color-rule);
+  padding-inline-start: var(--space-4);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+blockquote p + p {
+  margin-block-start: var(--space-3);
+}
+
+ul,
+ol {
+  padding-inline-start: var(--space-5);
+}
+
+li + li {
+  margin-block-start: var(--space-2);
+}
+
+li > ul,
+li > ol {
+  margin-block-start: var(--space-2);
+}
+
+dt {
+  font-weight: 600;
+}
+
+dd {
+  margin-inline-start: var(--space-5);
+  color: var(--color-text-muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-base);
+}
+
+th,
+td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--rule-width) solid var(--color-rule);
+  text-align: start;
+}
+
+th {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* --------------------------------------------------------------------------
+   6. Forms / native controls
+   -------------------------------------------------------------------------- */
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+select {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: var(--rule-width) solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-3);
+  height: 2rem;
+  font-size: var(--text-sm);
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+select:hover,
+select:focus-visible {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Layout shell
+   -------------------------------------------------------------------------- */
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: var(--space-2);
+  inset-inline-start: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  color: var(--color-accent);
+  border: var(--rule-width) solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  z-index: 100;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+main {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--page-pad-x);
+  padding-block: var(--space-6) var(--space-8);
+  overflow-x: clip;
+}
+
+main > * + * {
+  margin-block-start: var(--space-5);
+}
+
+main > h2 {
+  margin-block-start: var(--space-8);
+}
+
+@media (min-width: 48rem) {
+  main {
+    padding-inline: var(--page-pad-x-wide);
+    padding-block: var(--space-7) var(--space-9);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Header
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  width: 100%;
+  border-block-end: var(--rule-width) solid var(--color-rule);
+  background-color: var(--color-surface);
+}
+
+.site-header-inner {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  /* Mobile-first: nav drops to row 2 and owns its own block padding, so the
+     header-inner has no padding-bottom — otherwise the nav row sits visually
+     too high. Desktop reapplies symmetric padding below. */
+  padding: var(--space-3) var(--page-pad-x) 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
+
+.site-header .wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-variation-settings: "opsz" 24;
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: -0.022em;
+}
+
+:lang(ar) .site-header .wordmark,
+:lang(hi) .site-header .wordmark,
+:lang(zh) .site-header .wordmark,
+:lang(bn) .site-header .wordmark {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-variation-settings: normal;
+}
+
+.site-header .wordmark:hover {
+  color: var(--color-accent);
+}
+
+.site-header nav {
+  grid-column: 1 / -1;
+  order: 3;
+  border-block-start: var(--rule-width) solid var(--color-rule);
+  margin-inline: calc(var(--page-pad-x) * -1);
+  padding-inline: var(--page-pad-x);
+}
+
+.site-header nav ul {
+  display: flex;
+  gap: var(--space-5);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-block: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.site-header nav li + li {
+  margin: 0;
+}
+
+.site-header nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  padding-block: var(--space-1);
+  border-block-end: 2px solid transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.site-header nav a:hover {
+  color: var(--color-text);
+}
+
+.site-header nav a[aria-current="page"] {
+  color: var(--color-text);
+  border-block-end-color: var(--color-accent);
+}
+
+.header-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-self: end;
+}
+
+.header-controls [data-theme-toggle] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background-color: var(--color-surface);
+  border: var(--rule-width) solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: 1;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.header-controls [data-theme-toggle]:hover,
+.header-controls [data-theme-toggle]:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.header-controls [data-theme-toggle]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Theme icon: CSS-driven, paints correctly on first render (no flash).
+   Light scene shows the moon (affordance: "switch to dark").
+   Dark scene shows the sun (affordance: "switch to light"). */
+.theme-icon {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .theme-icon-light {
+  display: inline;
+}
+
+:root[data-theme="dark"] .theme-icon-dark {
+  display: inline;
+}
+
+@media (min-width: 40rem) {
+  .site-header-inner {
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-5);
+    padding-block: var(--space-4);
+  }
+
+  .site-header nav {
+    grid-column: 2 / 3;
+    order: 0;
+    border-block-start: 0;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  .site-header nav ul {
+    padding-block: 0;
+    gap: var(--space-5);
+  }
+
+  .site-header nav a {
+    padding-block: 0.25rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  width: 100%;
+  border-block-start: var(--rule-width) solid var(--color-rule);
+  background-color: var(--color-surface);
+}
+
+.site-footer-inner {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding: var(--space-5) var(--page-pad-x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.site-footer .left,
+.site-footer .right {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid transparent;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+@media (min-width: 40rem) {
+  .site-footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Article (post page)
+   -------------------------------------------------------------------------- */
+
+/* .post is now nested directly under main; main is the reading column. */
+.post > h1 {
+  margin-block-end: var(--space-3);
+}
+
+.post-meta {
+  margin-block-end: var(--space-7);
+  padding-block: var(--space-3);
+  border-block: var(--rule-width) solid var(--color-rule);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.post-meta time,
+.post-meta span {
+  white-space: nowrap;
+}
+
+.post-meta .tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-meta .tags li + li {
+  margin: 0;
+}
+
+.post-meta a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid transparent;
+}
+
+.post-meta a:hover {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+/* Body rhythm — vertical spacing between all top-level article children */
+.post > * + * {
+  margin-block-start: var(--space-5);
+}
+
+.post > h2 {
+  margin-block-start: var(--space-8);
+  padding-block-start: var(--space-2);
+}
+
+.post > h3 {
+  margin-block-start: var(--space-7);
+}
+
+.post > h2 + p,
+.post > h3 + p {
+  margin-block-start: var(--space-3);
+}
+
+.post p,
+.post ul,
+.post ol,
+.post blockquote,
+.post dl,
+.post table {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.post pre {
+  font-size: var(--text-sm);
+}
+
+.post img,
+.post figure,
+.post video,
+.post pre,
+.post .expressive-code,
+.post table {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Keep expressive-code's copy button visible on desktop (hover devices),
+   not just on hover. Expressive-code's @media (hover: hover) rule sets
+   opacity: 0 on idle; we override with !important so the affordance is
+   always discoverable, regardless of stylesheet load order. */
+@media (hover: hover) {
+  .post .expressive-code .copy button,
+  .page .expressive-code .copy button {
+    opacity: 0.6 !important;
+  }
+
+  .post .expressive-code:hover .copy button,
+  .post .expressive-code .copy button:focus-visible,
+  .page .expressive-code:hover .copy button,
+  .page .expressive-code .copy button:focus-visible {
+    opacity: 1 !important;
+  }
+}
+
+.post table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.post figure figcaption {
+  margin-block-start: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.post hr {
+  margin-block: var(--space-8);
+}
+
+.related-posts {
+  margin-block-start: var(--space-9);
+  padding-block-start: var(--space-6);
+  border-block-start: var(--rule-width) solid var(--color-rule);
+}
+
+.related-posts h2 {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-block-end: var(--space-3);
+  letter-spacing: -0.005em;
+}
+
+.related-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related-posts li + li {
+  margin-block-start: var(--space-2);
+}
+
+.related-posts a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid var(--color-rule);
+  padding-block-end: 1px;
+}
+
+.related-posts a:hover {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+.post-footer {
+  margin-block-start: var(--space-7);
+  padding-block-start: var(--space-5);
+  border-block-start: var(--rule-width) solid var(--color-rule);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.post-footer p {
+  margin: 0;
+}
+
+.post-footer-cta {
+  font-size: var(--text-base);
+}
+
+.post-footer-cta a {
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid var(--color-accent);
+  padding-block-end: 1px;
+}
+
+.post-footer-hint {
+  margin-block-start: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   11. Home + listing pages
+   --------------------------------------------------------------------------
+   Pages no longer use a .page wrapper — main is the reading column.
+   Vertical rhythm comes from `main > * + *` defined above. */
+
+.page-lede {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: var(--measure-narrow);
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-list > li + li {
+  margin-block-start: 0;
+  border-block-start: var(--rule-width) solid var(--color-rule);
+}
+
+.post-card {
+  display: block;
+  padding-block: var(--space-5);
+}
+
+.post-card h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 1.875rem);
+  font-weight: 500;
+  font-variation-settings: "opsz" 32;
+  letter-spacing: -0.014em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+:lang(ar) .post-card h2,
+:lang(hi) .post-card h2,
+:lang(zh) .post-card h2,
+:lang(bn) .post-card h2 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-variation-settings: normal;
+}
+
+.post-card h2 a {
+  color: var(--color-text);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size var(--duration-base) var(--ease-out);
+}
+
+.post-card h2 a:hover {
+  color: var(--color-accent);
+  background-size: 100% 1px;
+}
+
+.post-card .card-meta {
+  margin-block-start: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.post-card > p:nth-of-type(2) {
+  margin-block-start: var(--space-3);
+  color: var(--color-text);
+}
+
+.post-card > p:last-child {
+  margin-block-start: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.post-card > p:last-child a {
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid var(--color-accent);
+  padding-block-end: 1px;
+}
+
+.recently-updated ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recently-updated li + li {
+  margin-block-start: var(--space-2);
+}
+
+.recently-updated a {
+  text-decoration: none;
+  color: var(--color-text);
+  border-block-end: var(--rule-width) solid var(--color-rule);
+}
+
+.recently-updated a:hover {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+/* Tag index list (/tags) — tag name + count, vertical rhythm, no caps */
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-list li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-block-start: var(--rule-width) solid var(--color-rule);
+}
+
+.tag-list li:first-child {
+  border-block-start: 0;
+  padding-block-start: 0;
+}
+
+.tag-list li + li {
+  margin-block-start: 0;
+}
+
+.tag-list a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  border-block-end: var(--rule-width) solid transparent;
+}
+
+.tag-list a:hover {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+.tag-list .tag-count {
+  margin-inline-start: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.view-all {
+  margin-block-start: var(--space-7);
+}
+
+.view-all a {
+  text-decoration: none;
+  border-block-end: var(--rule-width) solid var(--color-accent);
+  padding-block-end: 1px;
+}
+
+/* The home hero is a quiet wordmark + tagline, NOT a hero metric */
+.hero {
+  margin-block-end: var(--space-7);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.75rem + 3vw, 3.75rem);
+  font-weight: 500;
+  font-variation-settings: "opsz" 96;
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+  color: var(--color-text);
+}
+
+.hero p {
+  margin-block-start: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  max-width: var(--measure-narrow);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   12. Static-page typography (about, stack, privacy, 404)
+   --------------------------------------------------------------------------
+   Body element styling for prose pages — these elements are children of
+   main, which already constrains the column to var(--measure). */
+
+main > p,
+main > ul,
+main > ol,
+main > blockquote,
+main > dl,
+main > table {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+main > p em {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   13. Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. RTL adjustments
+   --------------------------------------------------------------------------
+   The whole stylesheet uses logical properties (margin-inline, padding-block,
+   border-inline-start, etc.) so RTL flips automatically. The few cases where
+   physical anchoring is needed (skip-link enter direction) are handled by the
+   browser via [dir="rtl"] flipping inset-inline-start.
+*/

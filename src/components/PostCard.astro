@@ -2,7 +2,6 @@
 // src/components/PostCard.astro
 import { formatDate } from "../lib/formatDate";
 import { t } from "../i18n/t";
-import { tagLabel } from "../i18n/tags";
 import type { Locale } from "../i18n/config";
 
 interface Props {
@@ -10,28 +9,16 @@ interface Props {
   title: string;
   description: string;
   pubDate: Date;
-  tags: string[];
   locale: Locale;
 }
 
-const { href, title, description, pubDate, tags, locale } = Astro.props;
-const tagPrefix = locale === "en" ? "" : `/${locale}`;
+const { href, title, description, pubDate, locale } = Astro.props;
 ---
 
 <article class="post-card">
   <h2><a href={href}>{title}</a></h2>
   <p class="card-meta">
     <time datetime={pubDate.toISOString()}>{formatDate(pubDate, locale)}</time>
-    {
-      tags.length > 0 && (
-        <>
-          <span> · </span>
-          <ul class="tags">
-            {tags.map((tag) => <li><a href={`${tagPrefix}/tags/${encodeURIComponent(tag)}`}>#{tagLabel(tag, locale)}</a></li>)}
-          </ul>
-        </>
-      )
-    }
   </p>
   <p>{description}</p>
   <p><a href={href}>{t("post.readMore", locale)}</a></p>

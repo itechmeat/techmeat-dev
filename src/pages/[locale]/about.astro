@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaJsonLd from "../../components/SchemaJsonLd.astro";
 import { locales, defaultLocale, type Locale } from "../../i18n/config";
 import { t } from "../../i18n/t";
+import { AUTHOR, resolveSite } from "../../lib/site";
 
 export async function getStaticPaths() {
   return locales
@@ -12,9 +14,22 @@ export async function getStaticPaths() {
 const locale = Astro.params.locale as Locale;
 const heading = t("nav.about", locale);
 const description = t("about.description", locale);
+// Per CLAUDE.md canonical policy, every translation links its ProfilePage
+// url at the English version, matching the page's <link rel="canonical">.
+const site = resolveSite(Astro.site);
+const aboutUrl = new URL("/about/", site).toString();
+
+const profileSchema = {
+  name: heading,
+  description,
+  url: aboutUrl,
+  inLanguage: locale,
+  mainEntity: AUTHOR,
+};
 ---
 
-<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale}>
+<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale} ogImage="/posters/og/pages/about.png">
+  <SchemaJsonLd type="ProfilePage" data={profileSchema} />
   <h1>{heading}</h1>
   {
     locale === "ru" ? (
@@ -308,20 +323,29 @@ const description = t("about.description", locale);
     ) : (
       <p>{t("about.placeholder", locale)}</p>
     )
-  }
+    }
 
   <h2>{t("about.findMeHeading", locale)}</h2>
   <ul>
     <li>
-      <a href="https://github.com/itechmeat">GitHub</a>
+      <a
+        href="https://github.com/itechmeat"
+        target="_blank"
+        rel="me noopener noreferrer">GitHub</a>
       {t("about.githubSuffix", locale)}
     </li>
     <li>
-      <a href="https://x.com/techmeat">X</a>
+      <a
+        href="https://x.com/techmeat"
+        target="_blank"
+        rel="me noopener noreferrer">X</a>
       {t("about.twitterSuffix", locale)}
     </li>
     <li>
-      <a href="https://www.linkedin.com/in/techmeat/">LinkedIn</a>
+      <a
+        href="https://www.linkedin.com/in/techmeat/"
+        target="_blank"
+        rel="me noopener noreferrer">LinkedIn</a>
       {t("about.linkedinSuffix", locale)}
     </li>
   </ul>

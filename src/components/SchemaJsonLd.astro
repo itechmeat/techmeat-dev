@@ -1,7 +1,7 @@
 ---
 // src/components/SchemaJsonLd.astro
 interface Props {
-  type: "Article" | "WebSite";
+  type: "Article" | "WebSite" | "ProfilePage";
   data: Record<string, unknown>;
 }
 
@@ -9,6 +9,7 @@ const { type, data } = Astro.props;
 const requiredProperties: Record<Props["type"], string[]> = {
   Article: ["headline", "author", "datePublished"],
   WebSite: ["name", "url"],
+  ProfilePage: ["mainEntity"],
 };
 const missing = requiredProperties[type].filter((key) => data[key] == null || data[key] === "");
 

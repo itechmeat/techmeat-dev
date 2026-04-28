@@ -2,8 +2,9 @@
 title: "Как я разрабатывал этот блог с помощью кодинг-агентов"
 description: "История запуска techmeat.dev: от спонтанной идеи и набора skills до Astro, Cloudflare Pages, брейншторминга и первой версии блога."
 pubDate: 2026-04-28
-tags: [ai-coding, astro, meta]
+tags: [ai-coding, astro, bun]
 prNumber: 1
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: ru
 ---
 

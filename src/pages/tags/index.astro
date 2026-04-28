@@ -19,14 +19,14 @@ const tags = Array.from(counts.entries()).sort(
 );
 ---
 
-<BaseLayout title={`${heading} — techmeat.dev`} description={heading}>
+<BaseLayout title={`${heading} — techmeat.dev`} description={heading} ogImage="/posters/og/pages/tags.png">
   <h1>{heading}</h1>
   <ul class="tag-list">
     {
       tags.map(([slug, count]) => (
         <li>
           <a href={`/tags/${encodeURIComponent(slug)}`}>#{tagLabel(slug, locale)}</a>
-          <span> · {count}</span>
+          <span class="tag-count">{count}</span>
         </li>
       ))
     }

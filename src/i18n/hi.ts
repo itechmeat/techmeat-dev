@@ -4,6 +4,7 @@ export const hi: Partial<Record<DictionaryKey, string>> = {
   "nav.posts": "पोस्ट",
   "nav.about": "परिचय",
   "nav.stack": "स्टैक",
+  "nav.skipToContent": "मुख्य सामग्री पर जाएँ",
   "footer.privacy": "गोपनीयता",
   "footer.copyright": "© {year} Sergey Eroshenkov",
   "post.readMore": "और पढ़ें →",

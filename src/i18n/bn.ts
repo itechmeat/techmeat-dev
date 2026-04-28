@@ -4,6 +4,7 @@ export const bn: Partial<Record<DictionaryKey, string>> = {
   "nav.posts": "পোস্ট",
   "nav.about": "পরিচিতি",
   "nav.stack": "প্রযুক্তি স্ট্যাক",
+  "nav.skipToContent": "মূল বিষয়বস্তুতে যান",
   "footer.privacy": "গোপনীয়তা",
   "footer.copyright": "© {year} Sergey Eroshenkov",
   "post.readMore": "আরও পড়ুন →",

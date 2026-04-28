@@ -11,9 +11,10 @@ const locale = defaultLocale;
   description={t("404.body", locale)}
 >
   <h1>{t("404.title", locale)}</h1>
-  <p>{t("404.body", locale)}</p>
+  <p class="page-lede">{t("404.body", locale)}</p>
   <p>
     <a href="/">{t("404.linkHome", locale)}</a>
-    · <a href="/posts">{t("404.linkPosts", locale)}</a>
+    <span aria-hidden="true"> · </span>
+    <a href="/posts">{t("404.linkPosts", locale)}</a>
   </p>
 </BaseLayout>

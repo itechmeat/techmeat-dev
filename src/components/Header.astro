@@ -9,9 +9,16 @@ interface Props {
   locale: Locale;
   availableLocales?: Locale[];
   showLanguageSwitcher?: boolean;
+  pathname?: string;
 }
 
-const { locale, availableLocales, showLanguageSwitcher = true } = Astro.props;
+const {
+  locale,
+  availableLocales,
+  showLanguageSwitcher = true,
+  pathname = "/",
+} = Astro.props;
+
 const homeHref = locale === "en" ? "/" : `/${locale}/`;
 const navPrefix = locale === "en" ? "" : `/${locale}`;
 
@@ -20,32 +27,47 @@ const navItems = [
   { href: `${navPrefix}/about`, key: "nav.about" as const },
   { href: `${navPrefix}/stack`, key: "nav.stack" as const },
 ];
+
+function isActive(href: string): boolean {
+  if (pathname === href || pathname === `${href}/`) return true;
+  return pathname.startsWith(`${href}/`);
+}
 ---
 
-<header>
-  <a href={homeHref} class="wordmark">techmeat.dev</a>
-  <nav>
-    <ul>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href={homeHref} class="wordmark">techmeat.dev</a>
+    <nav aria-label="Primary">
+      <ul>
+        {
+          navItems.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {t(item.key, locale)}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+    <div class="header-controls">
+      <ThemeToggle client:load />
       {
-        navItems.map((item) => (
-          <li>
-            <a href={item.href}>{t(item.key, locale)}</a>
-          </li>
-        ))
+        showLanguageSwitcher && (
+          <LanguageSwitcher
+            client:load
+            currentLocale={locale}
+            pathname={pathname}
+            availableLocales={availableLocales}
+          />
+        )
       }
-    </ul>
-  </nav>
-  <div class="header-controls">
-    <ThemeToggle client:load />
-    {
-      showLanguageSwitcher && (
-        <LanguageSwitcher
-          client:load
-          currentLocale={locale}
-          pathname={Astro.url.pathname}
-          availableLocales={availableLocales}
-        />
-      )
-    }
+    </div>
   </div>
 </header>

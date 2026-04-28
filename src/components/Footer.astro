@@ -9,23 +9,24 @@ interface Props {
 
 const { locale } = Astro.props;
 const year = new Date().getFullYear();
+const rssHref = locale === "en" ? "/rss.xml" : `/${locale}/rss.xml`;
 ---
 
-<footer>
-  <div class="left">
-    <span>{t("footer.copyright", locale, { year })}</span>
-    <span>· techmeat.dev</span>
-  </div>
-  <div class="right">
-    <a href="https://github.com/itechmeat" rel="me" aria-label="GitHub">
-      {/* placeholder text icon; replaced in design phase */}
-      GH
-    </a>
-    {/* Twitter/X link added once handle is known. */}
-    <a href={locale === "en" ? "/rss.xml" : `/${locale}/rss.xml`} aria-label="RSS feed">
-      RSS
-    </a>
-    {/* /privacy is English-only by design — link is the same from every locale */}
-    <a href="/privacy">{t("footer.privacy", locale)}</a>
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="left">
+      <span>{t("footer.copyright", locale, { year })}</span>
+      <span aria-hidden="true">·</span>
+      <span>techmeat.dev</span>
+    </div>
+    <div class="right">
+      <a
+        href="https://github.com/itechmeat"
+        target="_blank"
+        rel="me noopener noreferrer">GitHub</a>
+      <a href={rssHref} aria-label="RSS feed">RSS</a>
+      {/* /privacy is English-only by design — link is identical from every locale */}
+      <a href="/privacy">{t("footer.privacy", locale)}</a>
+    </div>
   </div>
 </footer>
