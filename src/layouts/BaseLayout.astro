@@ -1,0 +1,175 @@
+---
+// src/layouts/BaseLayout.astro
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {
+  defaultLocale,
+  locales,
+  localeLabels,
+  localeOgLang,
+  rtlLocales,
+  type Locale,
+} from "../i18n/config";
+import { AUTHOR, SITE_NAME, SITE_URL, TWITTER_HANDLE, resolveSite } from "../lib/site";
+
+interface ArticleData {
+  publishedTime: string;
+  modifiedTime?: string;
+  tags?: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: Locale;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  articleData?: ArticleData;
+  keywords?: string;
+  availableLocales?: Locale[];
+  showLanguageSwitcher?: boolean;
+}
+
+const {
+  title,
+  description,
+  locale,
+  canonical,
+  ogImage,
+  ogType = "website",
+  articleData,
+  keywords,
+  availableLocales,
+  showLanguageSwitcher = true,
+} = Astro.props;
+const currentLocale = (locale ?? Astro.currentLocale ?? "en") as Locale;
+const cfToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+const site = resolveSite(Astro.site);
+
+function stripLocalePrefix(pathname: string, locale: Locale): string {
+  if (locale === "en") return pathname;
+  const prefix = `/${locale}`;
+  if (pathname === prefix || pathname === `${prefix}/`) return "/";
+  if (pathname.startsWith(`${prefix}/`)) return pathname.slice(prefix.length);
+  return pathname;
+}
+
+const logicalPath = stripLocalePrefix(Astro.url.pathname, currentLocale);
+
+const canonicalUrl = canonical
+  ? new URL(canonical, site).toString()
+  : new URL(logicalPath, site).toString();
+
+const ogImageUrl = ogImage
+  ? new URL(ogImage, site).toString()
+  : new URL("/og/default.png", site).toString();
+
+const dir = rtlLocales.has(currentLocale) ? "rtl" : "ltr";
+
+const hreflangLocales =
+  availableLocales && availableLocales.length > 0 ? availableLocales : [...locales];
+
+function localeUrl(target: Locale): string {
+  if (target === defaultLocale) return new URL(logicalPath, site).toString();
+  const path = logicalPath === "/" ? "" : logicalPath;
+  return new URL(`/${target}${path}`, site).toString();
+}
+
+const hreflangLinks = hreflangLocales.map((l) => ({
+  hreflang: l,
+  href: localeUrl(l),
+}));
+const xDefaultUrl = localeUrl(defaultLocale);
+
+const rssHref =
+  currentLocale === defaultLocale ? "/rss.xml" : `/${currentLocale}/rss.xml`;
+const rssTitle = `${SITE_NAME} — ${localeLabels[currentLocale]} RSS`;
+
+const articleAuthorUrl = `${SITE_URL}/about`;
+---
+
+<!doctype html>
+<html lang={currentLocale} dir={dir} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={rssTitle} href={rssHref} />
+    {hreflangLinks.map((link) => (
+      <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content={AUTHOR.name} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={localeOgLang[currentLocale]} />
+    {hreflangLocales
+      .filter((l) => l !== currentLocale)
+      .map((l) => <meta property="og:locale:alternate" content={localeOgLang[l]} />)}
+    {ogType === "article" && articleData && (
+      <>
+        <meta property="article:published_time" content={articleData.publishedTime} />
+        {articleData.modifiedTime &&
+          articleData.modifiedTime !== articleData.publishedTime && (
+            <meta property="article:modified_time" content={articleData.modifiedTime} />
+          )}
+        <meta property="article:author" content={articleAuthorUrl} />
+        {articleData.tags?.map((tag) => (
+          <meta property="article:tag" content={tag} />
+        ))}
+      </>
+    )}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={TWITTER_HANDLE} />
+    <meta name="twitter:creator" content={TWITTER_HANDLE} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    {/* No-FOUC theme bootstrap. Runs synchronously before <body> renders. */}
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const valid = stored === "light" || stored === "dark" ? stored : null;
+          const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme = valid ?? (systemDark ? "dark" : "light");
+        } catch {
+          // localStorage unavailable (private browsing, blocked storage); html[data-theme="light"] fallback stands.
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Header
+      locale={currentLocale}
+      availableLocales={availableLocales}
+      showLanguageSwitcher={showLanguageSwitcher}
+    />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={currentLocale} />
+    {
+      cfToken && (
+        <script
+          is:inline
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${cfToken}"}`}
+        />
+      )
+    }
+  </body>
+</html>

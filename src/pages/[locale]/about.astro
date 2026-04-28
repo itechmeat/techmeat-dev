@@ -1,0 +1,328 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { locales, defaultLocale, type Locale } from "../../i18n/config";
+import { t } from "../../i18n/t";
+
+export async function getStaticPaths() {
+  return locales
+    .filter((l) => l !== defaultLocale)
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const heading = t("nav.about", locale);
+const description = t("about.description", locale);
+---
+
+<BaseLayout title={`${heading} — techmeat.dev`} description={description} locale={locale}>
+  <h1>{heading}</h1>
+  {
+    locale === "ru" ? (
+      <>
+        <p>
+          <em>
+            (Сгенерировано AI на основе контекста проекта. Будет
+            переписано человеком позже.)
+          </em>
+        </p>
+
+        <p>
+          Меня зовут Сергей Ерошенков. Я разработчик с долгим стажем во фронтенде, сейчас большую
+          часть времени трачу на то, чтобы делать реальные продукты в связке с кодинг-агентами.
+        </p>
+
+        <p>
+          Начинал с JavaScript под браузер и долго держался фронтенд-стека: компоненты,
+          дизайн-системы, производительность, скучная инфраструктурная обвязка, на которой тихо
+          держится надёжность интерфейса. Со временем фокус сместился — сначала к тому, как команды
+          вообще доводят продукт до релиза, а в последнее время к тому, как это делает один
+          разработчик в паре с кодинг-агентом.
+        </p>
+
+        <p>
+          techmeat.dev — место, где я фиксирую этот сдвиг. Это рабочий блокнот: промпты, которые
+          сработали; промпты, которые нет; границы, которые я провожу между человеческим
+          суждением и исполнением агента; и инженерные решения, которые из этого выпадают. Первый
+          пост — про то, как этот блог был сделан с помощью кодинг-агентов — он же и первый
+          эксперимент.
+        </p>
+
+        <p>
+          Что мне публично интересно: процесс важнее хайпа, повторяемые схемы важнее одноразовых
+          трюков, и показывать работу честно — включая места, где агент ошибся или где сама
+          постановка задачи была недостаточно точной.
+        </p>
+      </>
+    ) : locale === "es" ? (
+      <>
+        <p>
+          <em>
+            (Borrador generado por IA basado en el contexto del proyecto. Será reescrito
+            por un humano más adelante.)
+          </em>
+        </p>
+
+        <p>
+          Soy Sergey Eroshenkov, ingeniero de software con una larga trayectoria en frontend, que ahora dedica la mayor parte
+          de su tiempo a construir productos reales con desarrollo asistido por IA.
+        </p>
+
+        <p>
+          Empecé escribiendo JavaScript para el navegador y me mantuve cerca del stack de frontend durante
+          muchos años: componentes, sistemas de diseño, rendimiento y la aburrida fontanería de infraestructura
+          que en silencio hace que una UI sea fiable. Con el tiempo mi foco fue derivando hacia cómo los equipos realmente envían producto,
+          y más recientemente, hacia cómo lo hace un único desarrollador junto a un agente de codificación.
+        </p>
+
+        <p>
+          techmeat.dev es el lugar donde documento ese cambio. Es un cuaderno de trabajo: prompts que
+          funcionaron, prompts que no, los límites que trazo entre el juicio humano y la ejecución del agente,
+          y las decisiones de ingeniería que se desprenden de ese proceso. El primer artículo, la historia de
+          construir este mismo blog con agentes de codificación, es también el primer experimento.
+        </p>
+
+        <p>
+          Lo que me interesa publicar: proceso por encima del hype, flujos de trabajo repetibles por encima de los trucos puntuales,
+          y enseñar el trabajo, incluidas las partes en las que el agente se equivocó o en las que mi enunciado del problema
+          no fue lo bastante preciso.
+        </p>
+      </>
+    ) : locale === "fr" ? (
+      <>
+        <p>
+          <em>
+            (Brouillon généré par IA à partir du contexte projet. À réécrire
+            ultérieurement par un humain.)
+          </em>
+        </p>
+
+        <p>
+          Je suis Sergey Eroshenkov — ingénieur logiciel avec un long parcours côté frontend, et je passe désormais l'essentiel
+          de mon temps à construire de vrais produits en coding assisté par IA.
+        </p>
+
+        <p>
+          J'ai commencé en écrivant du JavaScript pour le navigateur et je suis resté proche de la stack frontend pendant
+          de nombreuses années : composants, design systems, performance, et toute la plomberie d'infrastructure ennuyeuse
+          qui rend discrètement une UI fiable. Avec le temps, mon attention s'est déplacée vers la façon dont les équipes livrent réellement —
+          et plus récemment, vers la façon dont un développeur seul accompagné d'un agent de coding livre.
+        </p>
+
+        <p>
+          techmeat.dev est l'endroit où je documente ce changement. C'est un carnet de travail : les prompts qui
+          ont fonctionné, ceux qui n'ont pas marché, les frontières que je trace entre le jugement humain et l'exécution par l'agent,
+          et les décisions d'ingénierie qui découlent de ce processus. Le premier article — l'histoire de
+          la construction de ce blog même avec des agents de coding — est aussi la première expérimentation.
+        </p>
+
+        <p>
+          Ce qui m'intéresse de partager publiquement : le processus plutôt que le hype, des workflows reproductibles plutôt que des astuces ponctuelles,
+          et montrer le travail — y compris les passages où l'agent s'est trompé, ou ceux où mon énoncé du problème
+          n'était pas assez précis.
+        </p>
+      </>
+    ) : locale === "de" ? (
+      <>
+        <p>
+          <em>
+            (KI-generierter Entwurf auf Basis des Projektkontexts. Wird später
+            von einem Menschen überarbeitet.)
+          </em>
+        </p>
+
+        <p>
+          Ich bin Sergey Eroshenkov — Softwareentwickler mit langer Frontend-Strecke, der inzwischen den Großteil
+          seiner Zeit damit verbringt, echte Produkte mit AI coding zu bauen.
+        </p>
+
+        <p>
+          Angefangen habe ich mit JavaScript im Browser und bin viele Jahre nah am Frontend-Stack geblieben:
+          Komponenten, Design-Systeme, Performance und die langweilige infrastrukturelle Klempnerei,
+          die ein UI im Stillen zuverlässig macht. Mit der Zeit verlagerte sich mein Fokus darauf, wie Teams tatsächlich ausliefern —
+          und in jüngerer Zeit darauf, wie ein einzelner Entwickler plus Coding-Agent ausliefert.
+        </p>
+
+        <p>
+          techmeat.dev ist der Ort, an dem ich diese Verschiebung dokumentiere. Es ist ein Arbeitsnotizbuch: Prompts, die
+          funktioniert haben, Prompts, die es nicht taten, die Grenzen, die ich zwischen menschlichem Urteilsvermögen und Agent-Ausführung ziehe,
+          und die Engineering-Entscheidungen, die aus diesem Prozess herausfallen. Der erste Beitrag — die Geschichte vom
+          Bauen genau dieses Blogs mit Coding-Agents — ist zugleich das erste Experiment.
+        </p>
+
+        <p>
+          Wofür ich mich öffentlich interessiere: Prozess statt Hype, wiederholbare Workflows statt einmaliger Tricks,
+          und die Arbeit zu zeigen — einschließlich der Stellen, an denen der Agent danebenlag oder an denen meine Problemstellung
+          nicht präzise genug war.
+        </p>
+      </>
+    ) : locale === "pt" ? (
+      <>
+        <p>
+          <em>
+            (Rascunho gerado por AI a partir do contexto do projeto. A ser reescrito
+            por um humano depois.)
+          </em>
+        </p>
+
+        <p>
+          Sou Sergey Eroshenkov — engenheiro de software com uma longa trajetória em frontend, e hoje passo a maior
+          parte do meu tempo construindo produtos reais com AI coding.
+        </p>
+
+        <p>
+          Comecei escrevendo JavaScript para o browser e fiquei perto da stack de frontend por
+          muitos anos: componentes, design systems, performance e o encanamento de infraestrutura sem graça
+          que silenciosamente faz uma UI ser confiável. Com o tempo, meu foco foi se deslocando para como times de fato entregam —
+          e, mais recentemente, para como um único desenvolvedor mais um agente de coding entregam.
+        </p>
+
+        <p>
+          techmeat.dev é o lugar onde documento essa virada. É um caderno de trabalho: prompts que
+          funcionaram, prompts que não funcionaram, as fronteiras que traço entre o julgamento humano e a execução pelo agente,
+          e as decisões de engenharia que decorrem desse processo. O primeiro post — a história de
+          construir este próprio blog com agentes de coding — também é o primeiro experimento.
+        </p>
+
+        <p>
+          O que me interessa publicar: processo em vez de hype, fluxos de trabalho repetíveis em vez de truques pontuais,
+          e mostrar o trabalho — inclusive as partes em que o agente errou, ou em que minha definição do problema
+          não foi precisa o suficiente.
+        </p>
+      </>
+    ) : locale === "ar" ? (
+      <>
+        <p>
+          <em>
+            (مسودة من إنتاج AI استنادًا إلى سياق المشروع. سيتم إعادة كتابتها
+            بواسطة إنسان لاحقًا.)
+          </em>
+        </p>
+
+        <p>
+          أنا Sergey Eroshenkov — مهندس برمجيات أمضيت فترة طويلة في الواجهة الأمامية، وأقضي الآن معظم
+          وقتي في بناء منتجات حقيقية بالاستعانة بالـ AI coding.
+        </p>
+
+        <p>
+          بدأت بكتابة JavaScript للمتصفح وبقيت قريبًا من حزمة الواجهة الأمامية لسنوات عديدة:
+          المكوّنات، وأنظمة التصميم، والأداء، وأعمال البنية التحتية المملّة التي تجعل الـ UI موثوقًا
+          في صمت. مع مرور الوقت انجرف اهتمامي نحو الكيفية التي تشحن بها الفِرَق فعليًا — ثم مؤخرًا،
+          نحو الكيفية التي يشحن بها مطوّر واحد مع وكيل برمجة.
+        </p>
+
+        <p>
+          techmeat.dev هو المكان الذي أوثّق فيه هذا التحوّل. إنه دفتر عمل حيّ: المطالبات التي
+          نجحت، والمطالبات التي لم تنجح، والحدود التي أرسمها بين الحكم البشري وتنفيذ الوكيل،
+          والقرارات الهندسية التي تنبثق من هذه العملية. المقالة الأولى — قصة بناء هذه المدوّنة
+          نفسها بالاستعانة بوكلاء البرمجة — هي أيضًا التجربة الأولى.
+        </p>
+
+        <p>
+          ما يهمّني علنًا: العملية لا الضجيج، وسير العمل القابل للتكرار لا الحيل لمرة واحدة،
+          وإظهار العمل — بما في ذلك المواضع التي أخطأ فيها الوكيل، أو التي لم يكن طرحي للمشكلة
+          دقيقًا فيها بما يكفي.
+        </p>
+      </>
+    ) : locale === "hi" ? (
+      <>
+        <p>
+          <em>
+            (प्रोजेक्ट कॉन्टेक्स्ट पर आधारित AI-जनित ड्राफ्ट। बाद में मनुष्य द्वारा
+            फिर से लिखा जाएगा।)
+          </em>
+        </p>
+
+        <p>
+          मैं Sergey Eroshenkov हूँ — एक सॉफ़्टवेयर इंजीनियर, जिसका लंबा अरसा फ्रंटएंड में बीता है, और अब अपना ज़्यादातर
+          समय AI-असिस्टेड कोडिंग के साथ असली प्रोडक्ट बनाने में लगाता हूँ।
+        </p>
+
+        <p>
+          मैंने ब्राउज़र के लिए JavaScript लिखने से शुरुआत की और कई सालों तक फ्रंटएंड स्टैक के क़रीब रहा:
+          कंपोनेंट्स, डिज़ाइन सिस्टम्स, परफ़ॉर्मेंस, और वो उबाऊ इंफ़्रास्ट्रक्चरल प्लंबिंग जो चुपचाप एक UI को
+          भरोसेमंद बनाती है। समय के साथ मेरा फ़ोकस इस तरफ़ खिसक गया कि टीमें असल में कैसे शिप करती हैं —
+          और हाल ही में, इस तरफ़ कि एक अकेला डेवलपर और एक coding एजेंट कैसे शिप करते हैं।
+        </p>
+
+        <p>
+          techmeat.dev वो जगह है जहाँ मैं उस बदलाव को दर्ज करता हूँ। यह एक चालू नोटबुक है: वो प्रॉम्प्ट्स जो
+          काम कर गए, वो जो नहीं किए, मानवीय निर्णय और एजेंट निष्पादन के बीच जो सीमाएँ मैं खींचता हूँ, और
+          इस प्रक्रिया से निकलने वाले इंजीनियरिंग फ़ैसले। पहली पोस्ट — coding एजेंट्स के साथ इसी ब्लॉग को बनाने की
+          कहानी — पहला प्रयोग भी है।
+        </p>
+
+        <p>
+          सार्वजनिक रूप से जिस चीज़ में मेरी दिलचस्पी है: हाइप के बजाय प्रक्रिया, एक-बार के तरीक़ों के बजाय दोहराने योग्य
+          वर्कफ़्लो, और काम को दिखाना — उन हिस्सों समेत जहाँ एजेंट ग़लत निकला, या जहाँ मेरा प्रॉब्लम स्टेटमेंट काफ़ी
+          सटीक नहीं था।
+        </p>
+      </>
+    ) : locale === "zh" ? (
+      <>
+        <p>
+          <em>
+            （基于项目上下文由 AI 生成的草稿，后续将由人工重写。）
+          </em>
+        </p>
+
+        <p>
+          我是 Sergey Eroshenkov——一名软件工程师，长期深耕前端，如今大部分时间都在用 AI 辅助编码构建真实的产品。
+        </p>
+
+        <p>
+          我从在浏览器里写 JavaScript 起步，多年来一直靠近前端技术栈：组件、设计系统、性能，以及那些默默支撑 UI 稳定运行的、略显枯燥的基础设施工作。久而久之，我的关注点逐渐转向团队究竟是如何交付产品的——而最近，更转向了一个开发者搭配一个编程 Agent 是如何交付产品的。
+        </p>
+
+        <p>
+          techmeat.dev 就是我记录这种转变的地方。它是一本实战笔记：奏效的提示词、不奏效的提示词、我在人工判断与 Agent 执行之间划出的边界，以及由此衍生出的工程决策。第一篇文章——讲述如何用编程 Agent 构建这个博客本身——也是第一场实验。
+        </p>
+
+        <p>
+          我希望公开分享的内容是：过程优于炒作，可复用的工作流优于一次性的小技巧，并且呈现真实的工作过程——包括 Agent 出错的部分，以及我的问题描述不够精确的地方。
+        </p>
+      </>
+    ) : locale === "bn" ? (
+      <>
+        <p>
+          <em>
+            (প্রজেক্ট কনটেক্সটের ভিত্তিতে AI-জেনারেটেড খসড়া। পরে একজন মানুষ এটি পুনরায় লিখবেন।)
+          </em>
+        </p>
+
+        <p>
+          আমি Sergey Eroshenkov — একজন সফটওয়্যার ইঞ্জিনিয়ার, দীর্ঘ সময় ফ্রন্টএন্ডে কাজ করেছি, এখন আমার বেশিরভাগ সময় কাটাই AI-সহায়ক coding দিয়ে বাস্তব প্রোডাক্ট তৈরিতে।
+        </p>
+
+        <p>
+          আমার শুরু হয়েছিল ব্রাউজারের জন্য JavaScript লেখা দিয়ে এবং অনেক বছর ধরে আমি ফ্রন্টএন্ড স্ট্যাকের কাছাকাছিই ছিলাম: কম্পোনেন্ট, ডিজাইন সিস্টেম, পারফরম্যান্স, এবং সেই বিরক্তিকর অবকাঠামোগত কাজ যা চুপচাপ একটি UI-কে নির্ভরযোগ্য রাখে। সময়ের সাথে আমার মনোযোগ সরে গেছে দলগুলো আসলে কীভাবে শিপ করে — এবং সাম্প্রতিক সময়ে, একজন একক ডেভেলপার এবং একটি coding এজেন্ট মিলে কীভাবে শিপ করে — সেদিকে।
+        </p>
+
+        <p>
+          techmeat.dev হলো সেই জায়গা যেখানে আমি সেই পরিবর্তনটি নথিভুক্ত করি। এটি একটি কর্মরত নোটবুক: যেসব প্রম্পট কাজ করেছে, যেগুলো করেনি, মানুষের বিচারবুদ্ধি ও এজেন্টের এক্সিকিউশনের মধ্যে আমি যে সীমারেখা টানি, এবং সেই প্রক্রিয়া থেকে যেসব ইঞ্জিনিয়ারিং সিদ্ধান্ত বেরিয়ে আসে। প্রথম পোস্টটি — coding এজেন্টদের দিয়ে এই ব্লগটিই তৈরি করার গল্প — একই সঙ্গে প্রথম পরীক্ষাও।
+        </p>
+
+        <p>
+          প্রকাশ্যে আমার আগ্রহ যেখানে: হাইপের চেয়ে প্রক্রিয়া, এক-বারের কৌশলের চেয়ে পুনরাবৃত্তিযোগ্য ওয়ার্কফ্লো, এবং কাজটি দেখানো — সেই অংশগুলোসহ যেখানে এজেন্ট ভুল করেছে, বা যেখানে আমার সমস্যার বিবরণ যথেষ্ট সুনির্দিষ্ট ছিল না।
+        </p>
+      </>
+    ) : (
+      <p>{t("about.placeholder", locale)}</p>
+    )
+  }
+
+  <h2>{t("about.findMeHeading", locale)}</h2>
+  <ul>
+    <li>
+      <a href="https://github.com/itechmeat">GitHub</a>
+      {t("about.githubSuffix", locale)}
+    </li>
+    <li>
+      <a href="https://x.com/techmeat">X</a>
+      {t("about.twitterSuffix", locale)}
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/techmeat/">LinkedIn</a>
+      {t("about.linkedinSuffix", locale)}
+    </li>
+  </ul>
+</BaseLayout>

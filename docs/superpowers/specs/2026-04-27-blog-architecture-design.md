@@ -25,8 +25,7 @@ Already pinned in `CLAUDE.md` / `AGENTS.md` and not relitigated here:
 
 - `/` — home
 - `/about` — about + merged contacts
-- `/uses` — daily-use tools, hardware, AI assistants
-- `/colophon` — how this site is built
+- `/stack` — tools, hardware, AI assistants, technology stack, build pipeline, AI-coding methodology (merged from former `/uses` + `/colophon`)
 - `/privacy` — one-paragraph CF Web Analytics notice. **English-only**, not localized.
 
 **Auto-generated:**
@@ -44,7 +43,7 @@ All pages except `/privacy` are mirrored per locale (`/de/about`, `/de/posts/[sl
 ### 3.2 Header
 
 - **Left:** `techmeat.dev` text wordmark, links to `/`. No image logo in v1.
-- **Center:** nav — Posts · About · Uses · Colophon. **No Tags link** (tags reachable via post pills, `/tags` index, and home All-tags row).
+- **Center:** nav — Posts · About · Stack. **No Tags link** (tags reachable via post pills, `/tags` index, and home All-tags row).
 - **Right:** theme toggle (🌓), language switcher (🌐).
 
 ### 3.3 Footer
@@ -62,7 +61,7 @@ All pages except `/privacy` are mirrored per locale (`/de/about`, `/de/posts/[sl
 - **`/privacy`** is intentionally English-only. The footer Privacy link points to `/privacy` from every locale (never `/de/privacy`).
 - **Tag URL slugs** stay English (`/de/tags/claude-code`); localized **display labels** come from `src/i18n/tags.ts`. Meta keywords on tag pages use the localized label, so SEO benefits without URL slug duplication.
 - **Language switcher behavior:**
-  - On a global page (`/`, `/about`, `/uses`, `/colophon`, `/posts`, `/tags`, `/404`): shows all locales.
+  - On a global page (`/`, `/about`, `/stack`, `/posts`, `/tags`, `/404`): shows all locales.
   - On an article page: shows only locales where the article has a translation file.
   - On `/privacy`: switcher hidden (English-only page).
 
@@ -126,41 +125,36 @@ src/content/posts/<slug>/
 3. **Body** — markdown rendered to HTML; Shiki syntax highlighting; copy-to-clipboard button on each `<pre>` block (small Solid island; no JS hydration on prose itself).
 4. **Related posts** — 3 sibling posts with greatest tag overlap, computed at build time. Fewer than 3 acceptable when overlap is thin. Block hidden when no overlap exists.
 5. **Footer block:**
-   - 💬 **Discuss on PR** → `https://github.com/<owner>/techmeat.dev/pull/<prNumber>`. Microcopy makes it explicit: _"Yes, you can comment even after it's merged."_
-   - ✏️ **Suggest an edit** → GitHub edit URL of the current locale's source file: `https://github.com/<owner>/techmeat.dev/edit/main/src/content/posts/<slug>/index.<lang>.md`.
+   - 💬 **Discuss on PR** → `https://github.com/<owner>/techmeat.dev/pull/<prNumber>`. Microcopy makes it explicit: _"Yes, you can comment even after it's merged."_ The footer is rendered only when the canonical English file carries a `prNumber`; otherwise it is omitted entirely.
 
 ### 6.3 About (`/about`)
 
 - CV-style narrative (content authoring, not architecture).
 - Bottom block: **"Find me on:"** with extended links and brief descriptions ("GitHub for code", "Twitter/X for thoughts", …).
 
-### 6.4 Uses (`/uses`)
+### 6.4 Stack (`/stack`)
 
-- Categorized list of daily tools, hardware, AI assistants. Evergreen, refreshed roughly biannually.
+- One unified page covering daily-use tools and hardware, AI assistants, the technology stack, build pipeline, and AI-coding methodology. Replaces the original `/uses` + `/colophon` split — the boundary between "tools" and "stack/methodology" was artificial for this blog. Updated when the underlying setup changes.
 
-### 6.5 Colophon (`/colophon`)
-
-- Stack, build pipeline, AI-coding methodology, deliberate transparency about how this site itself is built. Updated when the stack changes.
-
-### 6.6 Tag (`/tags/[tag]`)
+### 6.5 Tag (`/tags/[tag]`)
 
 - `<h1>` "Posts tagged: <localized label>".
 - Card list of all posts with that tag.
 
-### 6.7 Tag index (`/tags`)
+### 6.6 Tag index (`/tags`)
 
 - Every tag with its post count, clickable.
 
-### 6.8 Archive (`/posts`)
+### 6.7 Archive (`/posts`)
 
 - Paginated chronological list of all non-draft posts. Page size 20 (revisable during implementation).
 
-### 6.9 Privacy (`/privacy`)
+### 6.8 Privacy (`/privacy`)
 
 - One paragraph naming CF Web Analytics, declaring no cookies / no PII / no tracking, linking to Cloudflare's privacy commitments page.
 - English only; reachable from any page's footer.
 
-### 6.10 404
+### 6.9 404
 
 - Heading, single sentence, links to `/` and `/posts`. Localized per locale.
 

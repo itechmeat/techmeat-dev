@@ -11,6 +11,7 @@ A personal blog about building real projects with AI-assisted coding, published 
 - **Framework:** Astro 6, content as Markdown.
 - **Output:** `static`. No SSR adapter is wired up — install `@astrojs/cloudflare` via `bunx astro add cloudflare` only when SSR is actually needed.
 - **Host:** Cloudflare Pages — build command `bun run build`, output dir `dist/`. Bun is auto-detected from `bun.lock`; pin the runtime with `BUN_VERSION` env on Pages.
+- **Analytics:** Cloudflare Web Analytics. Set `PUBLIC_CF_ANALYTICS_TOKEN` in CF Pages env to enable the beacon. Locally drop it in `.env` (gitignored). Empty/unset → no beacon emitted.
 - **Runtime:** Bun. Do not introduce npm/yarn/pnpm.
 - **Islands framework:** Solid.js via `@astrojs/solid-js`. Do not introduce React/Vue/Svelte — pick Solid, or stay static if no interactivity is needed.
 
@@ -55,16 +56,17 @@ When asked to "prepare an article" without further detail, run: keyword/SERP res
 
 ## Git operations
 
-Git is **read-only** for AI agents. The user runs all write operations themselves. One narrow exception: `git worktree` (see below).
+Two scopes with different rules.
 
-**Allowed:** `git status`, `git diff`, `git log`, `git show`, `git blame`, `git ls-files`, `git rev-parse`, and other non-mutating queries. Plus the entire `git worktree` family (`add`, `list`, `remove`, `move`, `prune`, `lock`, `unlock`, `repair`) — useful for isolating multi-task workflows.
+**In the main worktree** (primary branch `master`): write operations are **forbidden**. No `commit`, `add`, `merge`, `rebase`, `reset`, `cherry-pick`, state-changing `checkout`, `tag`, or `branch` (create/delete/rename) — nothing that would update master's tip or alter the main worktree's working tree or index. The user owns master. If a skill checklist instructs to commit something authored in the main worktree, skip that step and tell the user the file is ready for them to commit.
 
-**Forbidden:** anything that creates commits, mutates refs in the main worktree, alters the working tree or index, or talks to a remote — including `commit`, `add`, `push`, `pull`, `fetch`, `merge`, `rebase`, `reset`, `checkout` (state-changing), `cherry-pick`, `stash`, `tag`, `branch` (create/delete/rename), `init`, `clone`, `remote *`, `config`. Bypass flags (`--force`, `--no-verify`, etc.) are forbidden regardless of the underlying command. The forbidden list applies _inside_ worktrees too — creating a worktree does not unlock commits or pushes.
+**In feature worktrees** (any non-master branch created via `git worktree add`): the agent has **full local git rights**. `commit`, `add`, branch management, reset of worktree-local refs are all allowed. The branch represents in-progress work; nothing reaches the project's authoritative state until the user merges or rebases it onto master.
 
-If a skill checklist or built-in workflow (e.g. `/init`, brainstorming spec write-up) instructs to commit, **skip that step** — this rule wins per AGENTS.md / CLAUDE.md precedence. Write the file and tell the user it is ready for them to commit.
+**Always forbidden, regardless of scope:** `push` (no code goes to a remote without user action), `pull` (mutates local refs and combines fetch + merge), `init`, `clone`, `remote *`, `config`. Bypass flags (`--force`, `--no-verify`, `--no-gpg-sign`, etc.) are forbidden regardless of the underlying command.
+
+**Always allowed:** `git status`, `git diff`, `git log`, `git show`, `git blame`, `git ls-files`, `git rev-parse`, `git fetch` (non-mutating), and the entire `git worktree` family (`add`, `list`, `remove`, `move`, `prune`, `lock`, `unlock`, `repair`).
 
 ## Repository notes
 
 - `.claude/skills/` and `.agents/skills/` are mirror copies of installed skill bundles, pinned via `skills-lock.json`. Manage via the skills toolchain, not by hand-editing.
 - `.ai-notes/` holds drafts and AI working notes (e.g. `prompts.md`, the original Russian project brief).
-- No content collections (`src/content/`) or i18n routing exist yet — add them when the editorial workflow needs them.

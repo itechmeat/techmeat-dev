@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { defaultLocale } from "../../i18n/config";
+import { t } from "../../i18n/t";
+import { tagLabel } from "../../i18n/tags";
+import { resolveOgImage } from "../../lib/resolveOgImage";
+import { isVisiblePost } from "../../lib/postVisibility";
+
+const locale = defaultLocale;
+
+export async function getStaticPaths() {
+  const all = await getCollection(
+    "posts",
+    ({ data }) => data.locale === defaultLocale && isVisiblePost(data),
+  );
+  const tagSet = new Set<string>();
+  for (const entry of all) for (const tag of entry.data.tags) tagSet.add(tag);
+  return Array.from(tagSet).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const all = await getCollection(
+  "posts",
+  ({ data }) => data.locale === locale && isVisiblePost(data),
+);
+const matching = all
+  .filter((entry) => entry.data.tags.includes(tag!))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const label = tagLabel(tag!, locale);
+const heading = t("tags.heading", locale, { tag: label });
+const ogImage = resolveOgImage({ kind: "tag", locale, tag: tag! });
+const keywords = label;
+---
+
+<BaseLayout
+  title={`${heading} — techmeat.dev`}
+  description={heading}
+  ogImage={ogImage}
+  keywords={keywords}
+>
+  <h1>{heading}</h1>
+  <ul class="post-list">
+    {
+      matching.map((entry) => {
+        const slug = entry.id.split("/")[0];
+        return (
+          <li>
+            <PostCard
+              href={`/posts/${slug}`}
+              title={entry.data.title}
+              description={entry.data.description}
+              pubDate={entry.data.pubDate}
+              tags={entry.data.tags}
+              locale={locale}
+            />
+          </li>
+        );
+      })
+    }
+  </ul>
+</BaseLayout>

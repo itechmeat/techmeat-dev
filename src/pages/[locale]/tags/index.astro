@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { locales, defaultLocale, type Locale } from "../../../i18n/config";
+import { t } from "../../../i18n/t";
+import { tagLabel } from "../../../i18n/tags";
+import { isVisiblePost } from "../../../lib/postVisibility";
+
+export async function getStaticPaths() {
+  return locales
+    .filter((l) => l !== defaultLocale)
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const localePrefix = `/${locale}`;
+const heading = t("tags.indexHeading", locale);
+
+const all = await getCollection("posts", ({ data }) => data.locale === locale && isVisiblePost(data));
+const counts = new Map<string, number>();
+for (const entry of all) {
+  for (const tag of entry.data.tags ?? []) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+}
+const tags = Array.from(counts.entries()).sort(
+  (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
+);
+---
+
+<BaseLayout title={`${heading} — techmeat.dev`} description={heading} locale={locale}>
+  <h1>{heading}</h1>
+  <ul class="tag-list">
+    {
+      tags.map(([slug, count]) => (
+        <li>
+          <a href={`${localePrefix}/tags/${encodeURIComponent(slug)}`}>#{tagLabel(slug, locale)}</a>
+          <span> · {count}</span>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

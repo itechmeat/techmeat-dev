@@ -1,0 +1,122 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PostMeta from "../../../components/PostMeta.astro";
+import RelatedPosts from "../../../components/RelatedPosts.astro";
+import SchemaJsonLd from "../../../components/SchemaJsonLd.astro";
+import CopyButton from "../../../components/islands/CopyButton.tsx";
+import { relatedPosts } from "../../../lib/relatedPosts";
+import { resolvePrUrl } from "../../../lib/githubLinks";
+import { locales, defaultLocale, type Locale } from "../../../i18n/config";
+import { t } from "../../../i18n/t";
+import { tagLabel } from "../../../i18n/tags";
+import { resolveOgImage } from "../../../lib/resolveOgImage";
+import { isVisiblePost } from "../../../lib/postVisibility";
+import { AUTHOR, resolveSite } from "../../../lib/site";
+
+export async function getStaticPaths() {
+  const nonDefault = locales.filter((l) => l !== defaultLocale);
+  const out: { params: { locale: Locale; slug: string }; props: { entry: CollectionEntry<"posts"> } }[] = [];
+  for (const locale of nonDefault) {
+    const all = await getCollection("posts", ({ data }) => data.locale === locale && isVisiblePost(data));
+    for (const entry of all) {
+      out.push({
+        params: { locale, slug: entry.id.split("/")[0] },
+        props: { entry },
+      });
+    }
+  }
+  return out;
+}
+
+interface Props {
+  entry: CollectionEntry<"posts">;
+}
+
+const locale = Astro.params.locale as Locale;
+const { entry } = Astro.props as Props;
+const { Content } = await render(entry);
+const slug = entry.id.split("/")[0];
+
+// prNumber lives only on the canonical English file. Look it up by shared slug.
+const siblingEntries = await getCollection("posts", ({ data }) => isVisiblePost(data));
+const sameSlugSiblings = siblingEntries.filter((post) => post.id.split("/")[0] === slug);
+const availableLocales = Array.from(new Set(sameSlugSiblings.map((post) => post.data.locale)));
+const enSibling = sameSlugSiblings.find((p) => p.data.locale === defaultLocale);
+const prNumber = enSibling?.data.prNumber;
+const prUrl = prNumber ? resolvePrUrl(prNumber) : undefined;
+
+const ogImage = resolveOgImage({
+  kind: "post",
+  locale,
+  slug,
+  ogImage: entry.data.ogImage,
+});
+
+const localizedTags = entry.data.tags.map((tag) => tagLabel(tag, locale));
+const keywords = localizedTags.join(", ");
+const site = resolveSite(Astro.site);
+const publishedTime = entry.data.pubDate.toISOString();
+const modifiedTime = (entry.data.updatedDate ?? entry.data.pubDate).toISOString();
+
+const articleSchema = {
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: publishedTime,
+  dateModified: modifiedTime,
+  author: AUTHOR,
+  keywords,
+  inLanguage: locale,
+  mainEntityOfPage: new URL(`/posts/${slug}`, site).toString(),
+};
+
+const sameLocale = await getCollection(
+  "posts",
+  ({ data }) => data.locale === locale && isVisiblePost(data),
+);
+const related = relatedPosts(
+  { slug, tags: entry.data.tags },
+  sameLocale
+    .filter((p) => p.id.split("/")[0] !== slug)
+    .map((p) => ({ slug: p.id.split("/")[0], tags: p.data.tags, pubDate: p.data.pubDate })),
+  3,
+);
+---
+
+<BaseLayout
+  title={`${entry.data.title} — techmeat.dev`}
+  description={entry.data.description}
+  locale={locale}
+  ogImage={ogImage}
+  ogType="article"
+  articleData={{ publishedTime, modifiedTime, tags: localizedTags }}
+  keywords={keywords}
+  availableLocales={availableLocales}
+>
+  <SchemaJsonLd type="Article" data={articleSchema} />
+  <article>
+    <h1>{entry.data.title}</h1>
+    <PostMeta
+      pubDate={entry.data.pubDate}
+      updatedDate={entry.data.updatedDate}
+      tags={entry.data.tags}
+      body={entry.body ?? ""}
+      locale={locale}
+    />
+    <Content />
+    <CopyButton client:load copyLabel={t("code.copy", locale)} copiedLabel={t("code.copied", locale)} />
+  </article>
+
+  {related.length > 0 && <RelatedPosts items={related} locale={locale} />}
+
+  {
+    prUrl && (
+      <footer class="post-footer">
+        <p>
+          💬 <a href={prUrl}>{t("post.discuss", locale)}</a>
+          <small> — {t("post.discussHint", locale)}</small>
+        </p>
+      </footer>
+    )
+  }
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { defaultLocale } from "../i18n/config";
+import { t } from "../i18n/t";
+
+const locale = defaultLocale;
+---
+
+<BaseLayout
+  title={`${t("404.title", locale)} — techmeat.dev`}
+  description={t("404.body", locale)}
+>
+  <h1>{t("404.title", locale)}</h1>
+  <p>{t("404.body", locale)}</p>
+  <p>
+    <a href="/">{t("404.linkHome", locale)}</a>
+    · <a href="/posts">{t("404.linkPosts", locale)}</a>
+  </p>
+</BaseLayout>

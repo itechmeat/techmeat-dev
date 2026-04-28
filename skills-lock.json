@@ -71,6 +71,11 @@
       "sourceType": "github",
       "computedHash": "c2b9f5e2909bcfb51777d732614e3d2ee1344e9788338f94f148b42fba1ce736"
     },
+    "humanizer": {
+      "source": "blader/humanizer",
+      "sourceType": "github",
+      "computedHash": "b813857f183da05d08d5a80adac671df94c139f855809bd47ab8b7bb245546a2"
+    },
     "impeccable": {
       "source": "pbakaus/impeccable",
       "sourceType": "github",

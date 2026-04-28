@@ -1,0 +1,25 @@
+---
+// src/components/SchemaJsonLd.astro
+interface Props {
+  type: "Article" | "WebSite";
+  data: Record<string, unknown>;
+}
+
+const { type, data } = Astro.props;
+const requiredProperties: Record<Props["type"], string[]> = {
+  Article: ["headline", "author", "datePublished"],
+  WebSite: ["name", "url"],
+};
+const missing = requiredProperties[type].filter((key) => data[key] == null || data[key] === "");
+
+if (missing.length > 0) {
+  throw new Error(`SchemaJsonLd ${type} is missing required field(s): ${missing.join(", ")}`);
+}
+
+const json = JSON.stringify({ ...data, "@context": "https://schema.org", "@type": type })
+  .replace(/</g, "\\u003c")
+  .replace(/>/g, "\\u003e")
+  .replace(/&/g, "\\u0026");
+---
+
+<script is:inline type="application/ld+json" set:html={json}></script>

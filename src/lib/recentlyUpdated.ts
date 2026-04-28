@@ -1,0 +1,2 @@
+export const RECENTLY_UPDATED_DAYS = 30;
+export const RECENTLY_UPDATED_LIMIT = 5;
