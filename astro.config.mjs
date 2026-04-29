@@ -4,11 +4,15 @@ import solid from "@astrojs/solid-js";
 import sitemap from "@astrojs/sitemap";
 import AstroPWA from "@vite-pwa/astro";
 import expressiveCode from "astro-expressive-code";
+import icon from "astro-icon";
 import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://techmeat.dev",
+  build: {
+    inlineStylesheets: "always",
+  },
   markdown: {
     rehypePlugins: [
       [
@@ -23,6 +27,7 @@ export default defineConfig({
   },
   integrations: [
     expressiveCode({
+      emitExternalStylesheet: false,
       themes: ["github-light", "github-dark-dimmed"],
       themeCssRoot: ":root",
       themeCssSelector: (theme) =>
@@ -46,6 +51,7 @@ export default defineConfig({
       },
     }),
     solid(),
+    icon(),
     sitemap({
       i18n: {
         defaultLocale: "en",
@@ -56,6 +62,8 @@ export default defineConfig({
           de: "de-DE",
           pt: "pt-BR",
           ru: "ru-RU",
+          sr: "sr-Latn-RS",
+          tr: "tr-TR",
           ar: "ar",
           hi: "hi-IN",
           zh: "zh-CN",
@@ -101,22 +109,12 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // Hashed asset filenames (Astro adds them automatically) make CSS/JS
-        // cache-busting a no-op — different content always gets a new URL,
-        // so the precache picks it up without manual invalidation.
         globPatterns: ["**/*.{js,css,svg,png,ico,woff2}"],
-        // Activate the new SW immediately on install, take control of all
-        // open tabs, and discard outdated runtime caches. Together this
-        // means a redeploy is reflected on the very next visit, not the one
-        // after that.
         skipWaiting: true,
         clientsClaim: true,
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
-            // HTML documents go to the network first with a short timeout.
-            // Online → always fresh; offline (or slow) → fall back to cache,
-            // and if that misses, the navigateFallback below.
             urlPattern: ({ request }) => request.destination === "document",
             handler: "NetworkFirst",
             options: {
@@ -133,7 +131,7 @@ export default defineConfig({
   ],
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "es", "fr", "de", "pt", "ru", "ar", "hi", "zh", "bn"],
+    locales: ["en", "es", "fr", "de", "pt", "ru", "sr", "tr", "ar", "hi", "zh", "bn"],
     routing: {
       prefixDefaultLocale: false,
       redirectToDefaultLocale: false,

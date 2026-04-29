@@ -23,10 +23,7 @@ export const es: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "Ver todos los artículos →",
   "about.description": "Quién soy y en qué trabajo.",
   "about.findMeHeading": "Encuéntrame en",
-  "about.githubSuffix": " — para el código.",
   "about.placeholder": "Contenido marcador. Aquí irá la narrativa estilo CV.",
-  "about.twitterSuffix": " — para los pensamientos.",
-  "about.linkedinSuffix": " — para el lado profesional.",
   "stack.description": "Herramientas, stack y metodología detrás de este sitio.",
   "stack.placeholder":
     "Contenido marcador. Aquí irán herramientas, hardware, asistentes de IA, stack, pipeline de build y metodología de AI-coding.",
@@ -36,4 +33,5 @@ export const es: Partial<Record<DictionaryKey, string>> = {
   "404.body": "La página que buscas no existe.",
   "404.linkHome": "Volver al inicio",
   "404.linkPosts": "Todos los artículos",
+  "themeToggle.label": "Cambiar tema",
 };

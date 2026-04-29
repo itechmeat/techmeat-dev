@@ -23,10 +23,7 @@ export const bn: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "সব পোস্ট →",
   "about.description": "আমি কে এবং কী নিয়ে কাজ করি।",
   "about.findMeHeading": "আমাকে এখানে পাবেন",
-  "about.githubSuffix": " — কোডের জন্য।",
   "about.placeholder": "প্লেসহোল্ডার বিষয়বস্তু। এখানে CV-স্টাইলের বিবরণ থাকবে।",
-  "about.twitterSuffix": " — চিন্তার জন্য।",
-  "about.linkedinSuffix": " — পেশাদার পরিচয়ের জন্য।",
   "stack.description": "এই সাইটের পিছনের টুলস, স্ট্যাক এবং কর্মপদ্ধতি।",
   "stack.placeholder":
     "প্লেসহোল্ডার বিষয়বস্তু। এখানে টুলস, হার্ডওয়্যার, AI-অ্যাসিস্ট্যান্ট, স্ট্যাক, বিল্ড পাইপলাইন এবং AI-কোডিং পদ্ধতি থাকবে।",
@@ -36,4 +33,5 @@ export const bn: Partial<Record<DictionaryKey, string>> = {
   "404.body": "আপনি যে পেজটি খুঁজছেন সেটি নেই।",
   "404.linkHome": "হোমে ফিরে যান",
   "404.linkPosts": "সব পোস্ট",
+  "themeToggle.label": "থিম পরিবর্তন করুন",
 };

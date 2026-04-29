@@ -112,4 +112,4 @@ Die nächste Etappe ist Design. Die Fortsetzung dieses Posts wird genau darüber
 
 Vorerst, für die Geschichte, halten wir fest, wie der Blog heute aussieht:
 
-<!-- TODO: Embed YouTube video showcasing the first version of the blog. -->
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

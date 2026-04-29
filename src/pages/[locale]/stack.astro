@@ -123,6 +123,218 @@ const description = t("stack.description", locale);
           а не каждый раз заново объяснять сетап.
         </p>
       </>
+    ) : locale === "sr" ? (
+      <>
+        <p>
+          <em>(Generisano AI-em. Biće prepisano ručno kasnije.)</em>
+        </p>
+
+        <p>
+          Snimak onoga na čemu je izgrađen techmeat.dev, koje alate koristim svakodnevno i
+          kakav workflow primenjujem da bih objavljivao postove i feature-e u paru sa
+          coding-agentima.
+        </p>
+
+        <h2>Tehnološki stack</h2>
+        <ul>
+          <li>
+            <strong>Astro 6</strong> u režimu <code>output: 'static'</code>. Postovi — Markdown,
+            renderuju se preko Astro Content Collections.
+          </li>
+          <li>
+            <strong>Solid.js</strong> kroz <code>@astrojs/solid-js</code> za malobrojna
+            interaktivna ostrva: prekidač teme, prekidač jezika, dugme za kopiranje koda.
+          </li>
+          <li>
+            <strong>Bun</strong> kao runtime, package manager i test-runner. Bez npm i pnpm.
+          </li>
+          <li>
+            <strong>Cloudflare Pages</strong> za hosting; <strong>Cloudflare Web Analytics</strong>
+            za analitiku, bez cookies.
+          </li>
+          <li>
+            <strong>satori</strong> + <strong>resvg</strong> za generisanje OG-slika u
+            build-time-u — zasebna slika za svaki post i svaki locale.
+          </li>
+          <li>
+            <strong>@vite-pwa/astro</strong> (Workbox) — instalabilna PWA sa offline fallback-om.
+          </li>
+          <li>
+            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap i
+            per-locale RSS feedovi.
+          </li>
+        </ul>
+
+        <h2>Alati</h2>
+        <ul>
+          <li>
+            <strong>oxlint</strong> + <strong>oxfmt</strong> — linter i formatter u Rust-u. Bez
+            ESLint-a i Prettier-a.
+          </li>
+          <li>
+            <strong>@astrojs/check</strong> — tipizacija za <code>.astro</code> fajlove.
+          </li>
+          <li>
+            <strong>lefthook</strong> — pre-commit hook-ovi: lint, format i typecheck na svakom
+            commit-u.
+          </li>
+          <li>
+            <strong>bun:test</strong> — ugrađeni test-framework.
+          </li>
+        </ul>
+
+        <h2>AI asistenti</h2>
+        <ul>
+          <li>
+            <strong>Claude Code</strong> — glavni coding-agent. Kontekst projekta živi u{" "}
+            <code>CLAUDE.md</code> i <code>AGENTS.md</code>.
+          </li>
+          <li>
+            <strong>Superpowers skills</strong> — brainstorming, writing-plans,
+            subagent-driven-development za netrivijalne feature-e.
+          </li>
+          <li>
+            <strong>GPT-5.5</strong> — drugi prolaz review-a na većim izmenama.
+          </li>
+          <li>
+            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
+            markup, on-page audit, content-quality auditor (CORE-EEAT), GEO content optimizer
+            za citabilnost u AI-engine-ima.
+          </li>
+        </ul>
+
+        <h2>Hardver</h2>
+        <ul>
+          <li>(Placeholder — popuniće čovek.)</li>
+        </ul>
+
+        <h2>Workflow</h2>
+        <p>Svaki post i svaki feature prolaze otprilike isti ciklus:</p>
+        <ol>
+          <li>
+            Fiksirati cilj i ograničenja u <code>CLAUDE.md</code> / <code>AGENTS.md</code>, da
+            agent ima stabilan kontekst.
+          </li>
+          <li>Uraditi brainstorming kroz Superpowers, dobiti dizajn-specifikaciju.</li>
+          <li>Prevesti specifikaciju u plan implementacije sa konkretnim koracima.</li>
+          <li>
+            Subagent-driven izvršavanje sa dvostepenim review-om (saglasnost sa spec-om, pa
+            kvalitet koda) na svakom zadatku.
+          </li>
+          <li>Za postove — višestepeni SEO + GEO pipeline pre objavljivanja.</li>
+        </ol>
+
+        <p>
+          Smisao ove stranice — otvoreno pokazati toolchain, da postovi mogu biti o{" "}
+          <em>procesu</em>, a ne da svaki put iznova objašnjavam setup.
+        </p>
+      </>
+    ) : locale === "tr" ? (
+      <>
+        <p>
+          <em>(AI tarafından üretildi. Daha sonra elle yeniden yazılacak.)</em>
+        </p>
+
+        <p>
+          techmeat.dev'in neyin üzerine inşa edildiğinin, her gün hangi araçları kullandığımın
+          ve coding-ajanlarla post ve feature yayınlamak için hangi workflow'u uyguladığımın
+          anlık görüntüsü.
+        </p>
+
+        <h2>Teknoloji stack</h2>
+        <ul>
+          <li>
+            <strong>Astro 6</strong>, <code>output: 'static'</code> modunda. Postlar — Markdown,
+            Astro Content Collections üzerinden render ediliyor.
+          </li>
+          <li>
+            <strong>Solid.js</strong>, <code>@astrojs/solid-js</code> aracılığıyla az sayıdaki
+            etkileşimli ada için: tema değiştirici, dil değiştirici, kod kopyalama düğmesi.
+          </li>
+          <li>
+            <strong>Bun</strong> runtime, package manager ve test-runner olarak. npm ve pnpm yok.
+          </li>
+          <li>
+            <strong>Cloudflare Pages</strong> hosting için; <strong>Cloudflare Web Analytics</strong>
+            cookie'siz analitik için.
+          </li>
+          <li>
+            <strong>satori</strong> + <strong>resvg</strong> build-time'da OG görseli üretmek
+            için — her post ve her locale için ayrı bir görsel.
+          </li>
+          <li>
+            <strong>@vite-pwa/astro</strong> (Workbox) — offline fallback'lı yüklenebilir PWA.
+          </li>
+          <li>
+            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap ve
+            locale başına RSS feed'ler.
+          </li>
+        </ul>
+
+        <h2>Araçlar</h2>
+        <ul>
+          <li>
+            <strong>oxlint</strong> + <strong>oxfmt</strong> — Rust'ta yazılmış linter ve
+            formatter. ESLint ve Prettier yok.
+          </li>
+          <li>
+            <strong>@astrojs/check</strong> — <code>.astro</code> dosyaları için tip kontrolü.
+          </li>
+          <li>
+            <strong>lefthook</strong> — pre-commit hook'lar: her commit'te lint, format ve
+            typecheck.
+          </li>
+          <li>
+            <strong>bun:test</strong> — yerleşik test framework.
+          </li>
+        </ul>
+
+        <h2>AI asistanlar</h2>
+        <ul>
+          <li>
+            <strong>Claude Code</strong> — birincil coding-ajan. Proje bağlamı{" "}
+            <code>CLAUDE.md</code> ve <code>AGENTS.md</code>'de yaşıyor.
+          </li>
+          <li>
+            <strong>Superpowers skills</strong> — önemsiz olmayan feature'lar için brainstorming,
+            writing-plans, subagent-driven-development.
+          </li>
+          <li>
+            <strong>GPT-5.5</strong> — büyük değişikliklerde ikinci review geçişi.
+          </li>
+          <li>
+            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
+            markup, on-page audit, content-quality auditor (CORE-EEAT), AI-motorlarında
+            alıntılanabilirlik için GEO content optimizer.
+          </li>
+        </ul>
+
+        <h2>Donanım</h2>
+        <ul>
+          <li>(Placeholder — insan dolduracak.)</li>
+        </ul>
+
+        <h2>Workflow</h2>
+        <p>Her post ve her feature aşağı yukarı aynı döngüden geçer:</p>
+        <ol>
+          <li>
+            Ajanın istikrarlı bir bağlamı olsun diye hedefi ve kısıtlamaları{" "}
+            <code>CLAUDE.md</code> / <code>AGENTS.md</code>'ye sabitle.
+          </li>
+          <li>Superpowers ile brainstorming yap, tasarım spesifikasyonunu al.</li>
+          <li>Spesifikasyonu somut adımlarla bir uygulama planına çevir.</li>
+          <li>
+            Her görevde iki aşamalı review ile (spesifikasyona uyum, sonra kod kalitesi)
+            subagent-driven yürütme.
+          </li>
+          <li>Postlar için — yayın öncesi çok aşamalı SEO + GEO pipeline.</li>
+        </ol>
+
+        <p>
+          Bu sayfanın amacı — toolchain'i açıkça göstermek, böylece postlar setup'ı her seferinde
+          yeniden anlatmak yerine <em>süreç</em> hakkında olabilir.
+        </p>
+      </>
     ) : locale === "es" ? (
       <>
         <p><em>(Borrador generado por IA. Será reescrito por un humano más adelante.)</em></p>

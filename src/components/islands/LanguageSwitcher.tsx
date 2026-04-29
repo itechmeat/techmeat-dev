@@ -1,6 +1,6 @@
 // src/components/islands/LanguageSwitcher.tsx
 import { For } from "solid-js";
-import { locales, localeLabels, type Locale } from "../../i18n/config";
+import { locales, localeLabels, localeFlags, type Locale } from "../../i18n/config";
 
 interface Props {
   currentLocale: Locale;
@@ -10,8 +10,10 @@ interface Props {
 
 export default function LanguageSwitcher(props: Props) {
   const availableLocales = () => {
-    const values = props.availableLocales?.length ? props.availableLocales : locales;
-    return values.includes(props.currentLocale) ? values : [props.currentLocale, ...values];
+    const provided = props.availableLocales?.length ? props.availableLocales : locales;
+    const set = new Set<Locale>(provided);
+    const ordered = locales.filter((l) => set.has(l));
+    return ordered.includes(props.currentLocale) ? ordered : [props.currentLocale, ...ordered];
   };
 
   const switchTo = (target: Locale) => {
@@ -26,7 +28,7 @@ export default function LanguageSwitcher(props: Props) {
       <For each={availableLocales()}>
         {(locale) => (
           <option value={locale} selected={locale === props.currentLocale}>
-            {localeLabels[locale]}
+            {localeFlags[locale]} {localeLabels[locale]}
           </option>
         )}
       </For>

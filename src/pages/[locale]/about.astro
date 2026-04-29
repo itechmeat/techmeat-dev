@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SchemaJsonLd from "../../components/SchemaJsonLd.astro";
 import { locales, defaultLocale, type Locale } from "../../i18n/config";
@@ -14,8 +15,6 @@ export async function getStaticPaths() {
 const locale = Astro.params.locale as Locale;
 const heading = t("nav.about", locale);
 const description = t("about.description", locale);
-// Per CLAUDE.md canonical policy, every translation links its ProfilePage
-// url at the English version, matching the page's <link rel="canonical">.
 const site = resolveSite(Astro.site);
 const aboutUrl = new URL("/about/", site).toString();
 
@@ -35,14 +34,7 @@ const profileSchema = {
     locale === "ru" ? (
       <>
         <p>
-          <em>
-            (Сгенерировано AI на основе контекста проекта. Будет
-            переписано человеком позже.)
-          </em>
-        </p>
-
-        <p>
-          Меня зовут Сергей Ерошенков. Я разработчик с долгим стажем во фронтенде, сейчас большую
+          Меня зовут Сергей Ерошенков. Я разработчик с большим стажем во фронтенде, сейчас большую
           часть времени трачу на то, чтобы делать реальные продукты в связке с кодинг-агентами.
         </p>
 
@@ -68,14 +60,65 @@ const profileSchema = {
           постановка задачи была недостаточно точной.
         </p>
       </>
-    ) : locale === "es" ? (
+    ) : locale === "sr" ? (
       <>
         <p>
-          <em>
-            (Borrador generado por IA basado en el contexto del proyecto. Será reescrito
-            por un humano más adelante.)
-          </em>
+          Ja sam Sergej Jerošenkov — softverski inženjer sa dugim stažem u frontendu, koji sada
+          većinu vremena provodi gradeći prave proizvode uz AI-asistirano kodiranje.
         </p>
+
+        <p>
+          Počeo sam pišući JavaScript za browser i godinama ostao blizu frontend stack-a:
+          komponente, design sisteme, performanse i dosadnu infrastrukturnu instalaciju koja
+          tiho čini UI pouzdanim. Vremenom mi se fokus pomerao — prvo ka tome kako timovi zaista
+          isporučuju, a u poslednje vreme ka tome kako to radi jedan developer u paru sa
+          coding-agentom.
+        </p>
+
+        <p>
+          techmeat.dev je mesto gde dokumentujem tu promenu. To je radna sveska: promptovi koji
+          su radili, oni koji nisu, granice koje povlačim između ljudske procene i izvršenja
+          agenta, i inženjerske odluke koje iz tog procesa proizlaze. Prva objava — priča o
+          izgradnji ovog bloga uz coding agente — ujedno je i prvi eksperiment.
+        </p>
+
+        <p>
+          Što me javno zanima: proces, a ne hype; ponovljive radne procedure umesto jednokratnih
+          trikova; i pošteno prikazivanje rada — uključujući mesta gde je agent pogrešio, ili
+          gde moja postavka problema nije bila dovoljno precizna.
+        </p>
+      </>
+    ) : locale === "tr" ? (
+      <>
+        <p>
+          Ben Sergey Eroshenkov — frontend tarafında uzun bir geçmişi olan, şimdi vaktinin
+          çoğunu AI destekli kodlama ile gerçek ürünler inşa etmeye ayıran bir yazılım
+          mühendisiyim.
+        </p>
+
+        <p>
+          Tarayıcı için JavaScript yazarak başladım ve uzun yıllar frontend stack'ine yakın
+          durdum: bileşenler, design system'ler, performans ve UI'ı sessizce güvenilir kılan
+          sıkıcı altyapı işleri. Zamanla odağım önce ekiplerin ürünü gerçekten nasıl sevk
+          ettiğine — ve son zamanlarda da bunu tek bir geliştirici artı bir coding ajanın
+          nasıl yaptığına — kaydı.
+        </p>
+
+        <p>
+          techmeat.dev bu değişimi belgelediğim yer. Bir çalışma defteri: işe yarayan
+          promptlar, yaramayanlar, insan yargısı ile ajanın yürütmesi arasında çizdiğim
+          sınırlar ve bu süreçten çıkan mühendislik kararları. İlk yazı — bu blogun coding
+          ajanlarıyla yapılışının hikâyesi — aynı zamanda ilk deney.
+        </p>
+
+        <p>
+          Kamuoyuyla paylaşmak istediğim: hype yerine süreç, tek seferlik numaralar yerine
+          tekrarlanabilir iş akışları ve işi dürüstçe göstermek — ajanın hatalı davrandığı
+          yerler veya problem ifademin yeterince net olmadığı kısımlar dahil.
+        </p>
+      </>
+    ) : locale === "es" ? (
+      <>
 
         <p>
           Soy Sergey Eroshenkov, ingeniero de software con una larga trayectoria en frontend, que ahora dedica la mayor parte
@@ -105,13 +148,6 @@ const profileSchema = {
     ) : locale === "fr" ? (
       <>
         <p>
-          <em>
-            (Brouillon généré par IA à partir du contexte projet. À réécrire
-            ultérieurement par un humain.)
-          </em>
-        </p>
-
-        <p>
           Je suis Sergey Eroshenkov — ingénieur logiciel avec un long parcours côté frontend, et je passe désormais l'essentiel
           de mon temps à construire de vrais produits en coding assisté par IA.
         </p>
@@ -138,13 +174,6 @@ const profileSchema = {
       </>
     ) : locale === "de" ? (
       <>
-        <p>
-          <em>
-            (KI-generierter Entwurf auf Basis des Projektkontexts. Wird später
-            von einem Menschen überarbeitet.)
-          </em>
-        </p>
-
         <p>
           Ich bin Sergey Eroshenkov — Softwareentwickler mit langer Frontend-Strecke, der inzwischen den Großteil
           seiner Zeit damit verbringt, echte Produkte mit AI coding zu bauen.
@@ -173,13 +202,6 @@ const profileSchema = {
     ) : locale === "pt" ? (
       <>
         <p>
-          <em>
-            (Rascunho gerado por AI a partir do contexto do projeto. A ser reescrito
-            por um humano depois.)
-          </em>
-        </p>
-
-        <p>
           Sou Sergey Eroshenkov — engenheiro de software com uma longa trajetória em frontend, e hoje passo a maior
           parte do meu tempo construindo produtos reais com AI coding.
         </p>
@@ -206,13 +228,6 @@ const profileSchema = {
       </>
     ) : locale === "ar" ? (
       <>
-        <p>
-          <em>
-            (مسودة من إنتاج AI استنادًا إلى سياق المشروع. سيتم إعادة كتابتها
-            بواسطة إنسان لاحقًا.)
-          </em>
-        </p>
-
         <p>
           أنا Sergey Eroshenkov — مهندس برمجيات أمضيت فترة طويلة في الواجهة الأمامية، وأقضي الآن معظم
           وقتي في بناء منتجات حقيقية بالاستعانة بالـ AI coding.
@@ -241,13 +256,6 @@ const profileSchema = {
     ) : locale === "hi" ? (
       <>
         <p>
-          <em>
-            (प्रोजेक्ट कॉन्टेक्स्ट पर आधारित AI-जनित ड्राफ्ट। बाद में मनुष्य द्वारा
-            फिर से लिखा जाएगा।)
-          </em>
-        </p>
-
-        <p>
           मैं Sergey Eroshenkov हूँ — एक सॉफ़्टवेयर इंजीनियर, जिसका लंबा अरसा फ्रंटएंड में बीता है, और अब अपना ज़्यादातर
           समय AI-असिस्टेड कोडिंग के साथ असली प्रोडक्ट बनाने में लगाता हूँ।
         </p>
@@ -275,12 +283,6 @@ const profileSchema = {
     ) : locale === "zh" ? (
       <>
         <p>
-          <em>
-            （基于项目上下文由 AI 生成的草稿，后续将由人工重写。）
-          </em>
-        </p>
-
-        <p>
           我是 Sergey Eroshenkov——一名软件工程师，长期深耕前端，如今大部分时间都在用 AI 辅助编码构建真实的产品。
         </p>
 
@@ -298,12 +300,6 @@ const profileSchema = {
       </>
     ) : locale === "bn" ? (
       <>
-        <p>
-          <em>
-            (প্রজেক্ট কনটেক্সটের ভিত্তিতে AI-জেনারেটেড খসড়া। পরে একজন মানুষ এটি পুনরায় লিখবেন।)
-          </em>
-        </p>
-
         <p>
           আমি Sergey Eroshenkov — একজন সফটওয়্যার ইঞ্জিনিয়ার, দীর্ঘ সময় ফ্রন্টএন্ডে কাজ করেছি, এখন আমার বেশিরভাগ সময় কাটাই AI-সহায়ক coding দিয়ে বাস্তব প্রোডাক্ট তৈরিতে।
         </p>
@@ -326,27 +322,40 @@ const profileSchema = {
     }
 
   <h2>{t("about.findMeHeading", locale)}</h2>
-  <ul>
-    <li>
-      <a
-        href="https://github.com/itechmeat"
-        target="_blank"
-        rel="me noopener noreferrer">GitHub</a>
-      {t("about.githubSuffix", locale)}
-    </li>
-    <li>
-      <a
-        href="https://x.com/techmeat"
-        target="_blank"
-        rel="me noopener noreferrer">X</a>
-      {t("about.twitterSuffix", locale)}
-    </li>
-    <li>
-      <a
-        href="https://www.linkedin.com/in/techmeat/"
-        target="_blank"
-        rel="me noopener noreferrer">LinkedIn</a>
-      {t("about.linkedinSuffix", locale)}
-    </li>
-  </ul>
+  <div class="about-socials">
+    <ul>
+      <li>
+        <a href="mailto:itechmeat@gmail.com" rel="me">
+          <Icon name="lucide:mail" aria-hidden="true" />
+          <span>itechmeat@gmail.com</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://t.me/techmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:telegram" aria-hidden="true" />
+          <span>Telegram</span>
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="https://github.com/itechmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:github" aria-hidden="true" />
+          <span>GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://x.com/techmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:x" aria-hidden="true" />
+          <span>X</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/techmeat/" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:linkedin" aria-hidden="true" />
+          <span>LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </BaseLayout>

@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Locale } from "../i18n/config";
+import { t } from "../i18n/t";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<button
+  type="button"
+  class="theme-toggle"
+  data-theme-toggle
+  aria-label={t("themeToggle.label", locale)}
+  title={t("themeToggle.label", locale)}
+>
+  <span class="theme-toggle-icon" data-mode="light" aria-hidden="true">
+    <Icon name="lucide:sun" />
+  </span>
+  <span class="theme-toggle-icon" data-mode="dark" aria-hidden="true">
+    <Icon name="lucide:moon" />
+  </span>
+  <span class="theme-toggle-icon" data-mode="system" aria-hidden="true">
+    <Icon name="lucide:monitor" />
+  </span>
+</button>
+
+<script>
+  type Mode = "light" | "dark" | "system";
+
+  const root = document.documentElement;
+  const mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function readMode(): Mode {
+    const value = root.dataset.themeMode;
+    return value === "light" || value === "dark" || value === "system" ? value : "system";
+  }
+
+  function applyTheme(mode: Mode) {
+    root.dataset.themeMode = mode;
+    root.dataset.theme =
+      mode === "light" ? "light" : mode === "dark" ? "dark" : mql.matches ? "dark" : "light";
+  }
+
+  // Track OS theme changes whenever the user is in system mode.
+  mql.addEventListener("change", () => {
+    if (readMode() === "system") applyTheme("system");
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const next: Mode =
+        readMode() === "light" ? "dark" : readMode() === "dark" ? "system" : "light";
+      applyTheme(next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        // localStorage unavailable; in-page state still updates correctly.
+      }
+    });
+  });
+</script>

@@ -4,6 +4,8 @@ import { fr } from "./fr";
 import { de } from "./de";
 import { pt } from "./pt";
 import { ru } from "./ru";
+import { sr } from "./sr";
+import { tr } from "./tr";
 import { ar } from "./ar";
 import { hi } from "./hi";
 import { zh } from "./zh";
@@ -17,6 +19,8 @@ const dicts: Record<Locale, Partial<Record<string, string>>> = {
   de,
   pt,
   ru,
+  sr,
+  tr,
   ar,
   hi,
   zh,

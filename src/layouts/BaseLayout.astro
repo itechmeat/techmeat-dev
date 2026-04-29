@@ -63,9 +63,15 @@ function stripLocalePrefix(pathname: string, locale: Locale): string {
 
 const logicalPath = stripLocalePrefix(Astro.url.pathname, currentLocale);
 
+// Canonical points to the English version of the article (per CLAUDE.md
+// SEO rule). og:url, on the other hand, must be the URL of the current
+// (localized) page — otherwise social crawlers like Slack/Telegram/LinkedIn
+// follow og:url to the English page and surface English metadata in shares
+// of non-English pages.
 const canonicalUrl = canonical
   ? new URL(canonical, site).toString()
   : new URL(logicalPath, site).toString();
+const currentUrl = new URL(Astro.url.pathname, site).toString();
 
 const ogImageUrl = ogImage
   ? new URL(ogImage, site).toString()
@@ -105,9 +111,6 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    {/* Preload only the Source Serif subsets that cover the current locale.
-        Latin works for en/es/fr/de/pt; ru also needs Cyrillic. Other scripts
-        (ar, hi, zh, bn) do not use the serif at all (see DESIGN.md). */}
     <link
       rel="preload"
       as="font"
@@ -139,7 +142,7 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:url" content={currentUrl} />
     <meta property="og:locale" content={localeOgLang[currentLocale]} />
     {hreflangLocales
       .filter((l) => l !== currentLocale)
@@ -164,14 +167,16 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    {/* No-FOUC theme bootstrap. Runs synchronously before <body> renders. */}
     <script is:inline>
       (() => {
         try {
           const stored = localStorage.getItem("theme");
-          const valid = stored === "light" || stored === "dark" ? stored : null;
+          const mode =
+            stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
           const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-          document.documentElement.dataset.theme = valid ?? (systemDark ? "dark" : "light");
+          document.documentElement.dataset.themeMode = mode;
+          document.documentElement.dataset.theme =
+            mode === "light" ? "light" : mode === "dark" ? "dark" : systemDark ? "dark" : "light";
         } catch {
           // localStorage unavailable (private browsing, blocked storage); html[data-theme="light"] fallback stands.
         }

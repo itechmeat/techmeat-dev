@@ -7,6 +7,8 @@ const localeBcp47: Record<Locale, string> = {
   de: "de-DE",
   pt: "pt-BR",
   ru: "ru-RU",
+  sr: "sr-Latn-RS",
+  tr: "tr-TR",
   ar: "ar",
   hi: "hi-IN",
   zh: "zh-CN",

@@ -23,10 +23,7 @@ export const ar: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "جميع المقالات →",
   "about.description": "من أنا وما أعمل عليه.",
   "about.findMeHeading": "تجدني على",
-  "about.githubSuffix": " — للكود.",
   "about.placeholder": "نص مؤقت. سيتم إضافة سيرة ذاتية هنا قريباً.",
-  "about.twitterSuffix": " — للأفكار.",
-  "about.linkedinSuffix": " — للجانب المهني.",
   "stack.description": "الأدوات والبنية التقنية والمنهجية التي يقوم عليها هذا الموقع.",
   "stack.placeholder":
     "نص مؤقت. ستظهر هنا الأدوات والمعدات ومساعدو الذكاء الاصطناعي والبنية التقنية وعملية البناء ومنهجية الذكاء الاصطناعي.",
@@ -36,4 +33,5 @@ export const ar: Partial<Record<DictionaryKey, string>> = {
   "404.body": "الصفحة التي تبحث عنها غير موجودة.",
   "404.linkHome": "العودة إلى الصفحة الرئيسية",
   "404.linkPosts": "جميع المقالات",
+  "themeToggle.label": "تبديل السمة",
 };
