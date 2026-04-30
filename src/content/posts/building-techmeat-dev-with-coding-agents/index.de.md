@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: de
+prFileId: 084c6cdc147a078793e622b3c310b6d0f92df096003a97c2de8b367ba240c3ef
 ---
 
 Ich hatte schon mal einen Blog. Ordentlicher Traffic, klares Thema, echte persönliche Erfahrung: Ich schrieb über Frontend und über die Dinge, die ich selbst durchgemacht habe. Dann habe ich ihn aus nicht besonders wichtigen Gründen nicht mehr gepflegt und dabei nebenbei die Domain verloren.
@@ -112,4 +113,65 @@ Die nächste Etappe ist Design. Die Fortsetzung dieses Posts wird genau darüber
 
 Vorerst, für die Geschichte, halten wir fest, wie der Blog heute aussieht:
 
-<!-- TODO: Embed YouTube video showcasing the first version of the blog. -->
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Design mit Impeccable
+
+Wenn du das Video oben gesehen hast — dann hast du schon gesehen, wie der Blog vorher aussah und wie er nachher geworden ist.
+
+Ich habe das Design bewusst in eine separate Phase ausgelagert, um es nicht mit Architektur und Inhalt in einer einzigen Aufgabe zu vermischen. Kollegen haben mir das Skill-System [Impeccable](https://impeccable.style/) empfohlen — es hilft dem Agenten, ein durchdachteres Visual aufzubauen anstelle der Standard-KI-Ästhetik.
+
+Es kam gleichzeitig einfach und nicht einfach heraus. Einfach — weil das Ganze in einen Prompt und ein paar Fragerunden mit Claude Code passte. Nicht einfach — weil der Prompt sorgfältig geschrieben werden musste, und Claude Codes Fragen waren nicht gerade die einfachsten.
+
+Start-Prompt:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+Claude Code hat das Design ziemlich schnell aktualisiert. Nach ein paar präzisierenden Prompts war ich mit dem Ergebnis zufrieden.
+
+## Poster mit Pencil
+
+Als Nächstes — Poster, damit Links zum Blog beim Teilen in sozialen Netzwerken gut aussehen. Ich habe [Pencil](https://www.pencil.dev/) angebunden (ihr MCP ist hervorragend) und Claude Code gebeten, ein [Poster-System](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) zu bauen und ins Projekt zu exportieren. Ein paar manuelle Korrekturen waren nötig, aber insgesamt — schnell und sauber.
+
+Prompt für diesen Teil:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## Kommentare, Lighthouse und Hosting
+
+Ein Kommentarsystem habe ich nicht angebunden — den Bedarf sehe ich noch nicht. Wenn du einen Beitrag diskutieren möchtest, gibt es darunter einen Link zur PR; dort kannst du direkt einen Kommentar hinterlassen.
+
+Ganz zum Schluss habe ich den Agenten gebeten, die Seite mit Lighthouse zu prüfen und die Werte nachzuziehen. Am Ende sind sie auf 100 % gelandet.
+
+Beim Hosting wollte ich von Anfang an die billigstmögliche Option in Geld und Zeit — Cloudflare Pages. Null Dollar für alles, plus eingebaute Analytics. Die Domain habe ich übrigens auch bei Cloudflare gekauft — sie war günstiger als bei den üblichen Registraren.
+
+## Was als Nächstes kommt
+
+Damit ist der erste Zyklus abgeschlossen: der Blog läuft, ist übersetzt, hat Design, OG-Poster und Metriken, für die man sich nicht schämen muss. Der nächste Schritt ist die Automatisierung des Schreibens von Beiträgen. Ich habe eine Idee, wie man das „modern" macht — darüber schreibe ich in einem separaten Beitrag.

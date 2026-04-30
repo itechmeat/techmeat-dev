@@ -23,10 +23,7 @@ export const de: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "Alle Beiträge ansehen →",
   "about.description": "Wer ich bin und woran ich arbeite.",
   "about.findMeHeading": "Finde mich auf",
-  "about.githubSuffix": " — für Code.",
   "about.placeholder": "Platzhalter. Hier kommt die CV-Erzählung.",
-  "about.twitterSuffix": " — für Gedanken.",
-  "about.linkedinSuffix": " — für die berufliche Seite.",
   "stack.description": "Werkzeuge, Stack und Methodik hinter dieser Seite.",
   "stack.placeholder":
     "Platzhalter. Hier kommen Werkzeuge, Hardware, AI-Assistenten, Stack, Build-Pipeline und AI-Coding-Methodik.",
@@ -36,4 +33,5 @@ export const de: Partial<Record<DictionaryKey, string>> = {
   "404.body": "Die gesuchte Seite existiert nicht.",
   "404.linkHome": "Zurück zur Startseite",
   "404.linkPosts": "Alle Beiträge",
+  "themeToggle.label": "Theme wechseln",
 };

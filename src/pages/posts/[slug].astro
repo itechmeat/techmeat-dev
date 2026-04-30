@@ -58,7 +58,7 @@ const related = relatedPosts(
 );
 
 const prNumber = entry.data.prNumber;
-const prUrl = prNumber ? resolvePrUrl(prNumber) : undefined;
+const prUrl = prNumber ? resolvePrUrl(prNumber, entry.data.prFileId) : undefined;
 
 const ogImage = resolveOgImage({
   kind: "post",

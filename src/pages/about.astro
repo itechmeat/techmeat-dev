@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SchemaJsonLd from "../components/SchemaJsonLd.astro";
 import { defaultLocale } from "../i18n/config";
@@ -23,12 +24,6 @@ const profileSchema = {
 <BaseLayout title={`${heading} — techmeat.dev`} description={description} ogImage="/posters/og/pages/about.png">
   <SchemaJsonLd type="ProfilePage" data={profileSchema} />
   <h1>{heading}</h1>
-  <p class="page-lede">
-    <em>
-      (AI-generated draft based on project context. To be rewritten
-      by a human later.)
-    </em>
-  </p>
 
   <p>
     I'm Sergey Eroshenkov, a software engineer with a long stretch in frontend, now spending most
@@ -56,24 +51,40 @@ const profileSchema = {
   </p>
 
   <h2>{t("about.findMeHeading", locale)}</h2>
-  <ul>
-    <li>
-      <a
-        href="https://github.com/itechmeat"
-        target="_blank"
-        rel="me noopener noreferrer">GitHub</a>{t("about.githubSuffix", locale)}
-    </li>
-    <li>
-      <a
-        href="https://x.com/techmeat"
-        target="_blank"
-        rel="me noopener noreferrer">X</a>{t("about.twitterSuffix", locale)}
-    </li>
-    <li>
-      <a
-        href="https://www.linkedin.com/in/techmeat/"
-        target="_blank"
-        rel="me noopener noreferrer">LinkedIn</a>{t("about.linkedinSuffix", locale)}
-    </li>
-  </ul>
+  <div class="about-socials">
+    <ul>
+      <li>
+        <a href="mailto:itechmeat@gmail.com" rel="me">
+          <Icon name="lucide:mail" aria-hidden="true" />
+          <span>itechmeat@gmail.com</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://t.me/techmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:telegram" aria-hidden="true" />
+          <span>Telegram</span>
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a href="https://github.com/itechmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:github" aria-hidden="true" />
+          <span>GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://x.com/techmeat" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:x" aria-hidden="true" />
+          <span>X</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/techmeat/" target="_blank" rel="me noopener noreferrer">
+          <Icon name="simple-icons:linkedin" aria-hidden="true" />
+          <span>LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </BaseLayout>

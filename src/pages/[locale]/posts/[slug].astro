@@ -38,13 +38,12 @@ const { entry } = Astro.props as Props;
 const { Content } = await render(entry);
 const slug = entry.id.split("/")[0];
 
-// prNumber lives only on the canonical English file. Look it up by shared slug.
 const siblingEntries = await getCollection("posts", ({ data }) => isVisiblePost(data));
 const sameSlugSiblings = siblingEntries.filter((post) => post.id.split("/")[0] === slug);
 const availableLocales = Array.from(new Set(sameSlugSiblings.map((post) => post.data.locale)));
 const enSibling = sameSlugSiblings.find((p) => p.data.locale === defaultLocale);
 const prNumber = enSibling?.data.prNumber;
-const prUrl = prNumber ? resolvePrUrl(prNumber) : undefined;
+const prUrl = prNumber ? resolvePrUrl(prNumber, entry.data.prFileId) : undefined;
 
 const ogImage = resolveOgImage({
   kind: "post",

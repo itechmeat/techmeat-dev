@@ -23,10 +23,7 @@ export const ru: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "Все посты →",
   "about.description": "Кто я и над чем работаю.",
   "about.findMeHeading": "Найти меня",
-  "about.githubSuffix": " — код.",
   "about.placeholder": "Placeholder. Здесь будет CV-narrative.",
-  "about.twitterSuffix": " — мысли.",
-  "about.linkedinSuffix": " — рабочее.",
   "stack.description": "Инструменты, стек и методология, на которых работает этот сайт.",
   "stack.placeholder":
     "Placeholder. Здесь будут инструменты, AI-ассистенты, стек, пайплайн сборки и методология AI-кодинга.",
@@ -36,4 +33,5 @@ export const ru: Partial<Record<DictionaryKey, string>> = {
   "404.body": "Страницы, которую вы ищете, не существует.",
   "404.linkHome": "На главную",
   "404.linkPosts": "Все посты",
+  "themeToggle.label": "Переключить тему",
 };

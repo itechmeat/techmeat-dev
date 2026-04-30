@@ -136,6 +136,12 @@
       "sourceType": "github",
       "computedHash": "2ba2da6d52891f749931679765223c0039290e845935f905c82dae5204868a4e"
     },
+    "suno-engineer": {
+      "source": "bitwize-music-studio/claude-ai-music-skills",
+      "sourceType": "github",
+      "skillPath": "skills/suno-engineer/SKILL.md",
+      "computedHash": "8eec223795277fab0861bf7536b6226281abd5ad9f1b4b6ca2efe679d713e77f"
+    },
     "technical-seo-checker": {
       "source": "aaron-he-zhu/seo-geo-claude-skills",
       "sourceType": "github",

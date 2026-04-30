@@ -12,6 +12,7 @@ const posts = defineCollection({
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).default([]),
     prNumber: z.number().int().positive().optional(),
+    prFileId: z.string().min(1).optional(),
     ogImage: z.string().optional(),
     draft: z.boolean().default(false),
     locale: z.enum(locales),

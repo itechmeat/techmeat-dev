@@ -23,10 +23,7 @@ export const hi: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "सभी पोस्ट देखें →",
   "about.description": "मैं कौन हूँ और किस पर काम करता हूँ।",
   "about.findMeHeading": "मुझे यहाँ खोजें",
-  "about.githubSuffix": " — कोड के लिए।",
   "about.placeholder": "प्लेसहोल्डर सामग्री। यहाँ CV-शैली का विवरण होगा।",
-  "about.twitterSuffix": " — विचारों के लिए।",
-  "about.linkedinSuffix": " — पेशेवर पहचान के लिए।",
   "stack.description": "इस साइट के पीछे के टूल्स, स्टैक और कार्यप्रणाली।",
   "stack.placeholder":
     "प्लेसहोल्डर सामग्री। यहाँ टूल्स, हार्डवेयर, AI-असिस्टेंट, स्टैक, बिल्ड पाइपलाइन और AI-कोडिंग पद्धति होगी।",
@@ -36,4 +33,5 @@ export const hi: Partial<Record<DictionaryKey, string>> = {
   "404.body": "आप जो पेज खोज रहे हैं वो मौजूद नहीं है।",
   "404.linkHome": "होम पर वापस जाएँ",
   "404.linkPosts": "सभी पोस्ट",
+  "themeToggle.label": "थीम बदलें",
 };

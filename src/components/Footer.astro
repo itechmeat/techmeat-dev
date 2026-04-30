@@ -1,5 +1,6 @@
 ---
 // src/components/Footer.astro
+import { Icon } from "astro-icon/components";
 import { t } from "../i18n/t";
 import type { Locale } from "../i18n/config";
 
@@ -23,8 +24,14 @@ const rssHref = locale === "en" ? "/rss.xml" : `/${locale}/rss.xml`;
       <a
         href="https://github.com/itechmeat"
         target="_blank"
-        rel="me noopener noreferrer">GitHub</a>
-      <a href={rssHref} aria-label="RSS feed">RSS</a>
+        rel="me noopener noreferrer">
+        <Icon name="simple-icons:github" aria-hidden="true" />
+        <span>GitHub</span>
+      </a>
+      <a href={rssHref} aria-label="RSS feed">
+        <Icon name="lucide:rss" aria-hidden="true" />
+        <span>RSS</span>
+      </a>
       {/* /privacy is English-only by design — link is identical from every locale */}
       <a href="/privacy">{t("footer.privacy", locale)}</a>
     </div>

@@ -23,10 +23,7 @@ export const zh: Partial<Record<DictionaryKey, string>> = {
   "home.viewAllPosts": "查看全部文章 →",
   "about.description": "我是谁，我在做什么。",
   "about.findMeHeading": "在这里找到我",
-  "about.githubSuffix": " — 看代码。",
   "about.placeholder": "占位内容。这里将是 CV 风格的介绍。",
-  "about.twitterSuffix": " — 看想法。",
-  "about.linkedinSuffix": " — 看职业经历。",
   "stack.description": "构建本站使用的工具、技术栈与方法论。",
   "stack.placeholder":
     "占位内容。这里将列出工具、硬件、AI 助手、技术栈、构建流程和 AI 辅助编码方法论。",
@@ -36,4 +33,5 @@ export const zh: Partial<Record<DictionaryKey, string>> = {
   "404.body": "您查找的页面不存在。",
   "404.linkHome": "返回首页",
   "404.linkPosts": "所有文章",
+  "themeToggle.label": "切换主题",
 };

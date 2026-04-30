@@ -21,10 +21,7 @@ export const en = {
   "home.viewAllPosts": "View all posts →",
   "about.description": "Who I am and what I work on.",
   "about.findMeHeading": "Find me on",
-  "about.githubSuffix": " — for code.",
   "about.placeholder": "Placeholder content. CV-style narrative goes here.",
-  "about.twitterSuffix": " — for thoughts.",
-  "about.linkedinSuffix": " — for the professional side.",
   "stack.description": "Tools, stack, and the methodology behind this site.",
   "stack.placeholder":
     "Placeholder content. Tools, hardware, AI assistants, stack, build pipeline, and AI-coding methodology will live here.",
@@ -34,6 +31,7 @@ export const en = {
   "404.body": "The page you're looking for doesn't exist.",
   "404.linkHome": "Back home",
   "404.linkPosts": "All posts",
+  "themeToggle.label": "Toggle theme",
   // test-only key referenced by t.test.ts:
   __only_en_test_key: "only-en-test-fallback",
 } as const;

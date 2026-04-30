@@ -348,7 +348,7 @@ ol {
   padding-inline-start: var(--space-5);
 }
 
-li + li {
+.post :where(ul, ol) > li + li {
   margin-block-start: var(--space-2);
 }
 
@@ -607,19 +607,29 @@ main > h2 {
   outline-offset: 2px;
 }
 
-/* Theme icon: CSS-driven, paints correctly on first render (no flash).
-   Light scene shows the moon (affordance: "switch to dark").
-   Dark scene shows the sun (affordance: "switch to light"). */
-.theme-icon {
+/* Theme-toggle icons. data-theme-mode is set synchronously by the no-FOUC
+   bootstrap before paint, so the right glyph appears on first render. */
+.theme-toggle-icon {
   display: none;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
-:root:not([data-theme="dark"]) .theme-icon-light {
-  display: inline;
+:root[data-theme-mode="light"] .theme-toggle-icon[data-mode="light"],
+:root[data-theme-mode="dark"] .theme-toggle-icon[data-mode="dark"],
+:root[data-theme-mode="system"] .theme-toggle-icon[data-mode="system"] {
+  display: inline-flex;
 }
 
-:root[data-theme="dark"] .theme-icon-dark {
-  display: inline;
+/* Default fallback when data-theme-mode is absent (script blocked, e.g.
+   strict CSP, no-JS preview). The "system" glyph is the most honest default. */
+:root:not([data-theme-mode]) .theme-toggle-icon[data-mode="system"] {
+  display: inline-flex;
+}
+
+.theme-toggle-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 40rem) {
@@ -674,7 +684,7 @@ main > h2 {
   display: inline-flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  align-items: baseline;
+  align-items: center;
 }
 
 .site-footer a {
@@ -689,6 +699,18 @@ main > h2 {
 .site-footer a:hover {
   color: var(--color-accent);
   border-block-end-color: var(--color-accent);
+}
+
+.site-footer a:has([data-icon]) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.site-footer a [data-icon] {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
 }
 
 @media (min-width: 40rem) {
@@ -790,6 +812,15 @@ main > h2 {
 .post table {
   max-width: 100%;
   min-width: 0;
+}
+
+.post iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  margin: 1.75rem auto;
 }
 
 /* Keep expressive-code's copy button visible on desktop (hover devices),
@@ -1090,6 +1121,51 @@ main > table {
 main > p em {
   color: var(--color-text-muted);
   font-style: italic;
+}
+
+/* About-page socials: two <ul> lists, each one a horizontal row of links.
+   The lists stack vertically. Within each link, the icon and text are
+   vertically centered against each other (line-height: 1 trims the link's
+   line-box so the icon doesn't get pulled off the text's optical center). */
+main > h2 + .about-socials {
+  margin-block-start: var(--space-4);
+}
+
+.about-socials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.about-socials > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  line-height: 1;
+  text-underline-offset: 0.22em;
+}
+
+.about-socials a [data-icon] {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.about-socials a:hover [data-icon],
+.about-socials a:focus-visible [data-icon] {
+  color: var(--color-accent);
 }
 
 /* --------------------------------------------------------------------------
