@@ -19,765 +19,1027 @@ const description = t("stack.description", locale);
   {
     locale === "ru" ? (
       <>
-        <p>
-          <em>(Сгенерировано AI. Будет переписано человеком позже.)</em>
-        </p>
-
-        <p>
-          Слепок того, на чём построен techmeat.dev, какими инструментами я пользуюсь каждый день
-          и какой воркфлоу применяю, чтобы выпускать посты и фичи в связке с кодинг-агентами.
-        </p>
-
-        <h2>Технологический стек</h2>
+        <h2>Фронтенд</h2>
         <ul>
           <li>
-            <strong>Astro 6</strong> в режиме <code>output: 'static'</code>. Посты — Markdown,
-            рендерятся через Astro Content Collections.
+            Фронтендом занимаюсь 20 лет; много лет попеременно работаю с{" "}
+            <strong>ReactJS</strong> и <strong>VueJS</strong>, а также с продуктами на их основе —{" "}
+            <strong>NextJS</strong> и <strong>NuxtJS</strong>.
           </li>
           <li>
-            <strong>Solid.js</strong> через <code>@astrojs/solid-js</code> для немногих
-            интерактивных островов: переключатель темы, переключатель языка, кнопка копирования
-            кода.
+            Особую любовь питаю к вёрстке макетов: <strong>CSS</strong> и семантичный{" "}
+            <strong>HTML</strong> мне ближе, чем JS или TS.
           </li>
           <li>
-            <strong>Bun</strong> как рантайм, пакетный менеджер и тест-раннер. Никакого npm и pnpm.
+            <strong>Astro</strong> впервые использую как раз для этого блога — кажется, любовь с
+            первого взгляда.
+          </li>
+        </ul>
+
+        <h2>Бэкенд</h2>
+        <p>
+          Я не бэкендер, но при моём опыте в вебе шансов не столкнуться с этой стороной не было.
+          Поэтому для небольших стартапов и собственных пет-проектов я делаю fullstack как
+          человек-оркестр.
+        </p>
+        <ul>
+          <li>
+            Для совсем простых вещей — <strong>HonoJS</strong> + <strong>SQLite</strong>.
           </li>
           <li>
-            <strong>Cloudflare Pages</strong> для хостинга; <strong>Cloudflare Web Analytics</strong>
-            для аналитики, без cookies.
-          </li>
-          <li>
-            <strong>satori</strong> + <strong>resvg</strong> для генерации OG-картинок на
-            билд-тайме — отдельная картинка под каждый пост и каждую локаль.
-          </li>
-          <li>
-            <strong>@vite-pwa/astro</strong> (Workbox) — устанавливаемое PWA с offline-fallback.
-          </li>
-          <li>
-            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap и
-            пер-локальные RSS-фиды.
+            Для проектов посложнее — <strong>FastAPI</strong> и <strong>PostgreSQL</strong> в
+            Docker.
           </li>
         </ul>
 
         <h2>Инструменты</h2>
+        <p>Я ленивый, поэтому:</p>
         <ul>
+          <li>стараюсь покрывать код тестами;</li>
+          <li>обвешиваю проекты разными линтерами и форматерами;</li>
           <li>
-            <strong>oxlint</strong> + <strong>oxfmt</strong> — линтер и форматтер на Rust. Без
-            ESLint и Prettier.
-          </li>
-          <li>
-            <strong>@astrojs/check</strong> — типизация для <code>.astro</code> файлов.
-          </li>
-          <li>
-            <strong>lefthook</strong> — pre-commit хуки: линт, форматирование и typecheck на каждом
-            коммите.
-          </li>
-          <li>
-            <strong>bun:test</strong> — встроенный тест-фреймворк.
+            благодаря этому проверки качества кода идут автоматически и не съедают моё время.
           </li>
         </ul>
 
         <h2>AI-ассистенты</h2>
         <ul>
           <li>
-            <strong>Claude Code</strong> — основной кодинг-агент. Контекст проекта живёт в{" "}
-            <code>CLAUDE.md</code> и <code>AGENTS.md</code>.
+            <strong>GitHub Copilot</strong> — основной на сегодня, но с анонсом изменений в
+            ценовой политике, скорее всего, скоро уйдёт из арсенала.
           </li>
           <li>
-            <strong>Superpowers skills</strong> — brainstorming, writing-plans,
-            subagent-driven-development для нетривиальных фич.
+            <strong>Claude Code</strong> — в первую очередь для планирования и работы с
+            текстами.
           </li>
           <li>
-            <strong>GPT-5.5</strong> — второй проход ревью на крупных изменениях.
+            <strong>Codex</strong> — для кодинга.
           </li>
           <li>
-            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
-            markup, on-page audit, content-quality auditor (CORE-EEAT), GEO content optimizer для
-            цитируемости в AI-движках.
+            <strong>Opencode</strong> — для экспериментов с опенсорсными моделями.
+          </li>
+          <li>
+            <strong>Hermes</strong> — для автоматизаций.
           </li>
         </ul>
 
         <h2>Железо</h2>
         <ul>
-          <li>(Placeholder — заполнит человек.)</li>
+          <li>Работаю на MacBook.</li>
+          <li>
+            Эксперименты с локальными моделями — на Windows-десктопе с мощной видеокартой.
+          </li>
+          <li>Проекты деплою на Linux.</li>
         </ul>
 
         <h2>Воркфлоу</h2>
-        <p>Каждый пост и каждая фича проходят примерно один и тот же цикл:</p>
+        <p>Каждая фича проходит примерно один и тот же цикл:</p>
         <ol>
           <li>
             Зафиксировать цель и ограничения в <code>CLAUDE.md</code> / <code>AGENTS.md</code>,
             чтобы у агента был стабильный контекст.
           </li>
           <li>Сделать брейншторминг через Superpowers, получить дизайн-спецификацию.</li>
-          <li>Перевести спецификацию в план реализации с конкретными шагами.</li>
           <li>
-            Subagent-driven выполнение с двухступенчатым ревью (соответствие спеке, потом качество
-            кода) на каждой задаче.
+            Перевести спецификацию в план реализации с конкретными шагами; детализация stories
+            происходит в <strong>Openspec</strong>.
           </li>
-          <li>Для постов — многоступенчатый SEO + GEO пайплайн перед публикацией.</li>
+          <li>
+            Subagent-driven выполнение в режимах <strong>TDD</strong> и <strong>SDD</strong>,
+            с двухступенчатым ревью на каждой задаче (сначала соответствие спеке, потом качество
+            кода).
+          </li>
         </ol>
-
-        <p>
-          Смысл этой страницы — открыто показать тулчейн, чтобы посты могли быть про <em>процесс</em>,
-          а не каждый раз заново объяснять сетап.
-        </p>
       </>
     ) : locale === "sr" ? (
       <>
-        <p>
-          <em>(Generisano AI-em. Biće prepisano ručno kasnije.)</em>
-        </p>
-
-        <p>
-          Snimak onoga na čemu je izgrađen techmeat.dev, koje alate koristim svakodnevno i
-          kakav workflow primenjujem da bih objavljivao postove i feature-e u paru sa
-          coding-agentima.
-        </p>
-
-        <h2>Tehnološki stack</h2>
+        <h2>Frontend</h2>
         <ul>
           <li>
-            <strong>Astro 6</strong> u režimu <code>output: 'static'</code>. Postovi — Markdown,
-            renderuju se preko Astro Content Collections.
+            Frontend-om se bavim 20 godina; mnogo godina sam radio naizmenično sa{" "}
+            <strong>ReactJS</strong> i <strong>VueJS</strong>, kao i sa frameworkovima nad
+            njima — <strong>NextJS</strong> i <strong>NuxtJS</strong>.
           </li>
           <li>
-            <strong>Solid.js</strong> kroz <code>@astrojs/solid-js</code> za malobrojna
-            interaktivna ostrva: prekidač teme, prekidač jezika, dugme za kopiranje koda.
+            Posebnu ljubav gajim prema verstanju layout-a: <strong>CSS</strong> i semantički{" "}
+            <strong>HTML</strong> su mi bliži od JS-a ili TS-a.
           </li>
           <li>
-            <strong>Bun</strong> kao runtime, package manager i test-runner. Bez npm i pnpm.
+            <strong>Astro</strong> prvi put koristim baš za ovaj blog — izgleda kao ljubav na
+            prvi pogled.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          Nisam backender, ali sa mojim iskustvom u webu nije bilo šanse da ovu stranu
+          zaobiđem. Zato za male startupe i svoje pet-projekte radim fullstack kao
+          čovek-orkestar.
+        </p>
+        <ul>
+          <li>
+            Za vrlo jednostavne stvari — <strong>HonoJS</strong> + <strong>SQLite</strong>.
           </li>
           <li>
-            <strong>Cloudflare Pages</strong> za hosting; <strong>Cloudflare Web Analytics</strong>
-            za analitiku, bez cookies.
-          </li>
-          <li>
-            <strong>satori</strong> + <strong>resvg</strong> za generisanje OG-slika u
-            build-time-u — zasebna slika za svaki post i svaki locale.
-          </li>
-          <li>
-            <strong>@vite-pwa/astro</strong> (Workbox) — instalabilna PWA sa offline fallback-om.
-          </li>
-          <li>
-            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap i
-            per-locale RSS feedovi.
+            Za složenije projekte — <strong>FastAPI</strong> i <strong>PostgreSQL</strong> u
+            Docker-u.
           </li>
         </ul>
 
         <h2>Alati</h2>
+        <p>Lenj sam, zato:</p>
         <ul>
+          <li>trudim se da pokrijem kod testovima;</li>
+          <li>okačujem na projekte razne lintere i formatere;</li>
           <li>
-            <strong>oxlint</strong> + <strong>oxfmt</strong> — linter i formatter u Rust-u. Bez
-            ESLint-a i Prettier-a.
-          </li>
-          <li>
-            <strong>@astrojs/check</strong> — tipizacija za <code>.astro</code> fajlove.
-          </li>
-          <li>
-            <strong>lefthook</strong> — pre-commit hook-ovi: lint, format i typecheck na svakom
-            commit-u.
-          </li>
-          <li>
-            <strong>bun:test</strong> — ugrađeni test-framework.
+            zahvaljujući tome, provere kvaliteta koda idu automatski i ne jedu mi vreme.
           </li>
         </ul>
 
         <h2>AI asistenti</h2>
         <ul>
           <li>
-            <strong>Claude Code</strong> — glavni coding-agent. Kontekst projekta živi u{" "}
-            <code>CLAUDE.md</code> i <code>AGENTS.md</code>.
+            <strong>GitHub Copilot</strong> — trenutno glavni, ali sa najavljenim promenama u
+            cenovnoj politici verovatno će ubrzo nestati iz arsenala.
           </li>
           <li>
-            <strong>Superpowers skills</strong> — brainstorming, writing-plans,
-            subagent-driven-development za netrivijalne feature-e.
+            <strong>Claude Code</strong> — pre svega za planiranje i rad sa tekstovima.
           </li>
           <li>
-            <strong>GPT-5.5</strong> — drugi prolaz review-a na većim izmenama.
+            <strong>Codex</strong> — za kodiranje.
           </li>
           <li>
-            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
-            markup, on-page audit, content-quality auditor (CORE-EEAT), GEO content optimizer
-            za citabilnost u AI-engine-ima.
+            <strong>Opencode</strong> — za eksperimente sa open-source modelima.
+          </li>
+          <li>
+            <strong>Hermes</strong> — za automatizacije.
           </li>
         </ul>
 
         <h2>Hardver</h2>
         <ul>
-          <li>(Placeholder — popuniće čovek.)</li>
+          <li>Radim na MacBook-u.</li>
+          <li>
+            Eksperimenti sa lokalnim modelima — na Windows desktop-u sa moćnom grafičkom
+            karticom.
+          </li>
+          <li>Projekte deploy-ujem na Linux.</li>
         </ul>
 
         <h2>Workflow</h2>
-        <p>Svaki post i svaki feature prolaze otprilike isti ciklus:</p>
+        <p>Svaki feature prolazi otprilike isti ciklus:</p>
         <ol>
           <li>
             Fiksirati cilj i ograničenja u <code>CLAUDE.md</code> / <code>AGENTS.md</code>, da
             agent ima stabilan kontekst.
           </li>
           <li>Uraditi brainstorming kroz Superpowers, dobiti dizajn-specifikaciju.</li>
-          <li>Prevesti specifikaciju u plan implementacije sa konkretnim koracima.</li>
           <li>
-            Subagent-driven izvršavanje sa dvostepenim review-om (saglasnost sa spec-om, pa
-            kvalitet koda) na svakom zadatku.
+            Prevesti specifikaciju u plan implementacije sa konkretnim koracima; detaljisanje
+            stories-a se dešava u <strong>Openspec-u</strong>.
           </li>
-          <li>Za postove — višestepeni SEO + GEO pipeline pre objavljivanja.</li>
+          <li>
+            Subagent-driven izvršavanje u <strong>TDD</strong> i <strong>SDD</strong>{" "}
+            režimima, sa dvostepenim review-om po zadatku (najpre saglasnost sa spec-om, zatim
+            kvalitet koda).
+          </li>
         </ol>
-
-        <p>
-          Smisao ove stranice — otvoreno pokazati toolchain, da postovi mogu biti o{" "}
-          <em>procesu</em>, a ne da svaki put iznova objašnjavam setup.
-        </p>
       </>
     ) : locale === "tr" ? (
       <>
-        <p>
-          <em>(AI tarafından üretildi. Daha sonra elle yeniden yazılacak.)</em>
-        </p>
-
-        <p>
-          techmeat.dev'in neyin üzerine inşa edildiğinin, her gün hangi araçları kullandığımın
-          ve coding-ajanlarla post ve feature yayınlamak için hangi workflow'u uyguladığımın
-          anlık görüntüsü.
-        </p>
-
-        <h2>Teknoloji stack</h2>
+        <h2>Frontend</h2>
         <ul>
           <li>
-            <strong>Astro 6</strong>, <code>output: 'static'</code> modunda. Postlar — Markdown,
-            Astro Content Collections üzerinden render ediliyor.
+            Frontend ile 20 yıldır uğraşıyorum; uzun yıllar boyunca <strong>ReactJS</strong>{" "}
+            ve <strong>VueJS</strong> ile dönüşümlü çalıştım, ayrıca onların üzerine kurulu
+            framework'lerle — <strong>NextJS</strong> ve <strong>NuxtJS</strong> ile.
           </li>
           <li>
-            <strong>Solid.js</strong>, <code>@astrojs/solid-js</code> aracılığıyla az sayıdaki
-            etkileşimli ada için: tema değiştirici, dil değiştirici, kod kopyalama düğmesi.
+            Layout işine özel bir sevgim var: <strong>CSS</strong> ve semantik{" "}
+            <strong>HTML</strong> bana JS veya TS'den daha yakın.
           </li>
           <li>
-            <strong>Bun</strong> runtime, package manager ve test-runner olarak. npm ve pnpm yok.
+            <strong>Astro</strong>'yu ilk kez tam da bu blog için kullanıyorum — görünüşe göre
+            ilk görüşte aşk.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          Backender değilim ama webdeki tecrübemle bu tarafa hiç bulaşmamak şansım yoktu. Bu
+          yüzden küçük startup'lar ve kendi pet-projelerim için tek başına orkestra gibi
+          fullstack yapıyorum.
+        </p>
+        <ul>
+          <li>
+            Çok basit şeyler için — <strong>HonoJS</strong> + <strong>SQLite</strong>.
           </li>
           <li>
-            <strong>Cloudflare Pages</strong> hosting için; <strong>Cloudflare Web Analytics</strong>
-            cookie'siz analitik için.
-          </li>
-          <li>
-            <strong>satori</strong> + <strong>resvg</strong> build-time'da OG görseli üretmek
-            için — her post ve her locale için ayrı bir görsel.
-          </li>
-          <li>
-            <strong>@vite-pwa/astro</strong> (Workbox) — offline fallback'lı yüklenebilir PWA.
-          </li>
-          <li>
-            <strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> — sitemap ve
-            locale başına RSS feed'ler.
+            Daha karmaşık projeler için — <strong>FastAPI</strong> ve Docker içinde{" "}
+            <strong>PostgreSQL</strong>.
           </li>
         </ul>
 
         <h2>Araçlar</h2>
+        <p>Tembelim, bu yüzden:</p>
         <ul>
+          <li>kodu testlerle kaplamaya çalışıyorum;</li>
+          <li>projeleri çeşitli linter ve formatter'larla donatıyorum;</li>
           <li>
-            <strong>oxlint</strong> + <strong>oxfmt</strong> — Rust'ta yazılmış linter ve
-            formatter. ESLint ve Prettier yok.
-          </li>
-          <li>
-            <strong>@astrojs/check</strong> — <code>.astro</code> dosyaları için tip kontrolü.
-          </li>
-          <li>
-            <strong>lefthook</strong> — pre-commit hook'lar: her commit'te lint, format ve
-            typecheck.
-          </li>
-          <li>
-            <strong>bun:test</strong> — yerleşik test framework.
+            bu sayede kod kalitesi kontrolleri otomatik yürüyor ve zamanımı yemiyor.
           </li>
         </ul>
 
         <h2>AI asistanlar</h2>
         <ul>
           <li>
-            <strong>Claude Code</strong> — birincil coding-ajan. Proje bağlamı{" "}
-            <code>CLAUDE.md</code> ve <code>AGENTS.md</code>'de yaşıyor.
+            <strong>GitHub Copilot</strong> — şu an birincil, ama duyurulan fiyat politikası
+            değişiklikleriyle muhtemelen yakında arsenalden düşecek.
           </li>
           <li>
-            <strong>Superpowers skills</strong> — önemsiz olmayan feature'lar için brainstorming,
-            writing-plans, subagent-driven-development.
+            <strong>Claude Code</strong> — özellikle planlama ve metinlerle çalışma için.
           </li>
           <li>
-            <strong>GPT-5.5</strong> — büyük değişikliklerde ikinci review geçişi.
+            <strong>Codex</strong> — kodlama için.
           </li>
           <li>
-            <strong>SEO / GEO skills</strong> — keyword research, meta-tags optimizer, schema
-            markup, on-page audit, content-quality auditor (CORE-EEAT), AI-motorlarında
-            alıntılanabilirlik için GEO content optimizer.
+            <strong>Opencode</strong> — açık kaynak modellerle deneyler için.
+          </li>
+          <li>
+            <strong>Hermes</strong> — otomasyonlar için.
           </li>
         </ul>
 
         <h2>Donanım</h2>
         <ul>
-          <li>(Placeholder — insan dolduracak.)</li>
+          <li>MacBook'ta çalışıyorum.</li>
+          <li>
+            Yerel modeller deneyleri — güçlü bir GPU'ya sahip bir Windows masaüstünde.
+          </li>
+          <li>Projeleri Linux'a deploy ediyorum.</li>
         </ul>
 
         <h2>Workflow</h2>
-        <p>Her post ve her feature aşağı yukarı aynı döngüden geçer:</p>
+        <p>Her feature aşağı yukarı aynı döngüden geçer:</p>
         <ol>
           <li>
             Ajanın istikrarlı bir bağlamı olsun diye hedefi ve kısıtlamaları{" "}
             <code>CLAUDE.md</code> / <code>AGENTS.md</code>'ye sabitle.
           </li>
           <li>Superpowers ile brainstorming yap, tasarım spesifikasyonunu al.</li>
-          <li>Spesifikasyonu somut adımlarla bir uygulama planına çevir.</li>
           <li>
-            Her görevde iki aşamalı review ile (spesifikasyona uyum, sonra kod kalitesi)
-            subagent-driven yürütme.
+            Spesifikasyonu somut adımlarla bir uygulama planına çevir; story'lerin
+            detaylandırılması <strong>Openspec</strong>'te olur.
           </li>
-          <li>Postlar için — yayın öncesi çok aşamalı SEO + GEO pipeline.</li>
+          <li>
+            <strong>TDD</strong> ve <strong>SDD</strong> modlarında subagent-driven yürütme,
+            her görevde iki aşamalı review ile (önce spesifikasyona uyum, sonra kod kalitesi).
+          </li>
         </ol>
-
-        <p>
-          Bu sayfanın amacı — toolchain'i açıkça göstermek, böylece postlar setup'ı her seferinde
-          yeniden anlatmak yerine <em>süreç</em> hakkında olabilir.
-        </p>
       </>
     ) : locale === "es" ? (
       <>
-        <p><em>(Borrador generado por IA. Será reescrito por un humano más adelante.)</em></p>
-
-        <p>
-          Una instantánea de con qué está construido techmeat.dev, las herramientas en las que me apoyo día a día y el
-          flujo de trabajo que uso para publicar artículos y enviar funcionalidades con agentes de codificación.
-        </p>
-
-        <h2>Stack tecnológico</h2>
+        <h2>Frontend</h2>
         <ul>
-          <li><strong>Astro 6</strong> en modo <code>output: 'static'</code>. Los artículos están en Markdown, renderizados a través de las colecciones de contenido de Astro.</li>
-          <li><strong>Solid.js</strong> mediante <code>@astrojs/solid-js</code> para las pocas islas interactivas: el conmutador de tema, el selector de idioma y el botón de copiar en los bloques de código.</li>
-          <li><strong>Bun</strong> como runtime, gestor de paquetes y ejecutor de pruebas. Sin npm, sin pnpm.</li>
-          <li><strong>Cloudflare Pages</strong> para el hosting; <strong>Cloudflare Web Analytics</strong> para el tráfico, sin cookies.</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> para la generación en tiempo de compilación de tarjetas OG por artículo y por idioma.</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) para una PWA instalable con un fallback sin conexión.</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> para el sitemap y los feeds RSS por idioma.</li>
+          <li>
+            Llevo 20 años en frontend; durante muchos de ellos he trabajado alternando entre{" "}
+            <strong>ReactJS</strong> y <strong>VueJS</strong>, y con frameworks construidos
+            sobre ellos — <strong>NextJS</strong> y <strong>NuxtJS</strong>.
+          </li>
+          <li>
+            Le tengo cariño especial al maquetado: <strong>CSS</strong> y <strong>HTML</strong>{" "}
+            semántico me resultan más cercanos que JS o TS.
+          </li>
+          <li>
+            <strong>Astro</strong> lo uso por primera vez justamente en este blog — parece
+            amor a primera vista.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          No soy backender, pero con mi experiencia en web no había forma de evitar este lado.
+          Así que para pequeños startups y mis pet-projects hago fullstack como hombre
+          orquesta.
+        </p>
+        <ul>
+          <li>
+            Para cosas muy simples — <strong>HonoJS</strong> + <strong>SQLite</strong>.
+          </li>
+          <li>
+            Para proyectos más complejos — <strong>FastAPI</strong> y{" "}
+            <strong>PostgreSQL</strong> en Docker.
+          </li>
         </ul>
 
         <h2>Herramientas</h2>
+        <p>Soy perezoso, por eso:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong>: linter y formateador basados en Rust. Sin ESLint, sin Prettier.</li>
-          <li><strong>@astrojs/check</strong> para la comprobación de TypeScript dentro de los archivos <code>.astro</code>.</li>
-          <li><strong>lefthook</strong> para los hooks de pre-commit (lint + formato + comprobación de tipos en cada commit).</li>
-          <li><strong>bun:test</strong> como framework de pruebas.</li>
+          <li>intento cubrir el código con tests;</li>
+          <li>equipo los proyectos con varios linters y formateadores;</li>
+          <li>
+            gracias a eso las comprobaciones de calidad corren automáticamente y no consumen
+            mi tiempo.
+          </li>
         </ul>
 
         <h2>Asistentes de IA</h2>
         <ul>
-          <li><strong>Claude Code</strong>: el agente de codificación principal. El contexto del proyecto vive en <code>CLAUDE.md</code> y <code>AGENTS.md</code>.</li>
-          <li><strong>Superpowers skills</strong>: brainstorming, writing-plans, subagent-driven-development para funcionalidades no triviales.</li>
-          <li><strong>GPT-5.5</strong>: utilizado para una segunda revisión de código en cambios más grandes.</li>
-          <li><strong>Suite de skills de SEO / GEO</strong>: investigación de palabras clave, optimización de meta-tags, schema markup, auditoría on-page, auditor de calidad de contenido (CORE-EEAT) y optimizador de contenido GEO para motores de IA.</li>
+          <li>
+            <strong>GitHub Copilot</strong> — el principal por ahora, pero con los cambios
+            anunciados en la política de precios probablemente saldrá pronto del arsenal.
+          </li>
+          <li>
+            <strong>Claude Code</strong> — sobre todo para planificación y trabajo con textos.
+          </li>
+          <li>
+            <strong>Codex</strong> — para programar.
+          </li>
+          <li>
+            <strong>Opencode</strong> — para experimentar con modelos open source.
+          </li>
+          <li>
+            <strong>Hermes</strong> — para automatizaciones.
+          </li>
         </ul>
 
         <h2>Hardware</h2>
         <ul>
-          <li>(Marcador de posición: lo rellenará el humano.)</li>
+          <li>Trabajo en un MacBook.</li>
+          <li>
+            Los experimentos con modelos locales corren en un escritorio Windows con una GPU
+            potente.
+          </li>
+          <li>Despliego los proyectos en Linux.</li>
         </ul>
 
         <h2>Flujo de trabajo</h2>
-        <p>Cada artículo y cada funcionalidad pasa aproximadamente por el mismo ciclo:</p>
+        <p>Cada feature pasa aproximadamente por el mismo ciclo:</p>
         <ol>
-          <li>Capturar el objetivo y las restricciones en <code>CLAUDE.md</code> / <code>AGENTS.md</code> para que el agente tenga un contexto estable.</li>
-          <li>Hacer brainstorming sobre la forma del trabajo con Superpowers; producir una especificación de diseño.</li>
-          <li>Convertir la especificación en un plan de implementación con pasos concretos.</li>
-          <li>Ejecución dirigida por subagentes, con una revisión en dos etapas (cumplimiento de la especificación y luego calidad del código) por cada tarea.</li>
-          <li>Para los artículos: un pipeline de SEO + GEO en varias etapas antes de publicar.</li>
+          <li>
+            Fijar el objetivo y las restricciones en <code>CLAUDE.md</code> /{" "}
+            <code>AGENTS.md</code> para que el agente tenga un contexto estable.
+          </li>
+          <li>Hacer brainstorming con Superpowers, obtener una especificación de diseño.</li>
+          <li>
+            Traducir la especificación a un plan de implementación con pasos concretos; el
+            detalle de las stories ocurre en <strong>Openspec</strong>.
+          </li>
+          <li>
+            Ejecución subagent-driven en modos <strong>TDD</strong> y <strong>SDD</strong>,
+            con revisión en dos etapas por tarea (primero conformidad con la spec, luego
+            calidad del código).
+          </li>
         </ol>
-
-        <p>
-          El sentido de esta página es ser honesto sobre la cadena de herramientas para que los artículos puedan mantenerse centrados en
-          el <em>proceso</em> en lugar de volver a explicar la configuración cada vez.
-        </p>
       </>
     ) : locale === "fr" ? (
       <>
-        <p><em>(Brouillon généré par IA. À réécrire ultérieurement par un humain.)</em></p>
-
-        <p>
-          Un aperçu de ce qui fait tourner techmeat.dev, des outils sur lesquels je m'appuie au quotidien, et du
-          workflow que j'utilise pour publier des articles et livrer des fonctionnalités avec des agents de coding.
-        </p>
-
-        <h2>Stack technique</h2>
+        <h2>Frontend</h2>
         <ul>
-          <li><strong>Astro 6</strong> en mode <code>output: 'static'</code>. Les articles sont en Markdown, rendus via les content collections d'Astro.</li>
-          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> pour les rares îlots interactifs — bascule de thème, sélecteur de langue, bouton de copie des blocs de code.</li>
-          <li><strong>Bun</strong> comme runtime, gestionnaire de paquets et test runner. Pas de npm, pas de pnpm.</li>
-          <li><strong>Cloudflare Pages</strong> pour l'hébergement ; <strong>Cloudflare Web Analytics</strong> pour le trafic, sans cookies.</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> pour la génération des cartes OG au build, par article et par locale.</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) pour une PWA installable avec un repli hors ligne.</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> pour le sitemap et les flux RSS par locale.</li>
+          <li>
+            Je fais du frontend depuis 20 ans ; pendant de nombreuses années j'ai alterné
+            entre <strong>ReactJS</strong> et <strong>VueJS</strong>, et avec les frameworks
+            bâtis dessus — <strong>NextJS</strong> et <strong>NuxtJS</strong>.
+          </li>
+          <li>
+            J'ai un faible particulier pour l'intégration : <strong>CSS</strong> et{" "}
+            <strong>HTML</strong> sémantique me sont plus proches que JS ou TS.
+          </li>
+          <li>
+            <strong>Astro</strong>, je l'utilise pour la première fois sur ce blog même — on
+            dirait un coup de foudre.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          Je ne suis pas un backender, mais avec mon vécu côté web il n'y avait aucune chance
+          d'éviter cette face. Alors pour de petits startups et mes projets persos je fais du
+          fullstack en homme-orchestre.
+        </p>
+        <ul>
+          <li>
+            Pour les choses très simples — <strong>HonoJS</strong> + <strong>SQLite</strong>.
+          </li>
+          <li>
+            Pour des projets plus costauds — <strong>FastAPI</strong> et{" "}
+            <strong>PostgreSQL</strong> dans Docker.
+          </li>
         </ul>
 
         <h2>Outillage</h2>
+        <p>Je suis paresseux, alors :</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — linter et formateur basés sur Rust. Pas d'ESLint, pas de Prettier.</li>
-          <li><strong>@astrojs/check</strong> pour la vérification TypeScript à l'intérieur des fichiers <code>.astro</code>.</li>
-          <li><strong>lefthook</strong> pour les hooks de pre-commit (lint + format + vérification de types à chaque commit).</li>
-          <li><strong>bun:test</strong> comme framework de tests.</li>
+          <li>j'essaie de couvrir le code avec des tests ;</li>
+          <li>j'équipe les projets de différents linters et formatters ;</li>
+          <li>
+            grâce à ça, les vérifications de qualité tournent automatiquement et ne me
+            bouffent pas mon temps.
+          </li>
         </ul>
 
         <h2>Assistants IA</h2>
         <ul>
-          <li><strong>Claude Code</strong> — l'agent de coding principal. Le contexte projet vit dans <code>CLAUDE.md</code> et <code>AGENTS.md</code>.</li>
-          <li><strong>Superpowers skills</strong> — brainstorming, writing-plans, subagent-driven-development pour les fonctionnalités non triviales.</li>
-          <li><strong>GPT-5.5</strong> — utilisé pour une seconde passe de revue de code sur les changements plus conséquents.</li>
-          <li><strong>Suite de skills SEO / GEO</strong> — recherche de mots-clés, optimisation des meta tags, balisage schema, audit on-page, auditeur de qualité de contenu (CORE-EEAT), optimiseur de contenu GEO pour les moteurs IA.</li>
+          <li>
+            <strong>GitHub Copilot</strong> — le principal pour le moment, mais avec les
+            changements annoncés de politique tarifaire, il sortira probablement bientôt de
+            l'arsenal.
+          </li>
+          <li>
+            <strong>Claude Code</strong> — surtout pour la planification et le travail
+            textuel.
+          </li>
+          <li>
+            <strong>Codex</strong> — pour le coding.
+          </li>
+          <li>
+            <strong>Opencode</strong> — pour les expérimentations avec des modèles open
+            source.
+          </li>
+          <li>
+            <strong>Hermes</strong> — pour les automatisations.
+          </li>
         </ul>
 
         <h2>Matériel</h2>
         <ul>
-          <li>(Espace réservé — à compléter par l'humain.)</li>
+          <li>Je bosse sur MacBook.</li>
+          <li>
+            Les expérimentations avec des modèles locaux tournent sur un desktop Windows
+            avec une grosse carte graphique.
+          </li>
+          <li>Les projets sont déployés sur Linux.</li>
         </ul>
 
         <h2>Workflow</h2>
-        <p>Chaque article et chaque fonctionnalité passe à peu près par la même boucle :</p>
+        <p>Chaque feature passe à peu près par le même cycle :</p>
         <ol>
-          <li>Consigner l'objectif et les contraintes dans <code>CLAUDE.md</code> / <code>AGENTS.md</code> pour que l'agent dispose d'un contexte stable.</li>
-          <li>Faire un brainstorming sur la forme du travail avec Superpowers ; produire une spec de conception.</li>
-          <li>Transformer la spec en plan d'implémentation avec des étapes concrètes.</li>
-          <li>Exécution menée par sous-agents, avec une revue en deux temps (conformité à la spec, puis qualité du code) par tâche.</li>
-          <li>Pour les articles : un pipeline SEO + GEO en plusieurs étapes avant publication.</li>
+          <li>
+            Figer l'objectif et les contraintes dans <code>CLAUDE.md</code> /{" "}
+            <code>AGENTS.md</code> pour que l'agent ait un contexte stable.
+          </li>
+          <li>Faire un brainstorming avec Superpowers et obtenir une spec de design.</li>
+          <li>
+            Traduire la spec en plan d'implémentation avec des étapes concrètes ; le détail
+            des stories se fait dans <strong>Openspec</strong>.
+          </li>
+          <li>
+            Exécution subagent-driven en mode <strong>TDD</strong> et <strong>SDD</strong>,
+            avec relecture en deux temps par tâche (conformité à la spec d'abord, puis
+            qualité du code).
+          </li>
         </ol>
-
-        <p>
-          L'intérêt de cette page est d'être honnête sur la chaîne d'outils, afin que les articles restent centrés sur le
-          <em>processus</em> au lieu de réexpliquer la configuration à chaque fois.
-        </p>
       </>
     ) : locale === "de" ? (
       <>
-        <p><em>(KI-generierter Entwurf. Wird später von einem Menschen überarbeitet.)</em></p>
-
-        <p>
-          Eine Momentaufnahme dessen, womit techmeat.dev gebaut ist, der Tools, auf die ich mich Tag für Tag stütze, und des
-          Workflows, mit dem ich Beiträge und Features mit Coding-Agents ausliefere.
-        </p>
-
-        <h2>Tech-Stack</h2>
+        <h2>Frontend</h2>
         <ul>
-          <li><strong>Astro 6</strong> im <code>output: 'static'</code>-Modus. Beiträge sind Markdown, gerendert über Astros Content Collections.</li>
-          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> für die wenigen interaktiven Islands — Theme-Umschalter, Sprachumschalter, Copy-Button für Codeblöcke.</li>
-          <li><strong>Bun</strong> als Runtime, Paketmanager und Test-Runner. Kein npm, kein pnpm.</li>
-          <li><strong>Cloudflare Pages</strong> fürs Hosting; <strong>Cloudflare Web Analytics</strong> für Traffic, ohne Cookies.</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> für die Generierung von OG-Cards zur Build-Zeit, pro Beitrag und pro Sprache.</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) für eine installierbare PWA mit Offline-Fallback.</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> für Sitemap und sprachspezifische RSS-Feeds.</li>
+          <li>
+            Frontend mache ich seit 20 Jahren; viele Jahre lang habe ich abwechselnd mit{" "}
+            <strong>ReactJS</strong> und <strong>VueJS</strong> gearbeitet, sowie mit den
+            darauf aufbauenden Frameworks — <strong>NextJS</strong> und <strong>NuxtJS</strong>.
+          </li>
+          <li>
+            Eine besondere Liebe habe ich für das Layouten: <strong>CSS</strong> und
+            semantisches <strong>HTML</strong> sind mir näher als JS oder TS.
+          </li>
+          <li>
+            <strong>Astro</strong> benutze ich zum ersten Mal — genau für diesen Blog, und es
+            scheint Liebe auf den ersten Blick.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          Ich bin kein Backender, aber bei meiner Erfahrung im Web hatte ich keine Chance,
+          diese Seite zu umgehen. Also mache ich für kleine Startups und eigene Pet-Projects
+          fullstack als One-Man-Band.
+        </p>
+        <ul>
+          <li>
+            Für ganz einfache Dinge — <strong>HonoJS</strong> + <strong>SQLite</strong>.
+          </li>
+          <li>
+            Für komplexere Projekte — <strong>FastAPI</strong> und{" "}
+            <strong>PostgreSQL</strong> in Docker.
+          </li>
         </ul>
 
         <h2>Tooling</h2>
+        <p>Ich bin faul, deshalb:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-basierter Linter und Formatter. Kein ESLint, kein Prettier.</li>
-          <li><strong>@astrojs/check</strong> für TypeScript-Prüfung in <code>.astro</code>-Dateien.</li>
-          <li><strong>lefthook</strong> für Pre-Commit-Hooks (Lint + Format + Typprüfung bei jedem Commit).</li>
-          <li><strong>bun:test</strong> als Test-Framework.</li>
+          <li>versuche ich den Code mit Tests abzudecken;</li>
+          <li>behänge ich Projekte mit verschiedenen Lintern und Formattern;</li>
+          <li>
+            dadurch laufen Code-Quality-Checks automatisch und fressen meine Zeit nicht.
+          </li>
         </ul>
 
         <h2>KI-Assistenten</h2>
         <ul>
-          <li><strong>Claude Code</strong> — der primäre Coding-Agent. Der Projektkontext liegt in <code>CLAUDE.md</code> und <code>AGENTS.md</code>.</li>
-          <li><strong>Superpowers-Skills</strong> — brainstorming, writing-plans, subagent-driven-development für nicht-triviale Features.</li>
-          <li><strong>GPT-5.5</strong> — eingesetzt für ein zweites Code-Review bei größeren Änderungen.</li>
-          <li><strong>SEO-/GEO-Skill-Suite</strong> — Keyword-Recherche, Meta-Tag-Optimierung, Schema Markup, On-Page-Audit, Content-Quality-Auditor (CORE-EEAT), GEO Content Optimizer für AI-Engines.</li>
+          <li>
+            <strong>GitHub Copilot</strong> — aktuell der Hauptassistent, aber mit den
+            angekündigten Preisänderungen wird er wahrscheinlich bald aus dem Arsenal fliegen.
+          </li>
+          <li>
+            <strong>Claude Code</strong> — vor allem für Planung und Arbeit mit Texten.
+          </li>
+          <li>
+            <strong>Codex</strong> — fürs Coden.
+          </li>
+          <li>
+            <strong>Opencode</strong> — für Experimente mit Open-Source-Modellen.
+          </li>
+          <li>
+            <strong>Hermes</strong> — für Automatisierungen.
+          </li>
         </ul>
 
         <h2>Hardware</h2>
         <ul>
-          <li>(Platzhalter — wird vom Menschen ausgefüllt.)</li>
+          <li>Ich arbeite an einem MacBook.</li>
+          <li>
+            Experimente mit lokalen Modellen laufen auf einem Windows-Desktop mit kräftiger
+            GPU.
+          </li>
+          <li>Projekte deploye ich auf Linux.</li>
         </ul>
 
         <h2>Workflow</h2>
-        <p>Jeder Beitrag und jedes Feature durchläuft im Wesentlichen denselben Kreislauf:</p>
+        <p>Jedes Feature durchläuft ungefähr denselben Zyklus:</p>
         <ol>
-          <li>Ziel und Rahmenbedingungen in <code>CLAUDE.md</code> / <code>AGENTS.md</code> festhalten, damit der Agent einen stabilen Kontext hat.</li>
-          <li>Die Form der Arbeit mit Superpowers durchdenken; eine Design-Spezifikation erstellen.</li>
-          <li>Die Spezifikation in einen Umsetzungsplan mit konkreten Schritten überführen.</li>
-          <li>Subagenten-getriebene Ausführung, mit zweistufigem Review (Spec-Konformität, dann Codequalität) pro Aufgabe.</li>
-          <li>Bei Beiträgen: eine mehrstufige SEO- + GEO-Pipeline vor der Veröffentlichung.</li>
+          <li>
+            Ziel und Einschränkungen in <code>CLAUDE.md</code> / <code>AGENTS.md</code>{" "}
+            festklopfen, damit der Agent einen stabilen Kontext hat.
+          </li>
+          <li>Brainstorming über Superpowers, eine Design-Spezifikation erhalten.</li>
+          <li>
+            Die Spezifikation in einen Implementierungsplan mit konkreten Schritten
+            übersetzen; das Detail-Level der Stories passiert in <strong>Openspec</strong>.
+          </li>
+          <li>
+            Subagent-driven-Ausführung in <strong>TDD</strong>- und <strong>SDD</strong>
+            -Modus, mit zweistufigem Review pro Task (zuerst Spec-Konformität, dann
+            Code-Qualität).
+          </li>
         </ol>
-
-        <p>
-          Der Sinn dieser Seite ist, ehrlich über die Toolchain zu sein, damit sich die Beiträge auf den
-          <em>Prozess</em> konzentrieren können, statt jedes Mal das Setup neu zu erklären.
-        </p>
       </>
     ) : locale === "pt" ? (
       <>
-        <p><em>(Rascunho gerado por AI. A ser reescrito por um humano depois.)</em></p>
-
-        <p>
-          Um panorama do que o techmeat.dev usa por baixo dos panos, das ferramentas com que conto no dia a dia e do
-          fluxo de trabalho que adoto para publicar posts e entregar features com agentes de coding.
-        </p>
-
-        <h2>Stack técnica</h2>
+        <h2>Frontend</h2>
         <ul>
-          <li><strong>Astro 6</strong> no modo <code>output: 'static'</code>. Os posts são Markdown, renderizados pelas content collections do Astro.</li>
-          <li><strong>Solid.js</strong> via <code>@astrojs/solid-js</code> para as poucas ilhas interativas — alternador de tema, seletor de idioma, botão de copiar bloco de código.</li>
-          <li><strong>Bun</strong> como runtime, gerenciador de pacotes e test runner. Nada de npm, nada de pnpm.</li>
-          <li><strong>Cloudflare Pages</strong> para hospedagem; <strong>Cloudflare Web Analytics</strong> para tráfego, sem cookies.</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> para geração de cards OG em tempo de build, por post e por locale.</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) para um PWA instalável com fallback offline.</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> para sitemap e feeds RSS por locale.</li>
+          <li>
+            Faço frontend há 20 anos; por muitos anos trabalhei alternadamente com{" "}
+            <strong>ReactJS</strong> e <strong>VueJS</strong>, e com os frameworks construídos
+            em cima — <strong>NextJS</strong> e <strong>NuxtJS</strong>.
+          </li>
+          <li>
+            Tenho uma queda especial por marcação: <strong>CSS</strong> e{" "}
+            <strong>HTML</strong> semântico me são mais chegados do que JS ou TS.
+          </li>
+          <li>
+            <strong>Astro</strong> estou usando pela primeira vez justamente neste blog —
+            parece amor à primeira vista.
+          </li>
+        </ul>
+
+        <h2>Backend</h2>
+        <p>
+          Não sou backender, mas com minha experiência em web não havia chance de escapar
+          desse lado. Por isso, para pequenas startups e pet-projects pessoais, faço fullstack
+          como homem-orquestra.
+        </p>
+        <ul>
+          <li>
+            Para coisas bem simples — <strong>HonoJS</strong> + <strong>SQLite</strong>.
+          </li>
+          <li>
+            Para projetos mais complexos — <strong>FastAPI</strong> e{" "}
+            <strong>PostgreSQL</strong> no Docker.
+          </li>
         </ul>
 
         <h2>Ferramental</h2>
+        <p>Sou preguiçoso, então:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — lint e formatador escritos em Rust. Sem ESLint, sem Prettier.</li>
-          <li><strong>@astrojs/check</strong> para verificação TypeScript dentro de arquivos <code>.astro</code>.</li>
-          <li><strong>lefthook</strong> para hooks de pre-commit (lint + format + checagem de tipos a cada commit).</li>
-          <li><strong>bun:test</strong> como framework de testes.</li>
+          <li>procuro cobrir o código com testes;</li>
+          <li>enfeito os projetos com vários linters e formatters;</li>
+          <li>
+            graças a isso, as verificações de qualidade rodam automaticamente e não comem meu
+            tempo.
+          </li>
         </ul>
 
-        <h2>Assistentes de AI</h2>
+        <h2>Assistentes de IA</h2>
         <ul>
-          <li><strong>Claude Code</strong> — o agente de coding principal. O contexto do projeto vive em <code>CLAUDE.md</code> e <code>AGENTS.md</code>.</li>
-          <li><strong>Superpowers skills</strong> — brainstorming, writing-plans, subagent-driven-development para features não triviais.</li>
-          <li><strong>GPT-5.5</strong> — usado para uma segunda passada de code review em mudanças maiores.</li>
-          <li><strong>Suíte de skills de SEO / GEO</strong> — pesquisa de keywords, otimização de meta-tags, schema markup, auditoria on-page, auditor de qualidade de conteúdo (CORE-EEAT), otimizador de conteúdo GEO para motores de AI.</li>
+          <li>
+            <strong>GitHub Copilot</strong> — o principal por agora, mas com as mudanças
+            anunciadas na política de preços, provavelmente sai logo do arsenal.
+          </li>
+          <li>
+            <strong>Claude Code</strong> — sobretudo para planejamento e trabalho com textos.
+          </li>
+          <li>
+            <strong>Codex</strong> — para programar.
+          </li>
+          <li>
+            <strong>Opencode</strong> — para experimentos com modelos open source.
+          </li>
+          <li>
+            <strong>Hermes</strong> — para automações.
+          </li>
         </ul>
 
         <h2>Hardware</h2>
         <ul>
-          <li>(Espaço reservado — a ser preenchido pelo humano.)</li>
+          <li>Trabalho em um MacBook.</li>
+          <li>
+            Experimentos com modelos locais rodam em um desktop Windows com uma GPU parruda.
+          </li>
+          <li>Os projetos eu deployo no Linux.</li>
         </ul>
 
         <h2>Fluxo de trabalho</h2>
-        <p>Cada post e cada feature passa mais ou menos pelo mesmo loop:</p>
+        <p>Cada feature passa mais ou menos pelo mesmo ciclo:</p>
         <ol>
-          <li>Registrar o objetivo e as restrições em <code>CLAUDE.md</code> / <code>AGENTS.md</code> para que o agente tenha um contexto estável.</li>
-          <li>Fazer brainstorming do formato do trabalho com Superpowers; produzir uma especificação de design.</li>
-          <li>Transformar a spec em um plano de implementação com passos concretos.</li>
-          <li>Execução via subagent-driven, com uma revisão em duas etapas (aderência à spec e, depois, qualidade do código) por tarefa.</li>
-          <li>Para os posts: um pipeline SEO + GEO de várias etapas antes da publicação.</li>
+          <li>
+            Fixar o objetivo e as restrições em <code>CLAUDE.md</code> / <code>AGENTS.md</code>{" "}
+            para o agente ter um contexto estável.
+          </li>
+          <li>Fazer brainstorming via Superpowers, obter uma especificação de design.</li>
+          <li>
+            Traduzir a especificação em um plano de implementação com passos concretos; o
+            detalhamento de stories acontece no <strong>Openspec</strong>.
+          </li>
+          <li>
+            Execução subagent-driven em modos <strong>TDD</strong> e <strong>SDD</strong>, com
+            review em duas etapas por task (primeiro conformidade com a spec, depois qualidade
+            de código).
+          </li>
         </ol>
-
-        <p>
-          O propósito desta página é ser honesto sobre o ferramental, para que os posts possam manter o foco em
-          <em>processo</em> em vez de reexplicar a configuração toda hora.
-        </p>
       </>
     ) : locale === "ar" ? (
       <>
-        <p><em>(مسودة من إنتاج AI. سيتم إعادة كتابتها بواسطة إنسان لاحقًا.)</em></p>
+        <h2>الواجهة الأمامية (Frontend)</h2>
+        <ul>
+          <li>
+            أعمل في الواجهة الأمامية منذ 20 عامًا؛ طوال سنوات عديدة أتنقّل بالتناوب بين{" "}
+            <strong>ReactJS</strong> و<strong>VueJS</strong>، وبين الأطر المبنية فوقها —{" "}
+            <strong>NextJS</strong> و<strong>NuxtJS</strong>.
+          </li>
+          <li>
+            أحبّ بشكل خاص بناء التخطيطات: <strong>CSS</strong> و<strong>HTML</strong>{" "}
+            الدلالي أقرب إليّ من JS أو TS.
+          </li>
+          <li>
+            <strong>Astro</strong> أستخدمه لأول مرة، تحديدًا لهذه المدونة — ويبدو أنّه حبّ من
+            أول نظرة.
+          </li>
+        </ul>
 
+        <h2>الواجهة الخلفية (Backend)</h2>
         <p>
-          لمحة سريعة عمّا بُني به techmeat.dev، والأدوات التي أعتمد عليها يوميًا،
-          وسير العمل الذي أستخدمه لنشر المقالات وإطلاق الميزات بالاستعانة بوكلاء البرمجة.
+          لستُ مهندس backend، لكن مع خبرتي في الويب لم تكن لديّ فرصة لتجنّب هذا الجانب. لذلك
+          أعمل لمشاريع ناشئة صغيرة ومشاريع شخصية بأسلوب fullstack كرجل أوركسترا واحد.
         </p>
-
-        <h2>الحزمة التقنية</h2>
         <ul>
-          <li><strong>Astro 6</strong> في وضع <code>output: 'static'</code>. المقالات بصيغة Markdown، تُعرض عبر مجموعات المحتوى في Astro.</li>
-          <li><strong>Solid.js</strong> عبر <code>@astrojs/solid-js</code> للجزر التفاعلية القليلة — مبدّل السمة، ومبدّل اللغة، وزر نسخ كتل الكود.</li>
-          <li><strong>Bun</strong> كبيئة تشغيل ومدير حزم ومُشغّل اختبارات. لا npm ولا pnpm.</li>
-          <li><strong>Cloudflare Pages</strong> للاستضافة؛ و<strong>Cloudflare Web Analytics</strong> لقياس الزيارات، دون كوكيز.</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> لتوليد بطاقات OG وقت البناء لكل مقالة ولكل لغة.</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) لتطبيق PWA قابل للتثبيت مع بديل يعمل دون اتصال.</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> لخريطة الموقع وخلاصات RSS لكل لغة.</li>
+          <li>
+            للأشياء البسيطة جدًا — <strong>HonoJS</strong> + <strong>SQLite</strong>.
+          </li>
+          <li>
+            لمشاريع أكثر تعقيدًا — <strong>FastAPI</strong> و<strong>PostgreSQL</strong> داخل
+            Docker.
+          </li>
         </ul>
 
-        <h2>أدوات التطوير</h2>
+        <h2>الأدوات</h2>
+        <p>أنا كسول، لذلك:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — مدقّق ومُنسّق مكتوبان بلغة Rust. لا ESLint ولا Prettier.</li>
-          <li><strong>@astrojs/check</strong> للتحقق من TypeScript داخل ملفات <code>.astro</code>.</li>
-          <li><strong>lefthook</strong> لخطافات ما قبل الالتزام (lint + تنسيق + فحص الأنواع عند كل commit).</li>
-          <li><strong>bun:test</strong> كإطار للاختبارات.</li>
+          <li>أحاول تغطية الكود بالاختبارات؛</li>
+          <li>أُحمّل المشاريع بمختلف الـ linter-s و الـ formatter-s؛</li>
+          <li>
+            بفضل ذلك، تجري فحوص جودة الكود تلقائيًا ولا تأكل وقتي.
+          </li>
         </ul>
 
-        <h2>مساعدو الـ AI</h2>
+        <h2>مساعدو الذكاء الاصطناعي</h2>
         <ul>
-          <li><strong>Claude Code</strong> — وكيل البرمجة الأساسي. سياق المشروع موجود في <code>CLAUDE.md</code> و<code>AGENTS.md</code>.</li>
-          <li><strong>مهارات Superpowers</strong> — brainstorming وwriting-plans وsubagent-driven-development للميزات غير البديهية.</li>
-          <li><strong>GPT-5.5</strong> — يُستخدم لمراجعة الكود في تمريرة ثانية على التغييرات الأكبر.</li>
-          <li><strong>طاقم مهارات SEO / GEO</strong> — البحث في الكلمات المفتاحية، وتحسين وسوم الميتا، وschema markup، والتدقيق داخل الصفحة، ومدقّق جودة المحتوى (CORE-EEAT)، ومُحسّن محتوى GEO لمحركات الـ AI.</li>
+          <li>
+            <strong>GitHub Copilot</strong> — الأساسي حاليًا، لكن مع الإعلان عن تغييرات في
+            سياسة التسعير، من المرجّح أن يخرج قريبًا من الترسانة.
+          </li>
+          <li>
+            <strong>Claude Code</strong> — في المقام الأول للتخطيط والعمل مع النصوص.
+          </li>
+          <li>
+            <strong>Codex</strong> — للبرمجة.
+          </li>
+          <li>
+            <strong>Opencode</strong> — لتجارب مع نماذج مفتوحة المصدر.
+          </li>
+          <li>
+            <strong>Hermes</strong> — للأتمتات.
+          </li>
         </ul>
 
         <h2>العتاد</h2>
         <ul>
-          <li>(عنصر نائب — سيتم تعبئته بواسطة الإنسان.)</li>
+          <li>أعمل على MacBook.</li>
+          <li>
+            تجارب النماذج المحلية تجري على سطح مكتب Windows ببطاقة رسومات قوية.
+          </li>
+          <li>أنشر المشاريع على Linux.</li>
         </ul>
 
-        <h2>سير العمل</h2>
-        <p>كل مقالة وكل ميزة تمرّ تقريبًا بالحلقة نفسها:</p>
+        <h2>سير العمل (Workflow)</h2>
+        <p>كل feature يمرّ تقريبًا بالدورة نفسها:</p>
         <ol>
-          <li>تثبيت الهدف والقيود في <code>CLAUDE.md</code> / <code>AGENTS.md</code> ليكون لدى الوكيل سياق ثابت.</li>
-          <li>استكشاف شكل العمل عبر Superpowers؛ ثم إنتاج مواصفات تصميم.</li>
-          <li>تحويل المواصفات إلى خطة تنفيذ بخطوات ملموسة.</li>
-          <li>تنفيذ مدفوع بالوكلاء الفرعيين، مع مراجعة من مرحلتين (التوافق مع المواصفات، ثم جودة الكود) لكل مهمة.</li>
-          <li>للمقالات: خط أنابيب SEO + GEO متعدد المراحل قبل النشر.</li>
+          <li>
+            تثبيت الهدف والقيود في <code>CLAUDE.md</code> / <code>AGENTS.md</code>، حتى يكون
+            لدى الوكيل سياق مستقرّ.
+          </li>
+          <li>إجراء brainstorming عبر Superpowers والحصول على مواصفة تصميم.</li>
+          <li>
+            ترجمة المواصفة إلى خطة تنفيذ بخطوات محددة؛ تفصيل الـ stories يحدث في{" "}
+            <strong>Openspec</strong>.
+          </li>
+          <li>
+            تنفيذ subagent-driven في وَضعَيْ <strong>TDD</strong> و<strong>SDD</strong>، مع
+            مراجعة من مرحلتين لكل مهمة (التوافق مع المواصفة أولًا، ثم جودة الكود).
+          </li>
         </ol>
-
-        <p>
-          الغاية من هذه الصفحة أن أكون صريحًا بشأن سلسلة الأدوات حتى تبقى المقالات مركّزة على
-          <em>العملية</em> بدلًا من إعادة شرح الإعداد في كل مرة.
-        </p>
       </>
     ) : locale === "hi" ? (
       <>
-        <p><em>(AI-जनित ड्राफ्ट। बाद में मनुष्य द्वारा फिर से लिखा जाएगा।)</em></p>
+        <h2>फ़्रंटएंड</h2>
+        <ul>
+          <li>
+            फ़्रंटएंड में मुझे 20 साल हो गए; कई वर्षों से मैं बारी-बारी से{" "}
+            <strong>ReactJS</strong> और <strong>VueJS</strong> के साथ और उनके ऊपर बने
+            फ़्रेमवर्क्स — <strong>NextJS</strong> और <strong>NuxtJS</strong> के साथ काम कर
+            रहा हूँ।
+          </li>
+          <li>
+            लेआउट बनाने से मुझे ख़ास लगाव है: <strong>CSS</strong> और सेमांटिक{" "}
+            <strong>HTML</strong> मुझे JS या TS से ज़्यादा नज़दीक हैं।
+          </li>
+          <li>
+            <strong>Astro</strong> का इस्तेमाल मैं पहली बार ठीक इस ब्लॉग के लिए कर रहा हूँ —
+            लग रहा है पहली नज़र का प्यार।
+          </li>
+        </ul>
 
+        <h2>बैकएंड</h2>
         <p>
-          techmeat.dev किस चीज़ से बना है, मैं रोज़मर्रा जिन टूल्स पर भरोसा करता हूँ, और coding एजेंट्स के साथ
-          पोस्ट और फीचर्स शिप करने के लिए जो वर्कफ़्लो इस्तेमाल करता हूँ — उसका एक स्नैपशॉट।
+          मैं बैकएंडर नहीं हूँ, लेकिन वेब में मेरे अनुभव के साथ इस तरफ़ से बच निकलने का कोई
+          मौक़ा नहीं था। इसलिए छोटे स्टार्टअप्स और अपने पेट-प्रोजेक्ट्स के लिए मैं अकेले
+          ऑर्केस्ट्रा की तरह fullstack करता हूँ।
         </p>
-
-        <h2>टेक स्टैक</h2>
         <ul>
-          <li><strong>Astro 6</strong> <code>output: 'static'</code> मोड में। पोस्ट्स Markdown में हैं, Astro के content collections के ज़रिए रेंडर होती हैं।</li>
-          <li><strong>Solid.js</strong> <code>@astrojs/solid-js</code> के ज़रिए कुछ इंटरैक्टिव आइलैंड्स के लिए — थीम टॉगल, लैंग्वेज स्विचर, कोड-ब्लॉक कॉपी बटन।</li>
-          <li><strong>Bun</strong> रनटाइम, पैकेज मैनेजर और टेस्ट रनर के रूप में। कोई npm नहीं, कोई pnpm नहीं।</li>
-          <li><strong>Cloudflare Pages</strong> होस्टिंग के लिए; <strong>Cloudflare Web Analytics</strong> ट्रैफ़िक के लिए, कोई कुकीज़ नहीं।</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> बिल्ड-टाइम पर प्रति पोस्ट प्रति लोकेल OG कार्ड जेनरेशन के लिए।</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) इंस्टॉल करने योग्य PWA के लिए, ऑफ़लाइन फ़ॉलबैक के साथ।</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> साइटमैप और प्रति-लोकेल RSS फ़ीड के लिए।</li>
+          <li>
+            बिल्कुल सरल चीज़ों के लिए — <strong>HonoJS</strong> + <strong>SQLite</strong>।
+          </li>
+          <li>
+            थोड़े मुश्किल प्रोजेक्ट्स के लिए — <strong>FastAPI</strong> और Docker में{" "}
+            <strong>PostgreSQL</strong>।
+          </li>
         </ul>
 
-        <h2>टूलिंग</h2>
+        <h2>टूल्स</h2>
+        <p>मैं आलसी हूँ, इसलिए:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-आधारित लिंट और फ़ॉर्मैटर। कोई ESLint नहीं, कोई Prettier नहीं।</li>
-          <li><strong>@astrojs/check</strong> <code>.astro</code> फ़ाइलों के अंदर TypeScript चेकिंग के लिए।</li>
-          <li><strong>lefthook</strong> प्री-कमिट हुक्स के लिए (हर कमिट पर लिंट + फ़ॉर्मैट + टाइप चेक)।</li>
-          <li><strong>bun:test</strong> टेस्ट फ़्रेमवर्क के रूप में।</li>
+          <li>कोड को टेस्ट से कवर करने की कोशिश करता हूँ;</li>
+          <li>प्रोजेक्ट्स को विभिन्न linters और formatters से सजाता हूँ;</li>
+          <li>
+            इसकी वजह से कोड क्वालिटी की जाँचें अपने आप चलती हैं और मेरा वक़्त नहीं खाती।
+          </li>
         </ul>
 
-        <h2>AI असिस्टेंट्स</h2>
+        <h2>AI असिस्टेंट</h2>
         <ul>
-          <li><strong>Claude Code</strong> — प्राथमिक coding एजेंट। प्रोजेक्ट कॉन्टेक्स्ट <code>CLAUDE.md</code> और <code>AGENTS.md</code> में रहता है।</li>
-          <li><strong>Superpowers skills</strong> — गैर-तुच्छ फ़ीचर्स के लिए brainstorming, writing-plans, subagent-driven-development।</li>
-          <li><strong>GPT-5.5</strong> — बड़े बदलावों पर सेकंड-पास कोड रिव्यू के लिए इस्तेमाल होता है।</li>
-          <li><strong>SEO / GEO skills suite</strong> — कीवर्ड रिसर्च, मेटा-टैग्स ऑप्टिमाइज़ेशन, स्कीमा मार्कअप, ऑन-पेज ऑडिट, कंटेंट-क्वालिटी ऑडिटर (CORE-EEAT), AI इंजनों के लिए GEO कंटेंट ऑप्टिमाइज़र।</li>
+          <li>
+            <strong>GitHub Copilot</strong> — फ़िलहाल मुख्य, लेकिन प्राइसिंग पॉलिसी में घोषित
+            बदलावों के साथ शायद जल्द ही अरसेनल से बाहर हो जाए।
+          </li>
+          <li>
+            <strong>Claude Code</strong> — मुख्य रूप से प्लानिंग और टेक्स्ट के काम के लिए।
+          </li>
+          <li>
+            <strong>Codex</strong> — कोडिंग के लिए।
+          </li>
+          <li>
+            <strong>Opencode</strong> — ओपन-सोर्स मॉडल्स पर एक्सपेरिमेंट के लिए।
+          </li>
+          <li>
+            <strong>Hermes</strong> — ऑटोमेशन के लिए।
+          </li>
         </ul>
 
         <h2>हार्डवेयर</h2>
         <ul>
-          <li>(प्लेसहोल्डर — मनुष्य द्वारा भरा जाएगा।)</li>
+          <li>काम MacBook पर करता हूँ।</li>
+          <li>
+            लोकल मॉडल्स के एक्सपेरिमेंट — पावरफ़ुल जीपीयू वाले Windows-डेस्कटॉप पर।
+          </li>
+          <li>प्रोजेक्ट Linux पर डिप्लॉय करता हूँ।</li>
         </ul>
 
         <h2>वर्कफ़्लो</h2>
-        <p>हर पोस्ट और हर फ़ीचर लगभग एक जैसे लूप से गुज़रता है:</p>
+        <p>हर फ़ीचर लगभग एक ही साइकल से गुज़रता है:</p>
         <ol>
-          <li>लक्ष्य और बाधाओं को <code>CLAUDE.md</code> / <code>AGENTS.md</code> में दर्ज करें ताकि एजेंट के पास एक स्थिर कॉन्टेक्स्ट हो।</li>
-          <li>Superpowers के साथ काम के स्वरूप पर brainstorming करें; एक डिज़ाइन स्पेक तैयार करें।</li>
-          <li>स्पेक को ठोस चरणों वाले एक इम्प्लीमेंटेशन प्लान में बदलें।</li>
-          <li>सबएजेंट-संचालित निष्पादन, प्रति टास्क दो-चरणीय रिव्यू के साथ (पहले स्पेक अनुपालन, फिर कोड क्वालिटी)।</li>
-          <li>पोस्ट्स के लिए: प्रकाशन से पहले एक बहु-चरणीय SEO + GEO पाइपलाइन।</li>
+          <li>
+            लक्ष्य और कंस्ट्रेंट्स को <code>CLAUDE.md</code> / <code>AGENTS.md</code> में
+            फिक्स करना, ताकि एजेंट के पास स्थिर कॉन्टेक्स्ट हो।
+          </li>
+          <li>Superpowers से ब्रेनस्टॉर्म करना, डिज़ाइन-स्पेसिफ़िकेशन हासिल करना।</li>
+          <li>
+            स्पेसिफ़िकेशन को ठोस स्टेप्स वाले इम्प्लीमेंटेशन प्लान में बदलना; stories का
+            डिटेलिंग <strong>Openspec</strong> में होता है।
+          </li>
+          <li>
+            हर टास्क पर दो-चरणीय रिव्यू (पहले स्पेक का पालन, फिर कोड क्वालिटी) के साथ{" "}
+            <strong>TDD</strong> और <strong>SDD</strong> मोड्स में subagent-driven
+            एग्ज़ीक्यूशन।
+          </li>
         </ol>
-
-        <p>
-          इस पेज का मकसद टूलचेन के बारे में ईमानदार रहना है, ताकि पोस्ट्स हर बार सेटअप दोबारा समझाने के बजाय
-          <em>प्रक्रिया</em> पर केंद्रित रह सकें।
-        </p>
       </>
     ) : locale === "zh" ? (
       <>
-        <p><em>（AI 生成的草稿，后续将由人工重写。）</em></p>
-
-        <p>
-          techmeat.dev 的构建概览：日常依赖的工具，以及我用编程 Agent 发布文章和功能时所遵循的工作流。
-        </p>
-
-        <h2>技术栈</h2>
+        <h2>前端</h2>
         <ul>
-          <li><strong>Astro 6</strong>，采用 <code>output: 'static'</code> 模式。文章使用 Markdown，通过 Astro 的内容集合渲染。</li>
-          <li><strong>Solid.js</strong>，通过 <code>@astrojs/solid-js</code> 接入，仅用于少量交互式岛屿——主题切换、语言切换器、代码块复制按钮。</li>
-          <li><strong>Bun</strong> 作为运行时、包管理器和测试运行器。不使用 npm，也不使用 pnpm。</li>
-          <li><strong>Cloudflare Pages</strong> 用于托管；<strong>Cloudflare Web Analytics</strong> 用于流量统计，无 cookie。</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> 在构建时为每篇文章的每种语言生成 OG 卡片。</li>
-          <li><strong>@vite-pwa/astro</strong>（Workbox）实现可安装的 PWA，并提供离线兜底页面。</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> 生成站点地图以及各语言的 RSS 订阅。</li>
+          <li>
+            做前端 20 年了；多年来交替使用 <strong>ReactJS</strong> 和{" "}
+            <strong>VueJS</strong>，以及构建在它们之上的框架——<strong>NextJS</strong> 和{" "}
+            <strong>NuxtJS</strong>。
+          </li>
+          <li>
+            我对页面切版有特别的偏爱：<strong>CSS</strong> 和语义化{" "}
+            <strong>HTML</strong> 比 JS 或 TS 更亲近。
+          </li>
+          <li>
+            <strong>Astro</strong> 是第一次用，正好用在这个博客上——看起来是一见钟情。
+          </li>
         </ul>
 
-        <h2>工具链</h2>
+        <h2>后端</h2>
+        <p>
+          我不是后端工程师，但凭我在 Web 方面的经验，没机会绕开这一面。所以对小型创业项目和我自己的 pet
+          项目，我以一人乐队的方式做 fullstack。
+        </p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong>——基于 Rust 的代码检查与格式化工具。不使用 ESLint，也不使用 Prettier。</li>
-          <li><strong>@astrojs/check</strong> 用于在 <code>.astro</code> 文件中执行 TypeScript 检查。</li>
-          <li><strong>lefthook</strong> 用于预提交钩子（每次提交都会执行 lint、格式化和类型检查）。</li>
-          <li><strong>bun:test</strong> 作为测试框架。</li>
+          <li>
+            非常简单的东西——<strong>HonoJS</strong> + <strong>SQLite</strong>。
+          </li>
+          <li>
+            复杂一些的项目——<strong>FastAPI</strong> + Docker 里的{" "}
+            <strong>PostgreSQL</strong>。
+          </li>
+        </ul>
+
+        <h2>工具</h2>
+        <p>我懒，所以：</p>
+        <ul>
+          <li>尽量用测试覆盖代码；</li>
+          <li>给项目挂上各种 linter 和 formatter；</li>
+          <li>借此让代码质量检查自动跑起来，不消耗我的时间。</li>
         </ul>
 
         <h2>AI 助手</h2>
         <ul>
-          <li><strong>Claude Code</strong>——主力编程 Agent。项目上下文写在 <code>CLAUDE.md</code> 和 <code>AGENTS.md</code> 中。</li>
-          <li><strong>Superpowers skills</strong>——在处理复杂功能时使用 brainstorming、writing-plans、subagent-driven-development。</li>
-          <li><strong>GPT-5.5</strong>——用于较大改动的二次代码评审。</li>
-          <li><strong>SEO / GEO 技能套件</strong>——关键词研究、meta 标签优化、schema 标记、页面审计、内容质量审计（CORE-EEAT），以及面向 AI 引擎的 GEO 内容优化。</li>
+          <li>
+            <strong>GitHub Copilot</strong>——目前的主力，但随着定价政策变更的公告，
+            它很可能很快就会从我的工具箱里消失。
+          </li>
+          <li>
+            <strong>Claude Code</strong>——主要用来做规划和处理文本。
+          </li>
+          <li>
+            <strong>Codex</strong>——用来写代码。
+          </li>
+          <li>
+            <strong>Opencode</strong>——用来试验开源模型。
+          </li>
+          <li>
+            <strong>Hermes</strong>——用来做自动化。
+          </li>
         </ul>
 
         <h2>硬件</h2>
         <ul>
-          <li>（占位——待人工补充。）</li>
+          <li>在 MacBook 上工作。</li>
+          <li>本地模型的实验跑在带强力显卡的 Windows 桌面机上。</li>
+          <li>项目部署到 Linux。</li>
         </ul>
 
         <h2>工作流</h2>
-        <p>每篇文章和每个功能基本都遵循同一套循环：</p>
+        <p>每个 feature 大致都走同一个循环：</p>
         <ol>
-          <li>把目标和约束写进 <code>CLAUDE.md</code> / <code>AGENTS.md</code>，让 Agent 拥有稳定的上下文。</li>
-          <li>用 Superpowers 梳理工作的轮廓，产出设计规格。</li>
-          <li>把规格转化为带有具体步骤的实施计划。</li>
-          <li>由子 Agent 驱动执行，每个任务进行两阶段评审（先看是否符合规格，再看代码质量）。</li>
-          <li>文章发布前还要走一遍多阶段的 SEO + GEO 流水线。</li>
+          <li>
+            把目标和约束钉到 <code>CLAUDE.md</code> / <code>AGENTS.md</code> 里，
+            让 agent 有一份稳定的上下文。
+          </li>
+          <li>通过 Superpowers 做 brainstorming，拿到设计规范。</li>
+          <li>
+            把规范翻译成具有具体步骤的实现计划；story 级别的细化在{" "}
+            <strong>Openspec</strong> 里完成。
+          </li>
+          <li>
+            在 <strong>TDD</strong> 和 <strong>SDD</strong> 模式下进行 subagent-driven 执行，
+            每个任务都做两轮评审（先看是否符合规范，再看代码质量）。
+          </li>
         </ol>
-
-        <p>
-          这个页面的意义在于诚实地交代工具链，这样后续的文章就能专注于<em>过程本身</em>，而不必每次都重新介绍一遍配置。
-        </p>
       </>
     ) : locale === "bn" ? (
       <>
-        <p><em>(AI-জেনারেটেড খসড়া। পরে একজন মানুষ এটি পুনরায় লিখবেন।)</em></p>
+        <h2>ফ্রন্টএন্ড</h2>
+        <ul>
+          <li>
+            ফ্রন্টএন্ডে আমি ২০ বছর ধরে কাজ করছি; অনেক বছর ধরে পর্যায়ক্রমে{" "}
+            <strong>ReactJS</strong> আর <strong>VueJS</strong>-এ কাজ করি, এবং তাদের ওপর
+            তৈরি ফ্রেমওয়ার্ক — <strong>NextJS</strong> আর <strong>NuxtJS</strong>-এও।
+          </li>
+          <li>
+            লেআউট কাটিং-এর প্রতি আমার বিশেষ টান: <strong>CSS</strong> আর সেমান্টিক{" "}
+            <strong>HTML</strong> আমার কাছে JS বা TS-এর চেয়ে কাছের।
+          </li>
+          <li>
+            <strong>Astro</strong> প্রথমবার এই ব্লগের জন্যই ব্যবহার করছি — দেখে মনে হচ্ছে
+            প্রথম দেখাতেই প্রেম।
+          </li>
+        </ul>
 
+        <h2>ব্যাকএন্ড</h2>
         <p>
-          techmeat.dev কী দিয়ে তৈরি, প্রতিদিনের কাজে আমি যেসব টুলের উপর নির্ভর করি, এবং coding এজেন্টদের সাথে পোস্ট ও ফিচার শিপ করার জন্য আমি যে ওয়ার্কফ্লো ব্যবহার করি — তার একটি স্ন্যাপশট।
+          আমি ব্যাকএন্ডার নই, কিন্তু ওয়েবে আমার অভিজ্ঞতার সঙ্গে এই দিকটা এড়িয়ে যাওয়ার কোনো
+          সুযোগ ছিল না। তাই ছোট স্টার্টআপ আর নিজের পেট-প্রজেক্টের জন্য আমি ওয়ান-ম্যান
+          অর্কেস্ট্রার মতো fullstack করি।
         </p>
-
-        <h2>টেক স্ট্যাক</h2>
         <ul>
-          <li><strong>Astro 6</strong> <code>output: 'static'</code> মোডে। পোস্টগুলো Markdown-এ লেখা, Astro-র কন্টেন্ট কালেকশনের মাধ্যমে রেন্ডার করা হয়।</li>
-          <li><strong>Solid.js</strong> ব্যবহৃত হয় <code>@astrojs/solid-js</code> দিয়ে অল্প কয়েকটি ইন্টারঅ্যাকটিভ আইল্যান্ডের জন্য — থিম টগল, ভাষা সুইচার, কোড-ব্লক কপি বাটন।</li>
-          <li><strong>Bun</strong> রানটাইম, প্যাকেজ ম্যানেজার ও টেস্ট রানার হিসেবে। npm নেই, pnpm নেই।</li>
-          <li><strong>Cloudflare Pages</strong> হোস্টিংয়ের জন্য; <strong>Cloudflare Web Analytics</strong> ট্র্যাফিকের জন্য, কোনো কুকি ছাড়াই।</li>
-          <li><strong>satori</strong> + <strong>resvg</strong> বিল্ড-টাইমে প্রতিটি পোস্টের জন্য প্রতিটি লোকেলে OG কার্ড তৈরির জন্য।</li>
-          <li><strong>@vite-pwa/astro</strong> (Workbox) একটি ইনস্টলযোগ্য PWA-র জন্য, যেখানে অফলাইন ফলব্যাক রয়েছে।</li>
-          <li><strong>@astrojs/sitemap</strong> + <strong>@astrojs/rss</strong> সাইটম্যাপ এবং প্রতি লোকেলের RSS ফিডের জন্য।</li>
+          <li>
+            একদম সরল জিনিসের জন্য — <strong>HonoJS</strong> + <strong>SQLite</strong>।
+          </li>
+          <li>
+            একটু জটিল প্রজেক্টের জন্য — <strong>FastAPI</strong> আর Docker-এ{" "}
+            <strong>PostgreSQL</strong>।
+          </li>
         </ul>
 
-        <h2>টুলিং</h2>
+        <h2>টুল</h2>
+        <p>আমি অলস, তাই:</p>
         <ul>
-          <li><strong>oxlint</strong> + <strong>oxfmt</strong> — Rust-ভিত্তিক লিন্ট ও ফরম্যাটার। ESLint নেই, Prettier নেই।</li>
-          <li><strong>@astrojs/check</strong> <code>.astro</code> ফাইলের ভিতরে TypeScript চেকিংয়ের জন্য।</li>
-          <li><strong>lefthook</strong> প্রি-কমিট হুকের জন্য (প্রতিটি কমিটে লিন্ট + ফরম্যাট + টাইপ চেক)।</li>
-          <li><strong>bun:test</strong> টেস্ট ফ্রেমওয়ার্ক হিসেবে।</li>
+          <li>কোডকে টেস্ট দিয়ে কভার করার চেষ্টা করি;</li>
+          <li>প্রজেক্টে নানা linter আর formatter বসিয়ে দিই;</li>
+          <li>
+            এর ফলে কোড কোয়ালিটি চেক স্বয়ংক্রিয়ভাবে চলে আর আমার সময় খায় না।
+          </li>
         </ul>
 
-        <h2>AI সহকারী</h2>
+        <h2>AI অ্যাসিস্ট্যান্ট</h2>
         <ul>
-          <li><strong>Claude Code</strong> — প্রধান coding এজেন্ট। প্রজেক্ট কনটেক্সট থাকে <code>CLAUDE.md</code> ও <code>AGENTS.md</code>-এ।</li>
-          <li><strong>Superpowers skills</strong> — অপ্রচলিত ফিচারগুলোর জন্য brainstorming, writing-plans, subagent-driven-development।</li>
-          <li><strong>GPT-5.5</strong> — বড় পরিবর্তনের ক্ষেত্রে দ্বিতীয় পর্যায়ের কোড রিভিউয়ের জন্য ব্যবহৃত।</li>
-          <li><strong>SEO / GEO skills suite</strong> — কীওয়ার্ড রিসার্চ, মেটা-ট্যাগ অপটিমাইজেশন, স্কিমা মার্কআপ, অন-পেজ অডিট, কন্টেন্ট-কোয়ালিটি অডিটর (CORE-EEAT), AI ইঞ্জিনের জন্য GEO কন্টেন্ট অপটিমাইজার।</li>
+          <li>
+            <strong>GitHub Copilot</strong> — এখন পর্যন্ত মূল, কিন্তু প্রাইসিং পলিসি
+            পরিবর্তনের ঘোষণার সঙ্গে সম্ভবত শিগগিরই অস্ত্রাগার থেকে সরে যাবে।
+          </li>
+          <li>
+            <strong>Claude Code</strong> — মূলত প্ল্যানিং আর টেক্সট নিয়ে কাজের জন্য।
+          </li>
+          <li>
+            <strong>Codex</strong> — কোডিংয়ের জন্য।
+          </li>
+          <li>
+            <strong>Opencode</strong> — ওপেন-সোর্স মডেল নিয়ে এক্সপেরিমেন্টের জন্য।
+          </li>
+          <li>
+            <strong>Hermes</strong> — অটোমেশনের জন্য।
+          </li>
         </ul>
 
         <h2>হার্ডওয়্যার</h2>
         <ul>
-          <li>(প্লেসহোল্ডার — মানুষের দ্বারা পূরণ করা হবে।)</li>
+          <li>কাজ করি MacBook-এ।</li>
+          <li>
+            লোকাল মডেল-এর এক্সপেরিমেন্ট চলে শক্তিশালী জিপিইউ-যুক্ত Windows-ডেস্কটপে।
+          </li>
+          <li>প্রজেক্ট ডিপ্লয় করি Linux-এ।</li>
         </ul>
 
         <h2>ওয়ার্কফ্লো</h2>
-        <p>প্রতিটি পোস্ট এবং প্রতিটি ফিচার মোটামুটি একই লুপের মধ্য দিয়ে যায়:</p>
+        <p>প্রতিটি ফিচার মোটামুটি একই সাইকেল ধরে চলে:</p>
         <ol>
-          <li>লক্ষ্য ও সীমাবদ্ধতাগুলো <code>CLAUDE.md</code> / <code>AGENTS.md</code>-এ ধরে রাখা যাতে এজেন্টের একটি স্থিতিশীল কনটেক্সট থাকে।</li>
-          <li>Superpowers-এর সাথে কাজের কাঠামো নিয়ে brainstorming করা; একটি ডিজাইন স্পেক তৈরি করা।</li>
-          <li>স্পেককে সুনির্দিষ্ট ধাপ সহ একটি বাস্তবায়ন পরিকল্পনায় রূপান্তর করা।</li>
-          <li>Subagent-চালিত এক্সিকিউশন, প্রতিটি কাজের জন্য দুই-পর্যায়ের রিভিউ সহ (প্রথমে স্পেক সম্মতি, তারপর কোড কোয়ালিটি)।</li>
-          <li>পোস্টের ক্ষেত্রে: প্রকাশের আগে একটি বহু-স্তরীয় SEO + GEO পাইপলাইন।</li>
+          <li>
+            লক্ষ্য আর কনস্ট্রেইন্ট <code>CLAUDE.md</code> / <code>AGENTS.md</code>-এ স্থির
+            করো, যাতে এজেন্টের কাছে স্থিতিশীল কনটেক্সট থাকে।
+          </li>
+          <li>Superpowers-এর মাধ্যমে ব্রেইনস্টর্মিং করো, ডিজাইন-স্পেসিফিকেশন পাও।</li>
+          <li>
+            স্পেসিফিকেশনকে কংক্রিট ধাপ সহ ইমপ্লিমেন্টেশন প্ল্যানে অনুবাদ করো; stories-এর
+            ডিটেইলিং <strong>Openspec</strong>-এ হয়।
+          </li>
+          <li>
+            <strong>TDD</strong> আর <strong>SDD</strong> মোডে subagent-driven এক্সিকিউশন,
+            প্রতিটি কাজে দু'ধাপের রিভিউ (প্রথমে স্পেক-অনুসরণ, তারপর কোড কোয়ালিটি)।
+          </li>
         </ol>
-
-        <p>
-          এই পেজের উদ্দেশ্য হলো টুলচেইন সম্পর্কে সৎ থাকা, যাতে পোস্টগুলো প্রতিবার সেটআপ পুনরায় ব্যাখ্যা করার বদলে <em>প্রক্রিয়ার</em> উপর মনোযোগ ধরে রাখতে পারে।
-        </p>
       </>
     ) : (
       <p>{t("stack.placeholder", locale)}</p>
