@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: zh
+prFileId: 10559e63bbeb5d99752dc22df4eee36d0065d8226272bf154d63c0c0a9618322
 ---
 
 我以前有过一个博客。流量还算不错，主题清晰，写的是真实的个人经历：那时候我写前端，也写自己亲手趟过的事。后来因为一些并不算重要的原因，我没有再维护它，连域名也跟着丢了。

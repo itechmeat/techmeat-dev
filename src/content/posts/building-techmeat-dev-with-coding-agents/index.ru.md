@@ -5,7 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: ru
-prFileId: 606bf74ae1eec28d97eefbf4bbd07aab66cbb0f028249981dc2c2b8dd5158ecf
+prFileId: 12b64cd35a6d342173e935773e501599a266bd20a8559e50cd0ed461e7567313
 ---
 
 Когда-то у меня уже был блог. Посещаемость — неплохая, тема — понятная, опыт — личный: я писал о фронтенде и о том, что сам проходил руками. Потом по не очень важным причинам я перестал его поддерживать и заодно потерял домен.

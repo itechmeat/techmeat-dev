@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: de
+prFileId: 084c6cdc147a078793e622b3c310b6d0f92df096003a97c2de8b367ba240c3ef
 ---
 
 Ich hatte schon mal einen Blog. Ordentlicher Traffic, klares Thema, echte persönliche Erfahrung: Ich schrieb über Frontend und über die Dinge, die ich selbst durchgemacht habe. Dann habe ich ihn aus nicht besonders wichtigen Gründen nicht mehr gepflegt und dabei nebenbei die Domain verloren.

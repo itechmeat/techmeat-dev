@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: sr
+prFileId: 157451cbe44986df613bfc2c43afbcafd84b718d1da3b3a14ef2cac7d3c655e9
 ---
 
 Nekada sam imao blog. Pristojan saobraćaj, jasna tema, prava lična iskustva: pisao sam o frontendu i o stvarima koje sam sam rešavao. Onda sam ga, iz ne baš važnih razloga, prestao održavati i usput izgubio domen.

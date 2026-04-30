@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: ar
+prFileId: 4c2b738d266c22de0b7600563714fc01dac553b2f8cee483d026952c137e088f
 ---
 
 كان لدي مدونة من قبل. حركة زيارات معقولة، موضوع واضح، تجربة شخصية حقيقية: كنت أكتب عن الفرونت إند وعن الأشياء التي أمر بها بنفسي. ثم لأسباب ليست بالغة الأهمية توقفت عن متابعتها، وفقدت معها الدومين.

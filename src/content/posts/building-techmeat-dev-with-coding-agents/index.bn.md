@@ -5,6 +5,7 @@ pubDate: 2026-04-28
 tags: [ai-coding, astro, bun]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: bn
+prFileId: 6d552f9ee610d45dce418c0386b752bedffeffede57a35e00c390b536f4ffb97
 ---
 
 আমার আগেও একটা ব্লগ ছিল। ভালোই ট্রাফিক, পরিষ্কার বিষয়, একদম বাস্তব ব্যক্তিগত অভিজ্ঞতা: আমি ফ্রন্টএন্ড নিয়ে লিখতাম, আর নিজের হাতে যা পেরিয়ে যেতাম তা নিয়ে। তারপর তেমন গুরুত্বপূর্ণ নয় এমন কিছু কারণে আমি সেটা চালিয়ে যাওয়া বন্ধ করি, এবং সঙ্গে ডোমেইনটাও হারাই।

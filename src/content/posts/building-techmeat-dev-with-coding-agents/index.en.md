@@ -6,6 +6,7 @@ tags: [ai-coding, astro, bun]
 prNumber: 2
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 locale: en
+prFileId: 606bf74ae1eec28d97eefbf4bbd07aab66cbb0f028249981dc2c2b8dd5158ecf
 ---
 
 I used to have a blog. Decent traffic, a clear topic, real personal experience: I wrote about frontend and the things I worked through myself. Then for not-particularly-important reasons I stopped maintaining it, and lost the domain along the way.
