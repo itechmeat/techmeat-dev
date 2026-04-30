@@ -114,3 +114,64 @@ Sledeća faza je dizajn. Nastavak ovog posta biće upravo o tome: kako sam to ur
 Za sada, za zapis, sačuvajmo kako blog izgleda danas:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Dizajn kroz Impeccable
+
+Ako si pogledao klip iznad — već si video kako je blog izgledao pre i kako je počeo da izgleda posle.
+
+Dizajn sam namerno odložio za posebnu fazu — da ga ne mešam sa arhitekturom i sadržajem u istom zadatku. Kolege su mi preporučile sistem skill-ova [Impeccable](https://impeccable.style/) — pomaže agentu da napravi promišljeniji vizual umesto podrazumevane AI-estetike.
+
+Ispalo je istovremeno jednostavno i ne baš jednostavno. Jednostavno — jer je sve stalo u jedan prompt i par krugova pitanja sa Claude Code-om. Ne baš — jer je prompt morao biti napisan pažljivo, a pitanja Claude Code-a nisu bila baš laka.
+
+Početni prompt:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+Claude Code je dizajn osvežio prilično brzo. Posle par dodatnih prompt-ova rezultat mi je odgovarao.
+
+## Posteri kroz Pencil
+
+Sledeće — posteri, da linkovi ka blogu izgledaju lepo kad se dele po društvenim mrežama. Uključio sam [Pencil](https://www.pencil.dev/) (MCP im je odličan) i tražio od Claude Code-a da izgradi [sistem postera](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) i izveze ih u projekat. Nije prošlo bez sitnih ručnih ispravki, ali u celini — brzo i uredno.
+
+Prompt za ovaj deo:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## Komentari, Lighthouse i hosting
+
+Sistem za komentare nisam uključio — za sada ne vidim potrebu. Ako želiš da prokomentarišeš objavu — ispod nje stoji link na PR, možeš ostaviti komentar tamo.
+
+Na samom kraju zamolio sam agenta da prođe sajt kroz Lighthouse i podigne metrike. Brojke su na kraju stale na 100%.
+
+Hosting sam od početka hteo da napravim što jeftinijim po novcu i vremenu — izbor je pao na Cloudflare Pages. $0 za sve, plus ugrađena analitika. Domen sam, uzgred, takođe kupio na Cloudflare-u — ispao je jeftiniji nego kod uobičajenih registrara.
+
+## Šta sledi
+
+Time je prvi ciklus završen: blog radi, preveden je, ima dizajn, OG-postere i metrike kojih se ne treba stideti. Sledeći korak je automatizacija pisanja objava. Imam ideju kako to uraditi „na moderan način" — o tome ću pisati u zasebnoj objavi.

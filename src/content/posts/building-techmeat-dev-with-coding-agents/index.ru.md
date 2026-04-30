@@ -114,3 +114,64 @@ techmeat.dev — это рабочая лаборатория, не просто
 А пока, для истории, пусть сохранится, как блог выглядит сегодня:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Дизайн через Impeccable
+
+Если вы посмотрели ролик выше — то уже видели, как блог выглядел до и как стал выглядеть после.
+
+Дизайн я ушёл делать в отдельную фазу осознанно: чтобы не смешивать его с архитектурой и контентом в одной задаче. Коллеги порекомендовали систему скилов [Impeccable](https://impeccable.style/) — она помогает агенту собрать более продуманный визуал, чем дефолтный.
+
+Получилось одновременно просто и не очень. Просто — потому что всё уложилось в один промпт и пару раундов вопросов от Claude Code. Не очень — потому что промпт нужно было написать внятно, а вопросы Claude Code оказались не из самых лёгких.
+
+Стартовый промпт:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+Claude Code обновил дизайн довольно быстро. После пары уточняющих промптов результат меня устроил.
+
+## Постеры через Pencil
+
+Дальше — постеры, чтобы ссылки на блог красиво расшаривались в соцсетях. Подключил [Pencil](https://www.pencil.dev/) (у него отличный MCP) и попросил Claude Code построить [систему постеров](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) и экспортировать их в проект. Без мелких ручных правок не обошлось, но в целом получилось быстро и аккуратно.
+
+Промпт для этой части:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## Комментарии, Lighthouse и хостинг
+
+Систему комментариев я подключать не стал — пока не вижу необходимости. Если хочется обсудить пост — под ним есть ссылка на PR, прокомментировать можно прямо там.
+
+В самом конце я попросил агента прогнать сайт через Lighthouse и подтянуть метрики. Цифры в итоге вышли на 100%.
+
+Хостинг я с самого начала хотел сделать максимально дешёвым по деньгам и времени — выбор остановился на Cloudflare Pages. $0 за всё, плюс встроенная аналитика. Домен, кстати, тоже купил у Cloudflare — там он оказался дешевле, чем у привычных доменейров.
+
+## Что планирую дальше
+
+На этом первый цикл закончен: блог работает, переведён, имеет дизайн, OG-постеры и метрики, которыми не стыдно. Следующий шаг — автоматизация написания постов. У меня есть идея, как сделать это «по-современному», про неё напишу отдельным постом.

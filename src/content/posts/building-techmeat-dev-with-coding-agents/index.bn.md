@@ -114,3 +114,64 @@ techmeat.dev আমার কাছে শুধু নোটের গুদা
 আপাতত, ইতিহাসের জন্য, আজ ব্লগটা যেভাবে দেখাচ্ছে — সেটা সংরক্ষিত থাকুক:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Impeccable দিয়ে ডিজাইন
+
+উপরের ক্লিপটা যদি দেখে থাকেন — তাহলে আগেই দেখে ফেলেছেন ব্লগটা আগে কেমন দেখাচ্ছিল আর পরে কেমন হয়ে উঠল।
+
+ডিজাইনকে আমি ইচ্ছাকৃতভাবে আলাদা ফেইজে রেখেছিলাম — যাতে এটাকে আর্কিটেকচার ও কনটেন্টের সঙ্গে একই কাজে না মিশিয়ে ফেলি। সহকর্মীরা [Impeccable](https://impeccable.style/) skill সিস্টেমের কথা বলেছিলেন — এটা ডিফল্ট AI সৌন্দর্যবোধের বদলে এজেন্টকে একটু বেশি ভাবনার ছাপ থাকা ভিজ্যুয়াল বানাতে সাহায্য করে।
+
+ফলাফল এক সঙ্গে সহজ এবং এত সহজ নয়। সহজ — কারণ সবকিছু একটা prompt আর Claude Code-এর সঙ্গে কয়েক রাউন্ড প্রশ্নোত্তরের মধ্যেই ধরে গেছে। এত সহজ নয় — কারণ prompt-টা যত্ন নিয়ে লিখতে হয়েছে, আর Claude Code-এর প্রশ্নগুলোও খুব সহজ ছিল না।
+
+প্রাথমিক prompt:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+Claude Code ডিজাইনটা বেশ দ্রুত রিফ্রেশ করে দিয়েছে। কয়েকটা স্পষ্টীকরণ prompt-এর পরে রেজাল্ট আমাকে সন্তুষ্ট করেছে।
+
+## Pencil দিয়ে পোস্টার
+
+এর পর — পোস্টার, যাতে সোশ্যাল নেটওয়ার্কে ব্লগের লিংক শেয়ার করলে সুন্দর দেখায়। আমি [Pencil](https://www.pencil.dev/) যুক্ত করেছি (ওদের MCP দারুণ) এবং Claude Code-কে বলেছি একটা [পোস্টার সিস্টেম](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) বানাতে এবং প্রজেক্টে এক্সপোর্ট করতে। কিছু ম্যানুয়াল টাচ-আপ লেগেছে, কিন্তু সব মিলিয়ে — দ্রুত আর পরিষ্কার।
+
+এই অংশের জন্য prompt:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## কমেন্ট, Lighthouse এবং হোস্টিং
+
+কমেন্ট সিস্টেম আমি যুক্ত করিনি — এখনই এর প্রয়োজন দেখছি না। যদি কোনো পোস্ট নিয়ে আলোচনা করতে চান — তার নিচে PR-এর লিংক রয়েছে, ওখানেই কমেন্ট রাখা যাবে।
+
+একদম শেষে আমি এজেন্টকে বললাম সাইটটা Lighthouse দিয়ে চালিয়ে মেট্রিকস টেনে তুলতে। সংখ্যাগুলো শেষ পর্যন্ত 100%-এ এসে দাঁড়িয়েছে।
+
+হোস্টিংয়ের জন্য আমি শুরু থেকেই টাকা ও সময় — দু'দিকেই যত সম্ভব সস্তা অপশন চাইছিলাম — Cloudflare Pages। সবকিছুর জন্য শূন্য ডলার, সঙ্গে বিল্ট-ইন অ্যানালিটিক্স। ডোমেইনটাও, যাইহোক, আমি Cloudflare থেকেই কিনেছি — চেনা রেজিস্ট্রারগুলোর চেয়ে সস্তা পড়েছে।
+
+## এর পরে কী
+
+এতেই প্রথম সাইকল শেষ: ব্লগ চলছে, অনুবাদ আছে, ডিজাইন আছে, OG পোস্টার আর এমন মেট্রিকস আছে যেগুলো নিয়ে লজ্জা পেতে হয় না। পরের ধাপ হলো পোস্ট লেখার অটোমেশন। কীভাবে এটাকে "আধুনিক" উপায়ে করা যায় সে বিষয়ে আমার একটা আইডিয়া আছে — সেটা নিয়ে আলাদা পোস্টে লিখব।

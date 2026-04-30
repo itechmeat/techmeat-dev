@@ -114,3 +114,64 @@ Bir sonraki aşama tasarım. Bu yazının devamı tam olarak onunla ilgili olaca
 Şimdilik, kayda geçmesi için, blogun bugün nasıl göründüğünü saklayalım:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Impeccable ile tasarım
+
+Yukarıdaki klibi izlediysen — blogun önce nasıl göründüğünü ve sonradan nasıl göründüğünü zaten gördün demektir.
+
+Tasarımı bilerek ayrı bir faz olarak bıraktım — onu mimari ve içerikle aynı görevde karıştırmamak için. Meslektaşlarım [Impeccable](https://impeccable.style/) skill sistemini önerdiler — varsayılan AI estetiği yerine ajana daha düşünülmüş bir görsel inşa etmesinde yardımcı olur.
+
+Hem basit hem de o kadar basit değil çıktı. Basit — çünkü her şey tek bir prompt'a ve Claude Code ile birkaç soru turuna sığdı. O kadar basit değil — çünkü prompt'un dikkatlice yazılması gerekti ve Claude Code'un soruları pek de kolay sayılmazdı.
+
+Başlangıç prompt'u:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+Claude Code tasarımı oldukça hızlı güncelledi. Birkaç netleştirici prompt sonrası sonuç beni ikna etti.
+
+## Pencil ile posterler
+
+Sonra — posterler, blog linkleri sosyal medyada paylaşılınca güzel görünsün diye. [Pencil](https://www.pencil.dev/)'ı bağladım (MCP'leri mükemmel) ve Claude Code'dan bir [poster sistemi](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) inşa edip projeye export etmesini istedim. Küçük elle düzeltmeler gerekti ama genel olarak — hızlı ve temiz çıktı.
+
+Bu kısım için prompt:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## Yorumlar, Lighthouse ve hosting
+
+Yorum sistemi bağlamadım — şimdilik gereğini görmüyorum. Bir post hakkında konuşmak istersen — altında PR'a giden bir link var, oradan doğrudan yorum bırakabilirsin.
+
+En sonunda ajandan siteyi Lighthouse'tan geçirip metrikleri sıkılaştırmasını istedim. Rakamlar sonunda %100'de durdu.
+
+Hosting'i en başından beri hem para hem zaman olarak mümkün olan en ucuz seçenek olarak yapmak istedim — Cloudflare Pages. Her şey için sıfır dolar, üstüne dahili analitik. Domain'i de bu arada Cloudflare'den aldım — alışılmış registrar'lardan daha ucuz çıktı.
+
+## Sırada ne var
+
+İşte ilk döngü kapandı: blog çalışıyor, çevrildi, tasarımı, OG posterleri ve utanılmayacak metrikleri var. Sıradaki adım post yazımının otomatikleştirilmesi. Bunu "modern" bir şekilde nasıl yapacağıma dair bir fikrim var — bu konuda ayrı bir post yazacağım.

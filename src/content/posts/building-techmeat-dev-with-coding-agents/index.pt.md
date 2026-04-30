@@ -114,3 +114,64 @@ A próxima etapa é design. A continuação deste post será exatamente sobre is
 Por enquanto, para a história, fica registrado como o blog parece hoje:
 
 <iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eo8KNkGzBBM?si=KVKJ1hHw26kDkmtZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Design com Impeccable
+
+Se você assistiu ao clipe acima, já viu como o blog era antes e como ficou depois.
+
+Deixei o design para uma fase separada de propósito: não queria misturar com arquitetura e conteúdo numa só tarefa. Colegas me recomendaram o sistema de skills [Impeccable](https://impeccable.style/) — ele ajuda o agente a construir um visual mais bem pensado, em vez da estética padrão de IA.
+
+Saiu simples e ao mesmo tempo nem tanto. Simples — porque tudo coube em um prompt e duas ou três rodadas de perguntas com o Claude Code. Nem tanto — porque o prompt tinha que ser escrito com cuidado, e as perguntas do Claude Code não eram lá tão fáceis.
+
+Prompt inicial:
+
+```text
+The blog is already running on the base setup with starter content, but it was deliberately built without design — I wanted to handle that as a separate phase.
+
+You have the impeccable skill, but I'm not great at using it yet. Let's learn it together from the docs at https://impeccable.style/docs/impeccable.
+
+What I want for the blog: a simple, elegant design with minimal decorative imagery (ideally none at all). Content first, but the site should feel pleasant — design must not get in the way of consuming content. At the same time the visual character should reflect my own attitude toward design.
+
+I have no references; let's build it from scratch.
+The blog already has a light/dark theme toggle — we can keep it or drop it.
+We have many locales, including Asian scripts and Arabic, so RTL matters.
+Mobile-first is also important.
+You'll find more details in /docs.
+You can ask me questions, but don't drown me in them — only the essentials.
+```
+
+O Claude Code atualizou o design bem rápido. Depois de alguns prompts de ajuste o resultado me convenceu.
+
+## Pôsteres com Pencil
+
+Em seguida — pôsteres, para os links do blog ficarem bonitos quando compartilhados em redes sociais. Plugiei o [Pencil](https://www.pencil.dev/) (o MCP deles é excelente) e pedi ao Claude Code para construir um [sistema de pôsteres](https://github.com/itechmeat/techmeat-dev/blob/master/design/posters.pen) e exportá-lo para o projeto. Alguns ajustes manuais foram necessários, mas no geral — rápido e limpo.
+
+Prompt para essa parte:
+
+```text
+I'm adding a `design/` folder to the project for design artifacts. Let's start with post posters.
+
+Posters will live in Pencil — you have the MCP for that.
+
+Build a poster system for every page of the blog; the layouts should be templated. Post posters should be kept separate so adding a new poster per post is easy.
+
+Posters need two sizes — landscape and portrait — to cover both social-network variants.
+
+Make a poster for the first post, fully on-spec and at the correct dimensions. The first poster will become the template, with small per-post variations.
+
+Export every poster, place them correctly inside the project, and wire each one up to the matching page.
+
+The home-page poster should also serve as the default poster for any page that doesn't have its own yet.
+```
+
+## Comentários, Lighthouse e hospedagem
+
+Não plugiei um sistema de comentários — por enquanto não vejo necessidade. Se quiser comentar um post, há um link para a PR logo abaixo; pode deixar comentários direto lá.
+
+No finalzinho pedi ao agente para passar Lighthouse no site e ajustar as métricas. Os números terminaram em 100%.
+
+Para a hospedagem, desde o início queria a opção mais barata em dinheiro e tempo — Cloudflare Pages. Zero dólares por tudo, mais analytics embutido. O domínio, aliás, também comprei no Cloudflare — saiu mais barato que nos registrars de costume.
+
+## O que vem a seguir
+
+E assim fecha o primeiro ciclo: o blog funciona, está traduzido, tem design, pôsteres OG e métricas das quais não dá vergonha. O próximo passo é automatizar a escrita de posts. Tenho uma ideia de como fazer isso de jeito "moderno" — escreverei sobre ela em um post à parte.
