@@ -2,8 +2,10 @@
 title: "Cómo construí OpenSecondBrain"
 description: "La historia de open-second-brain: cómo Hermes en un VPS, Obsidian, MCP, CLI y varios runtimes de agentes se combinaron en una pequeña memoria basada en archivos para agentes de IA."
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: es
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 1f178cddda5dd719be409792616df1664233ffbaeb0ca64695c208957806a484
 ---
 
 Llevo mucho tiempo usando activamente diversas herramientas de IA, pero en cierto momento quedó claro: no solo las estaba usando, sino que me había «envuelto» casi por completo en agentes y en todo lo relacionado con la IA.
@@ -16,7 +18,7 @@ Así es como surgió [OpenSecondBrain](https://github.com/itechmeat/open-second-
 
 ## De los flujos de trabajo manuales a Dark Fabric
 
-En el primer artículo escribí sobre cómo lancé este blog con agentes de código. Allí el flujo de trabajo fue deliberadamente simple: establecer el contexto, construir un proyecto Astro, pasar por el diseño, añadir entradas y verificar el resultado.
+En [el primer artículo](/es/posts/building-techmeat-dev-with-coding-agents/) escribí sobre cómo lancé este blog con agentes de código. Allí el flujo de trabajo fue deliberadamente simple: establecer el contexto, construir un proyecto Astro, pasar por el diseño, añadir entradas y verificar el resultado.
 
 Pero mi proceso habitual es más complejo. Tiene roles, revisiones intermedias, agentes separados para diferentes tipos de tareas y control de calidad en cada paso. Cuando hay muchas tareas de este tipo, la persona se convierte en un despachador: mueve el contexto aquí, pide a aquel que revise esto, dale al siguiente agente la salida del anterior, no olvides registrar la decisión.
 

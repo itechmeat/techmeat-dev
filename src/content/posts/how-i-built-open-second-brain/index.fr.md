@@ -2,11 +2,13 @@
 title: "Comment j'ai construit OpenSecondBrain"
 description: "L'histoire d'open-second-brain : comment Hermes sur un VPS, Obsidian, MCP, CLI et plusieurs runtimes d'agents se sont réunis en une petite mémoire basée sur des fichiers pour les agents IA."
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: fr
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: dd85b0ca6ecbdd8fb291706ef1aa5df08d22a37c95e2deb8433f72a178b70631
 ---
 
-J'utilise activement divers outils d'IA depuis longtemps, mais à un moment donné, une évidence s'est imposée : je ne faisais pas qu les utiliser — je m'étais presque entièrement « emballé » d'agents et de tout ce qui touche à l'IA.
+J'utilise activement divers outils d'IA depuis longtemps, mais à un moment donné, une évidence s'est imposée : je ne faisais pas que les utiliser — je m'étais presque entièrement « emballé » d'agents et de tout ce qui touche à l'IA.
 
 Depuis plusieurs mois, des agents écrivent du code selon mes flux de travail : planification, implémentation, revue, corrections, vérification itérative. Ça fonctionne, mais le processus garde une étrange traîne manuelle. Même quand un agent écrit le code, je dois toujours déplacer les tâches entre les étapes, transférer le contexte, rappeler les règles, lancer les vérifications et m'assurer que le prochain exécutant comprenne ce qui s'est déjà passé.
 
@@ -16,7 +18,7 @@ C'est ainsi qu'est né [OpenSecondBrain](https://github.com/itechmeat/open-secon
 
 ## Des flux de travail manuels à Dark Fabric
 
-Dans le premier article, j'ai raconté comment j'avais lancé ce blog avec des agents de codage. Là, le flux de travail était délibérément simple : définir le contexte, construire un projet Astro, passer par le design, ajouter des articles, vérifier le résultat.
+Dans [le premier article](/fr/posts/building-techmeat-dev-with-coding-agents/), j'ai raconté comment j'avais lancé ce blog avec des agents de codage. Là, le flux de travail était délibérément simple : définir le contexte, construire un projet Astro, passer par le design, ajouter des articles, vérifier le résultat.
 
 Mais mon processus habituel est plus complexe. Il y a des rôles, des revues intermédiaires, des agents séparés pour différents types de tâches et un contrôle qualité à chaque étape. Quand les tâches se multiplient, l'humain se transforme en dispatcheur : déplace le contexte ici, demande à celui-ci de vérifier cela, donne au prochain agent le résultat du précédent, n'oublie pas d'enregistrer la décision.
 

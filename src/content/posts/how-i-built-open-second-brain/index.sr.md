@@ -1,152 +1,154 @@
 ---
-title: "Како сам направио OpenSecondBrain"
-description: "Прича о open-second-brain: како су Hermes на VPS-у, Obsidian, MCP, CLI и неколико агентских runtime-а постали мала фајл-базирана меморија за AI агенте."
+title: "Kako sam napravio OpenSecondBrain"
+description: "Priča o open-second-brain: kako su Hermes na VPS-u, Obsidian, MCP, CLI i nekoliko agentskih runtime-a postali mala fajl-bazirana memorija za AI agente."
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: sr
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 145afac48f95d2f8e5af5a3f4af2da00d95d4cd290d815604f6a33418b672311
 ---
 
-Већ дуго активно користим разне AI алатке, али у једном тренутку је постало јасно: не само да их користим — скоро да сам се потпуно „умотао" у агенте и све што је везано за AI.
+Već dugo aktivno koristim razne AI alatke, ali u jednom trenutku je postalo jasno: ne samo da ih koristim — skoro da sam se potpuno „umotao" u agente i sve što je vezano za AI.
 
-Већ неколико месеци агенти ми пишу код по мојим токовима рада: планирање, имплементација, ревизија, исправке, поновна провера. То функционише, али процес има чудан ручни реп. Чак и када агент пише код, ја и даље морам да премештам задатке између фаза, преносим контекст, подсећам на правила, покрећем провере и водим рачуна да следећи извршилац разуме шта се већ догодило.
+Već nekoliko meseci agenti mi pišu kod po mojim tokovima rada: planiranje, implementacija, revizija, ispravke, ponovna provera. To funkcioniše, ali proces ima čudan ručni rep. Čak i kada agent piše kod, ja i dalje moram da premeštam zadatke između faza, prenosim kontekst, podsećam na pravila, pokrećem provere i vodim računa da sledeći izvršilac razume šta se već dogodilo.
 
-Понављајућег посета је било превише. Зато следећи природни корак није била још једна функција, већ аутоматизација самог тока рада.
+Ponavljajućeg posla je bilo previše. Zato sledeći prirodni korak nije bila još jedna funkcija, već automatizacija samog toka rada.
 
-Тако је настао [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — покушај да се агентима да нормална меморија о томе шта радимо, зашто то радимо и које одлуке су већ донете.
+Tako je nastao [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — pokušaj da se agentima da normalna memorija o tome šta radimo, zašto to radimo i koje odluke su već donete.
 
-## Од ручних токова рада до Dark Fabric
+## Od ručnih tokova rada do Dark Fabric
 
-У првом посту сам писао о томе како сам покренуо овај блог уз помоћ кодинг агената. Тамо је ток рада био намерно једноставан: поставити контекст, изградити Astro пројекат, проћи кроз дизајн, додати постове, проверити резултат.
+U [prvom postu](/sr/posts/building-techmeat-dev-with-coding-agents/) sam pisao o tome kako sam pokrenuo ovaj blog uz pomoć koding agenata. Tamo je tok rada bio namerno jednostavan: postaviti kontekst, izgraditi Astro projekat, proći kroz dizajn, dodati postove, proveriti rezultat.
 
-Али мој уобичајени процес је сложенији. Има улоге, међуревизије, одвојене агенте за различите типове задатака и контролу квалитета на сваком кораку. Када таквих задатака буде много, човек постаје диспечер: пребаци контекст овамо, замоли онога да провери ово, дај следећем агенту излаз претходног, не заборави да забележиш одлуку.
+Ali moj uobičajeni proces je složeniji. Ima uloge, međurevizije, odvojene agente za različite tipove zadataka i kontrolu kvaliteta na svakom koraku. Kada takvih zadataka bude mnogo, čovek postaje dispečer: prebaci kontekst ovamo, zamoli onoga da proveri ovo, daj sledećem agentu izlaz prethodnog, ne zaboravi da zabeležiš odluku.
 
-Желео сам да дођем до ригиднијег модела који све чешће звучи као Dark Fabric: на улазу идеја функције, на излазу — функција реализована, тестирана и деплојована. Не „агент је написао комад кода", већ фабрика која уме сама да растави посао на фазе и провуче га кроз процес.
+Želeo sam da dođem do rigidnijeg modela koji sve češće zvuči kao Dark Fabric: na ulazu ideja funkcije, na izlazu — funkcija realizovana, testirana i deplojovana. Ne „agent je napisao komad koda", već fabrika koja ume sama da rastavi posao na faze i provuče ga kroz proces.
 
-До пуноправне Dark Fabric је још далеко. Али први практични корак већ постоји: Hermes, подигнут на VPS-у, са агентима за различите задатке, вештинама, Telegram интерфејсом и јефтином маршрутизацијом модела кроз OmniRoute.
+Do punopravne Dark Fabric je još daleko. Ali prvi praktični korak već postoji: Hermes, podignut na VPS-u, sa agentima za različite zadatke, veštinama, Telegram interfejsom i jeftinom maršrutizacijom modela kroz OmniRoute.
 
-И готово одмах је откривена друга обавезна компонента ове фабрике: агентима треба меморија.
+I gotovo odmah je otkrivena druga obavezna komponenta ove fabrike: agentima treba memorija.
 
-## Зашто агенту треба Second Brain
+## Zašto agentu treba Second Brain
 
-Ако агент ради једну сесију, може му се просто ставити контекст у промпт. Ако агент ради на пројекту недељама, то није довољно.
+Ako agent radi jednu sesiju, može mu se prosto staviti kontekst u prompt. Ako agent radi na projektu nedeljama, to nije dovoljno.
 
-Треба да зна:
+Treba da zna:
 
-- која су правила већ усвојена у пројекту;
-- које одлуке су дискутоване и зашто су изабране баш те;
-- који су се чињенице појавиле током истрага;
-- који артефакти су већ креирани;
-- који су агенти учествовали у раду;
-- где се налази људска база знања, а где сервисна зона агената.
+- koja su pravila već usvojena u projektu;
+- koje odluke su diskutovane i zašto su izabrane baš te;
+- koje su se činjenice pojavile tokom istraga;
+- koji artefakti su već kreirani;
+- koji su agenti učestvovali u radu;
+- gde se nalazi ljudska baza znanja, a gde servisna zona agenata.
 
-И најважније — то не би требало да зависи само од „меморије модела". Треба ми једноставан, проверив, фајл-базиран систем знања који могу отворити руком, прочитати у Obsidian-у, синхронизовати, комитовати делимично или уопште не комитовати.
+I najvažnije — to ne bi trebalo da zavisi samo od „memorije modela". Treba mi jednostavan, proveriv, fajl-baziran sistem znanja koji mogu otvoriti rukom, pročitati u Obsidian-u, sinhronizovati, komitovati delimično ili uopšte ne komitovati.
 
-Зато open-second-brain од самог почетка није постао „још један четбот са меморијом", већ мала инфраструктура око Markdown волта.
+Zato open-second-brain od samog početka nije postao „još jedan četbot sa memorijom", već mala infrastruktura oko Markdown volta.
 
-## Зашто Obsidian и Markdown
+## Zašto Obsidian i Markdown
 
-Избор Obsidian-компатибилног волта је био скоро очигледан.
+Izbor Obsidian-kompatibilnog volta je bio skoro očigledan.
 
-Прво, то су обични Markdown фајлови. Нема магије, нема затворене базе, нема зависности од конкретног сервиса. Ако агент нешто запише, могу отворити фајл и видети резултат.
+Prvo, to su obični Markdown fajlovi. Nema magije, nema zatvorene baze, nema zavisnosti od konkretnog servisa. Ako agent nešto zapiše, mogu otvoriti fajl i videti rezultat.
 
-Друго, Obsidian већ добро решава људски део Second Brain-а: белешке, викилинкове, дневне белешке, ручну навигацију, граф, претрагу. Није било смисла правити сопствени интерфејс за знање када постоји алат који је већ познат.
+Drugo, Obsidian već dobro rešava ljudski deo Second Brain-a: beleške, vikilinkove, dnevne beleške, ručnu navigaciju, graf, pretragu. Nije bilo smisla praviti sopstveni interfejs za znanje kada postoji alat koji je već poznat.
 
-Треће, агентима не треба цео Obsidian. Требају им детерминистичке операције: креирати сервисну структуру, додати догађај у дневни лог, изградити индекс страна, проверити здравље волта, експортовати конфигурацију без тајни. Све то се може радити кроз CLI и MCP, без присиљавања модела да „размишља" о фајл операцијама где је боље извршити прецизну наредбу.
+Treće, agentima ne treba ceo Obsidian. Trebaju im determinističke operacije: kreirati servisnu strukturu, dodati događaj u dnevni log, izgraditi indeks strana, proveriti zdravlje volta, eksportovati konfiguraciju bez tajni. Sve to se može raditi kroz CLI i MCP, bez prisiljavanja modela da „razmišlja" o fajl operacijama gde je bolje izvršiti preciznu naredbu.
 
-Тренутно open-second-brain креира у волту агентску зону `AI Wiki/`, води дневне логове у `Daily/*.md`, уме да ажурира Markdown индекс, проверава конфигурацију и не дира људске белешке изнад сервисне секције `## Raw events`.
+Trenutno open-second-brain kreira u voltu agentsku zonu `AI Wiki/`, vodi dnevne logove u `Daily/*.md`, ume da ažurira Markdown indeks, proverava konfiguraciju i ne dira ljudske beleške iznad servisne sekcije `## Raw events`.
 
-## Дао сам празан репозиторијум — агент је изабрао архитектуру
+## Dao sam prazan repozitorijum — agent je izabrao arhitekturu
 
-Најинтересантније: нисам седео да пројектујем све ово као класичну библиотечку API. Дао сам агенту линкове на популарне имплементације, празан репозиторијум и задатак: направи универзални плагин, пре свега за Hermes, али тако да га и други агенти могу преузети.
+Najinteresantnije: nisam sedeo da projektujem sve ovo kao klasičnu bibliotečku API. Dao sam agentu linkove na popularne implementacije, prazan repozitorijum i zadatak: napravi univerzalni plagin, pre svega za Hermes, ali tako da ga i drugi agenti mogu preuzeti.
 
-Први комит је био потпуно документациони: README и bootstrap пројекта 6. маја. Затим је агент брзо изградио CLI фондацију, наредбу `o2b`, init/doctor, волт примитиве и индекс. Истог дана се појавио MCP сервер — важан слој, јер кроз MCP различити runtime-и могу добијати исте алате без ручног парсирања командне линије.
+Prvi komit je bio potpuno dokumentacioni: README i bootstrap projekta 6. maja. Zatim je agent brzo izgradio CLI fondaciju, naredbu `o2b`, init/doctor, volt primitive i indeks. Istog dana se pojavio MCP server — važan sloj, jer kroz MCP različiti runtime-i mogu dobijati iste alate bez ručnog parsiranja komandne linije.
 
-Прве верзије су биле веома практичне: учинити да Hermes може инсталирати плагин, подићи волт, проверити стање и писати догађаје. Не савршена архитектура на папиру, већ радећа минимална меморија за правог агента.
+Prve verzije su bile veoma praktične: učiniti da Hermes može instalirati plagin, podići volt, proveriti stanje i pisati događaje. Ne savršena arhitektura na papiru, već radna minimalna memorija za pravog agenta.
 
-Затим је пројекат почео да се мења под притиском интеграција.
+Zatim je projekat počeo da se menja pod pritiskom integracija.
 
-## Од Hermes-а до универзалног плагина
+## Od Hermes-a do univerzalnog plagina
 
-Hermes је остао главни runtime. За њега је пројекат и замишљен: инсталирати плагин, указати на волт, дати агенту алате и натерати га да пише важне догађаје у Second Brain.
+Hermes je ostao glavni runtime. Za njega je projekat i zamišljen: instalirati plagin, ukazati na volt, dati agentu alate i naterati ga da piše važne događaje u Second Brain.
 
-Али прилично брзо је постало јасно да везивање само за Hermes није исправно. Већ имам различите агенте и различита окружења: Claude Code, Codex, OpenClaw. Ако Second Brain треба да буде заједничка меморија, не може живети само у једном клијенту.
+Ali prilično brzo je postalo jasno da vezivanje samo za Hermes nije ispravno. Već imam različite agente i različita okruženja: Claude Code, Codex, OpenClaw. Ako Second Brain treba da bude zajednička memorija, ne može živeti samo u jednom klijentu.
 
-Тако су у пројекту настали адаптери и манифести за неколико runtime-а:
+Tako su u projektu nastali adapteri i manifesti za nekoliko runtime-a:
 
-- Hermes као главни сценарио инсталације;
-- Claude Code кроз манифест маркетпллејса и MCP;
-- Codex кроз сопствени манифест маркетпллејса и MCP;
-- OpenClaw прво кроз JS адаптер, затим кроз пун унос нативног плагина;
-- генерички MCP уговор за runtime-е који ће се појавити касније.
+- Hermes kao glavni scenario instalacije;
+- Claude Code kroz manifest marketplejsa i MCP;
+- Codex kroz sopstveni manifest marketplejsa i MCP;
+- OpenClaw prvo kroz JS adapter, zatim kroz pun unos nativnog plagina;
+- generički MCP ugovor za runtime-e koji će se pojaviti kasnije.
 
-Ово је важна архитектонска одлука: језгро треба да буде једно, а улаза може бити више. Агентима није потребно да се споре где је истина. Истина је у волту и у заједничком скупу операција.
+Ovo je važna arhitektonska odluka: jezgro treba da bude jedno, a ulaza može biti više. Agentima nije potrebno da se spore gde je istina. Istina je u voltu i u zajedničkom skupu operacija.
 
-## Шта је требало поправити путем
+## Šta je trebalo popraviti putem
 
-open-second-brain се развијао врло брзо: од 6. до 9. маја пројекат је прошао пут од README-а до верзије `0.7.0`. И скоро свака верзија није била „козметика", већ реакција на стварни проблем интеграције.
+open-second-brain se razvijao vrlo brzo: od 6. do 9. maja projekat je prošao put od README-a do verzije `0.7.0`. I skoro svaka verzija nije bila „kozmetika", već reakcija na stvarni problem integracije.
 
-На пример, OpenClaw је прво добио нативну компатибилност плагина, али runtime се показао строжим него што је очекивано. Морало се додати `name` унутар објеката tool, учинити `register()` синхроним, а затим преписати OpenClaw плагин у чисти JavaScript без `child_process`, јер је скенер безбедности блокирао подпроцессе.
+Na primer, OpenClaw je prvo dobio nativnu kompatibilnost plagina, ali runtime se pokazao strožim nego što je očekivano. Moralo se dodati `name` unutar objekata tool, učiniti `register()` sinhronim, a zatim prepisati OpenClaw plagin u čisti JavaScript bez `child_process`, jer je skener bezbednosti blokirao potprocese.
 
-Следећа велика тема била је идентитет. Ако у дневнику пише само `@agent`, такав лог је скоро бескористан. Зато је у `0.6.0` настао ток рада са именима агената: `o2b init --agent-name`, регистрација у `AI Wiki/identity/agents.md` и провера да Daily уноси добијају правилан `@agent-name` уместо placeholder-а.
+Sledeća velika tema bila je identitet. Ako u dnevniku piše samo `@agent`, takav log je skoro beskoristan. Zato je u `0.6.0` nastao tok rada sa imenima agenata: `o2b init --agent-name`, registracija u `AI Wiki/identity/agents.md` i provera da Daily unosi dobijaju pravilan `@agent-name` umesto placeholder-a.
 
-Затим су додати подршка за временску зону, заштита од писања у погрешан волт, манифести маркетпллејса за Claude и Codex, аутоматске инструкције за MCP, нормализација празних аргумената, провера инсталационог тока и мулти-агентски регистар. То не звучи као херојска продуктна функција, али су баш такви детаљи оно што разликује играчку од алата који може оставити да ради на серверу.
+Zatim su dodati podrška za vremensku zonu, zaštita od pisanja u pogrešan volt, manifesti marketplejsa za Claude i Codex, automatske instrukcije za MCP, normalizacija praznih argumenata, provera instalacionog toka i multi-agentski registar. To ne zvuči kao herojska produktna funkcija, ali su baš takvi detalji ono što razlikuje igračku od alata koji može ostaviti da radi na serveru.
 
-## Верзија 0.7.0: једно језгро на TypeScript-у и Bun-у
+## Verzija 0.7.0: jedno jezgro na TypeScript-u i Bun-u
 
-Највећа промена се догодила у `0.7.0`: пројекат је прешао на уједначено TypeScript језгро на Bun-у.
+Najveća promena se dogodila u `0.7.0`: projekat je prešao na ujednačeno TypeScript jezgro na Bun-u.
 
-До тада је репозиторијум имао паралелну логику: Python имплементација за CLI/MCP, JavaScript део за OpenClaw, Hermes shim. Таква шема брзо почиње да дрифтује. Поправио си баг на једном месту — није сигурно да си га поправио на другом. Додао подршку за временску зону у Python — боље не заборави да поновиш у JS.
+Do tada je repozitorijum imao paralelnu logiku: Python implementacija za CLI/MCP, JavaScript deo za OpenClaw, Hermes shim. Takva šema brzo počinje da driftuje. Popravio si bag na jednom mestu — nije sigurno da si ga popravio na drugom. Dodao podršku za vremensku zonu u Python — bolje ne zaboravi da ponoviš u JS.
 
-У `0.7.0` агент је уклонио дуплирање: Hermes, Claude Code, Codex и OpenClaw сада конзумирају заједничке модуле из `src/core/`. CLI живи у `src/cli/`, MCP у `src/mcp/`, а OpenClaw унос се компајлира из TypeScript-а у JS bundle кроз `bun build`.
+U `0.7.0` agent je uklonio dupliranje: Hermes, Claude Code, Codex i OpenClaw sada konzumiraju zajedničke module iz `src/core/`. CLI živi u `src/cli/`, MCP u `src/mcp/`, a OpenClaw unos se kompajlira iz TypeScript-a u JS bundle kroz `bun build`.
 
-Уз то се појавила прописна тестна база: `bun:test` са 176 случајева, Python shim тестови, конкурентни тест append-event са 12 процеса, провере свежине bundle-а и синхронизације верзија у манифестима.
+Uz to se pojavila propisna testna baza: `bun:test` sa 176 slučajeva, Python shim testovi, konkurentni test append-event sa 12 procesa, provere svežine bundle-a i sinhronizacije verzija u manifestima.
 
-То је баш тренутак где се види предност агентског тока рада. Човеку је непријатно ручно премештати исти код између runtime-а и преписивати тестове. Агенту — нормално, ако му се да јасан циљ, ограничења и провера резултата.
+To je baš trenutak gde se vidi prednost agentskog toka rada. Čoveku je neprijatno ručno premeštati isti kod između runtime-a i prepisivati testove. Agentu — normalno, ako mu se da jasan cilj, ograničenja i provera rezultata.
 
-## Како то живи на VPS-у
+## Kako to živi na VPS-u
 
-Цела ова прича се врти на обичном VPS-у за око 8 долара месечно. Тамо такође живи Hermes, тамо се може водити развој, тамо се управља AI претплатама и маршрутизацијом кроз OmniRoute.
+Cela ova priča se vrti na običnom VPS-u za oko 8 dolara mesečno. Tamo takođe živi Hermes, tamo se može voditi razvoj, tamo se upravlja AI pretplatama i maršrutizacijom kroz OmniRoute.
 
-За мене је то важан део експеримента. Не желим да AI-асистирани ток рада захтева посебну скупу инфраструктуру. Треба ми сервер, претраживач, Telegram као интерфејс ка агенту, git репозиторијуми у близини и јефтин приступ моделима.
+Za mene je to važan deo eksperimenta. Ne želim da AI-asistirani tok rada zahteva posebnu skupu infrastrukturu. Treba mi server, pretraživač, Telegram kao interfejs ka agentu, git repozitorijumi u blizini i jeftin pristup modelima.
 
-Добија се прилично чудна, али радећа слика: могу са телефона написати агенту на Telegram, он ће на VPS-у раставити задатак, отићи у репозиторијум, искористити потребне вештине, креирати артефакт, покренути провере и забележити важан догађај у Second Brain.
+Dobija se prilično čudna, ali radna slika: mogu sa telefona napisati agentu na Telegram, on će na VPS-u rastaviti zadatak, otići u repozitorijum, iskoristiti potrebne veštine, kreirati artefakt, pokrenuti provere i zabeležiti važan događaj u Second Brain.
 
-То још није Dark Fabric. Али то није ни просто „ћаскање са моделом".
+To još nije Dark Fabric. Ali to nije ni prosto „ćaskanje sa modelom".
 
-## Шта је испало
+## Šta je ispalo
 
-У тренутку овог нацрта, open-second-brain је мали, али већ користан слој меморије за агентски развој.
+U trenutku ovog nacrta, open-second-brain je mali, ali već koristan sloj memorije za agentski razvoj.
 
-Уме да:
+Ume da:
 
-- иницијализује Obsidian-компатибилан волт за агентски рад;
-- креира `AI Wiki/` и сервисне странице;
-- пише дневне догађаје у Markdown;
-- чува идентитете агената;
-- узима у обзир временску зону корисника, а не само време сервера;
-- проверава здравље волта, конфигурације и манифеста runtime-а;
-- експортује конфигурацију са редигованим осетљивим вредностима;
-- ради кроз CLI, MCP и адаптере runtime-а;
-- подржава Hermes, Claude Code, Codex и OpenClaw из једног репозиторијума.
+- inicijalizuje Obsidian-kompatibilan volt za agentski rad;
+- kreira `AI Wiki/` i servisne stranice;
+- piše dnevne događaje u Markdown;
+- čuva identitete agenata;
+- uzima u obzir vremensku zonu korisnika, a ne samo vreme servera;
+- proverava zdravlje volta, konfiguracije i manifesta runtime-a;
+- eksportuje konfiguraciju sa redigovanim osetljivim vrednostima;
+- radi kroz CLI, MCP i adaptere runtime-a;
+- podržava Hermes, Claude Code, Codex i OpenClaw iz jednog repozitorijuma.
 
-Највредније није ни списак наредби. Вредно је то што су агенти добили заједнички протокол меморије: када се деси нешто трајно — код, исправка, промена конфигурације, садржај, истраживачки налаз, дизајн-одлука — треба то забележити тако да будући-ја и будући-агент то могу пронаћи касније.
+Najvrednije nije ni spisak naredbi. Vredno je to što su agenti dobili zajednički protokol memorije: kada se desi nešto trajno — kod, ispravka, promena konfiguracije, sadržaj, istraživački nalaz, dizajn-odluka — treba to zabeležiti tako da budući-ja i budući-agent to mogu pronaći kasnije.
 
-## Шта даље
+## Šta dalje
 
-Најближи циљ је довести спрегу Hermes + open-second-brain до стања где агент не само пише догађаје, већ стварно користи нагомилану меморију приликом планирања и ревизије.
+Najbliži cilj je dovesti spregu Hermes + open-second-brain do stanja gde agent ne samo piše događaje, već stvarno koristi nagomilanu memoriju prilikom planiranja i revizije.
 
-Даље желим да:
+Dalje želim da:
 
-- боље повежем Daily логове са wiki страницама;
-- додам кориснију претрагу и сумаре по историји пројекта;
-- опишем у посебном посту како тачно Hermes ради на VPS-у и како је устројена комуникација кроз Telegram;
-- претворим тренутне токове рада у аутономнију Dark Fabric;
-- проверим да ли различити агенти могу без бола делити један волт и не кварити међусобни контекст.
+- bolje povežem Daily logove sa wiki stranicama;
+- dodam korisniju pretragu i sumare po istoriji projekta;
+- opišem u posebnom postu kako tačno Hermes radi na VPS-u i kako je ustrojena komunikacija kroz Telegram;
+- pretvorim trenutne tokove rada u autonomniju Dark Fabric;
+- proverim da li različiti agenti mogu bez bola deliti jedan volt i ne kvariti međusobni kontekst.
 
-Главни закључак за сада је једноставан: агентима није потребан само модел ни само приступ репозиторијуму. Треба им окружење где одлуке, чињенице и догађаји постају трајни део процеса.
+Glavni zaključak za sada je jednostavan: agentima nije potreban samo model ni samo pristup repozitorijumu. Treba im okruženje gde odluke, činjenice i događaji postaju trajni deo procesa.
 
-[open-second-brain](https://github.com/itechmeat/open-second-brain) је мој први радни корак у том правцу.
+[open-second-brain](https://github.com/itechmeat/open-second-brain) je moj prvi radni korak u tom pravcu.
 
-## Како је написан овај пост
+## Kako je napisan ovaj post
 
-Извините, али овај пост је такође написао исти агент Hermes. Руком су написани само овај пасус и мој [пост на Facebook-у](https://www.facebook.com/reel/1355271143340726/). Једноставно сам замолио агента да клонира мој блог као обичан пројекат, прегледа историју комитова и узме Facebook пост као базу. И наравно, пречитао сам и исправио текст пре објаве. И не реците да нема душе — ја убацујем душу у агента.
+Izvinite, ali ovaj post je takođe napisao isti agent Hermes. Rukom su napisani samo ovaj pasus i moj [post na Facebook-u](https://www.facebook.com/reel/1355271143340726/). Jednostavno sam zamolio agenta da klonira moj blog kao običan projekat, pregleda istoriju komitova i uzme Facebook post kao bazu. I naravno, pročitao sam i ispravio tekst pre objave. I ne recite da nema duše — ja ubacujem dušu u agenta.

@@ -1,9 +1,11 @@
 ---
-title: "Как я разрабатывал OpenSecondBrain"
-description: "История open-second-brain: как Hermes на VPS, Obsidian, MCP, CLI и несколько агентских рантаймов сложились в маленькую файловую память для AI-агентов."
+title: "我是如何打造 OpenSecondBrain 的"
+description: "open-second-brain 的故事：VPS 上的 Hermes、Obsidian、MCP、CLI 和几个 agent 运行时如何汇聚成一个为 AI 代理设计的小型文件型记忆系统。"
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: zh
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 05d5471e1aa36825ee1de36f8bc161776586a96abe92ccfedd0138bca3cfc7d2
 ---
 
 我已经使用各种 AI 工具很长时间了，但在某个时刻我意识到：我不仅是在使用它们，而是几乎完全"被代理和 AI 相关的一切所包围"。
@@ -16,7 +18,7 @@ locale: zh
 
 ## 从手工工作流到 Dark Fabric
 
-在第一篇文章中，我写过如何用编程代理启动这个博客。当时的工作流刻意保持简单：设定上下文、构建 Astro 项目、完成设计、添加文章、检查结果。
+在[第一篇文章](/zh/posts/building-techmeat-dev-with-coding-agents/)中，我写过如何用编程代理启动这个博客。当时的工作流刻意保持简单：设定上下文、构建 Astro 项目、完成设计、添加文章、检查结果。
 
 但我日常的流程要复杂得多。其中有角色划分、中间审查、针对不同任务类型的不同代理，以及每一步的质量控制。当这样的任务变多时，人就变成了调度员：把上下文搬到这儿、让这个去检查那个、把上一个代理的输出给下一个、别忘了记录决策。
 

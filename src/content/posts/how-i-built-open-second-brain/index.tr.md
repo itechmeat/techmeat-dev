@@ -2,8 +2,10 @@
 title: "OpenSecondBrain'i Nasıl Kurdum"
 description: "open-second-brain'in hikayesi: bir VPS üzerinde Hermes, Obsidian, MCP, CLI ve birkaç agent çalışma zamanının AI agentları için küçük bir dosya tabanlı belleğe nasıl dönüştüğü."
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: tr
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: df27f9905ce6d3a931e9c813b4f791a1cf33dbc7741d63cbfc9cfdd19e4983b1
 ---
 
 Bir süredir çeşitli AI araçlarını aktif olarak kullanıyorum, ama bir noktada şunu anladım: bu araçları sadece kullanmıyorum, neredeyse tamamen agentlara ve AI ile ilgili her şeye "sarılmış" durumdayım.
@@ -16,7 +18,7 @@ Böylece [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) proje
 
 ## Manuel workflow'lardan Dark Fabric'e
 
-İlk yazımda, bu blogu kodlama agentlarıyla nasıl kurduğumu anlattım. Orada workflow bilerek basitti: bağlamı ver, Astro projesini derle, tasarımı geçir, posterları ekle, sonucu kontrol et.
+[İlk yazımda](/tr/posts/building-techmeat-dev-with-coding-agents/), bu blogu kodlama agentlarıyla nasıl kurduğumu anlattım. Orada workflow bilerek basitti: bağlamı ver, Astro projesini derle, tasarımı geçir, posterları ekle, sonucu kontrol et.
 
 Ama benim normal sürecim daha karmaşık. Orada roller var, ara incelemeler, farklı görev türleri için ayrı agentlar ve her adımda kalite kontrolü. Bu tür görevler çoğaldığında, insan bir dispatchere dönüşüyor: bağlamı şuraya taşı, bunu kontrol etmesini iste, bir sonrakine öncekinin çıktısını ver, kararı kaydetmeyi unutma.
 
@@ -99,7 +101,7 @@ Bundan önce depoda paralel mantık vardı: CLI/MCP için Python implementasyonu
 
 `0.7.0`'da agent tekrarı kaldırdı: Hermes, Claude Code, Codex ve OpenClaw artık `src/core/`'daki ortak modülleri tüketiyor. CLI `src/cli/`'de yaşıyor, MCP `src/mcp/`'de, OpenClaw girişi TypeScript'ten `bun build` ile JS bundle olarak derleniyor.
 
-Bu arada normal bir test tabanı da ortaya çıktı: 176 test kassistli `bun:test`, Python shim testleri, 12 süreçte concurrent append-event testi, bundle tazelik kontrolü ve manifestlerde versiyon senkronizasyonu kontrolü.
+Bu arada normal bir test tabanı da ortaya çıktı: 176 test içeren `bun:test`, Python shim testleri, 12 süreçte concurrent append-event testi, bundle tazelik kontrolü ve manifestlerde versiyon senkronizasyonu kontrolü.
 
 Bu tam olarak agent workflow'sunun avantajının göründüğü an. Bir insanın aynı kodu runtime'lar arasında elle taşıması ve testleri yeniden yazması hoşuna gitmez. Agent için — bu normal, net bir hedef, kısıtlamalar ve sonuç kontrolü verildiğinde.
 

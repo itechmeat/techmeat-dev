@@ -2,13 +2,15 @@
 title: "Wie ich OpenSecondBrain entwickelt habe"
 description: "Die Geschichte von open-second-brain: wie Hermes auf einem VPS, Obsidian, MCP, CLI und mehrere Agent-Runtimes zu einem kleinen dateibasierten Gedächtnis für KI-Agenten wurden."
 pubDate: 2026-05-09
-tags: [ai-coding, bun]
 locale: de
+tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: fbd326e7b2da5fe0dd3c4857b437c7cabaf4f63a972a174a7ab7a48bf78ca69d
 ---
 
 Ich nutze seit Langem verschiedene KI-Tools intensiv, aber irgendwann wurde klar: Ich nutze sie nicht nur — ich habe mich fast vollständig mit Agenten und allem, was mit KI zu tun hat, „umhüllt".
 
-Seit mehreren Monaten schreiben Agenten Code nach meinen Workflows: Planung, Implementierung, Review, Fehlerbehebungen, erneute Prüfung. Das funktioniert, aber der Prozess hat einen seltsamen manuellen Schwanz. Selbst wenn ein Agent den Code schreibt, muss ich weiterhin Aufgaben zwischen den Phasen verschieben, Kontext übertragen, an Regeln erinnern, Prüfungen ausführen und sicherstellen, dass der nächste Ausführende versteht, was bereits passiert ist.
+Seit mehreren Monaten schreiben Agenten Code nach meinen Workflows: Planung, Implementierung, Review, Fehlerbehebungen, erneute Prüfung. Das funktioniert, aber der Prozess hat einen seltsamen manuellen Rest. Selbst wenn ein Agent den Code schreibt, muss ich weiterhin Aufgaben zwischen den Phasen verschieben, Kontext übertragen, an Regeln erinnern, Prüfungen ausführen und sicherstellen, dass der nächste Ausführende versteht, was bereits passiert ist.
 
 Es gab zu viel wiederkehrende Arbeit. Also war der nächste logische Schritt nicht ein weiteres Feature, sondern die Automatisierung des Workflows selbst.
 
@@ -16,7 +18,7 @@ So entstand [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) �
 
 ## Von manuellen Workflows zu Dark Fabric
 
-Im ersten Beitrag habe ich beschrieben, wie ich diesen Blog mit Coding-Agenten gestartet habe. Dort war der Workflow bewusst einfach: Kontext setzen, ein Astro-Projekt aufbauen, das Design durchlaufen, Beiträge hinzufügen, das Ergebnis prüfen.
+Im [ersten Beitrag](/de/posts/building-techmeat-dev-with-coding-agents/) habe ich beschrieben, wie ich diesen Blog mit Coding-Agenten gestartet habe. Dort war der Workflow bewusst einfach: Kontext setzen, ein Astro-Projekt aufbauen, das Design durchlaufen, Beiträge hinzufügen, das Ergebnis prüfen.
 
 Aber mein üblicher Prozess ist komplexer. Er hat Rollen, Zwischenreviews, separate Agenten für verschiedene Aufgabentypen und Qualitätskontrolle an jedem Schritt. Wenn es viele solcher Aufgaben gibt, wird der Mensch zum Dispatcher: verschieb den Kontext hierhin, bitte denjenigen das zu prüfen, gib dem nächsten Agenten die Ausgabe des vorherigen, vergiss nicht, die Entscheidung festzuhalten.
 
