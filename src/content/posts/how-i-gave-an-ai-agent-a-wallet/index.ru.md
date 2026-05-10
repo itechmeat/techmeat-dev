@@ -5,6 +5,7 @@ pubDate: 2026-05-10
 locale: ru
 tags: [pay-memory, agent-payments, pay-sh, solana, second-brain]
 ogImage: "/posters/og/posts/how-i-gave-an-ai-agent-a-wallet.png"
+prFileId: 1609a3923a6d0ab2b5c10c54e24eea8710f6e8e628fed4846c881ab57164e93a
 ---
 
 Несколько дней назад я выпустил [open-second-brain](/ru/posts/how-i-built-open-second-brain/) - файловый слой памяти для AI-агентов. С тех пор у меня крутилась одна идея, которая давно меня дёргала. Если агент работает на VPS, по своему графику, через Telegram - рано или поздно ему понадобится потратить деньги. Купить API-вызов. Сгенерировать иллюстрацию. Дёрнуть платный поиск.
@@ -22,6 +23,10 @@ ogImage: "/posters/og/posts/how-i-gave-an-ai-agent-a-wallet.png"
 Если хочется доверять агенту хоть в чём-то самостоятельном, ответ "почитай scrollback" не годится. Терминальный лог не структурирован, не связан с задачей, не индексируется, не переживает рестарт и его не открыть в Obsidian как нормальный артефакт.
 
 Я довольно быстро понял, что задача звучит не как "научить агента платить", а как "сделать так, чтобы каждый платёж оставлял за собой осмысленный след".
+
+![AI-агент с цифровым кошельком и цепочкой микроплатежей, утекающей в связанные между собой Markdown-чеки](./image.png)
+
+Эта иллюстрация сгенерирована ровно тем способом, о котором рассказывает сам пост: через `pay.sh`, по x402-шлюзу `paysponge/fal` и эндпоинту `fal-ai/fast-sdxl`. Генерация стоила **0.01 USDC** с mainnet-кошелька `64FaukkZDUdFTufXF49H1CrHjDfsmBFqfrUjsAS8XrgP`; публичная Solana-транзакция - [`5ZYnkabzLvHqEgXNJfKopiRwbGkriHJ2bps2NnkX7HzqQAyTZYjcyJVCTvZwMquyMviv2juyAdbP9P2depHrJxQW`](https://solscan.io/tx/5ZYnkabzLvHqEgXNJfKopiRwbGkriHJ2bps2NnkX7HzqQAyTZYjcyJVCTvZwMquyMviv2juyAdbP9P2depHrJxQW). Request id - `019e135a-357b-71f3-8b9d-305e728b05fb`, сам сгенерированный ассет сохранён локально как `image.png`.
 
 И тут как раз идеально подвернулся open-second-brain.
 
@@ -42,6 +47,19 @@ ogImage: "/posters/og/posts/how-i-gave-an-ai-agent-a-wallet.png"
 Это не таблица в SQLite и не дашборд. Это plain Markdown в той же папке, куда агент пишет дневной лог. Можно открыть глазами, прокомментировать, закоммитить в Git, потом найти grep'ом или показать как доказательство.
 
 OSB здесь не превращается в платёжную систему - он не держит кошелёк, не подписывает транзакции, не делает enforcement. Он делает то, что хорошо умеет: ведёт честную человекочитаемую память. pay.sh даёт агенту доступ к платным ресурсам, а Pay Memory даёт человеку возможность через неделю спокойно открыть vault и понять, что именно произошло.
+
+Кстати, [вот точно так выглядит реальный receipt](/files/fal-generate-a-no-text-fast-sdxl-illustration-for-the-techmeat-d.md) для той самой иллюстрации в начале поста - сырой Markdown прямо из vault, без какой-либо обработки. Frontmatter со всеми перечисленными выше полями, под ним - человеческий текст про "зачем", "что вернула policy" и "сколько списалось".
+
+Внутри Second Brain он лежит вот по такому пути:
+
+```
+AI Wiki/
+└── payments/
+    └── 2026-05-10/
+        └── fal-generate-a-no-text-fast-sdxl-illustration-for-the-techmeat-d.md
+```
+
+Никакой магии: дата → папка, slug → имя файла. Удобно для grep, git diff и обычной навигации в Obsidian.
 
 ## Один принцип, который оказался важнее остальных
 
