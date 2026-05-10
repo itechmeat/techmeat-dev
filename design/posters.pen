@@ -643,6 +643,131 @@
           }
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "a5ubh",
+      "x": 0,
+      "y": 3570,
+      "name": "Posts wide",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "NNmX1",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "How I built my blog with coding agents (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "01"
+            },
+            "w98LjB": {
+              "content": "How I built my blog"
+            },
+            "w1luCY": {
+              "content": "with coding agents"
+            },
+            "CY8fm": {
+              "content": "April 28, 2026"
+            },
+            "Igd9v": {
+              "content": "#ai-coding · #astro · #bun"
+            },
+            "FTrZW": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "r85bZ",
+      "x": 0,
+      "y": 4280,
+      "name": "Posts wide",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "V6AdB",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "How I built my blog with coding agents (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "02"
+            },
+            "w98LjB": {
+              "content": "How I Built "
+            },
+            "w1luCY": {
+              "content": "OpenSecondBrain"
+            },
+            "CY8fm": {
+              "content": "May 09, 2026"
+            },
+            "Igd9v": {
+              "enabled": false
+            },
+            "FTrZW": {
+              "content": "#second-brain · #dark-fabric · #hermes\n#openclaw · #claude-code · #codex",
+              "flipX": false,
+              "flipY": false,
+              "width": 774,
+              "height": 108,
+              "x": 0,
+              "y": 58,
+              "textGrowth": "fixed-width-height"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "cZi8L",
+      "x": 0,
+      "y": 4990,
+      "name": "Posts wide",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "cAk8D",
+          "type": "ref",
+          "ref": "e4Zd4",
+          "name": "How I built my blog with coding agents (wide)",
+          "descendants": {
+            "CrwU5": {
+              "content": "03"
+            },
+            "w98LjB": {
+              "content": "How I gave "
+            },
+            "w1luCY": {
+              "content": "my AI agent a wallet"
+            },
+            "CY8fm": {
+              "content": "May 10, 2026"
+            },
+            "Igd9v": {
+              "enabled": false
+            },
+            "FTrZW": {
+              "content": "#second-brain · #pay-memory · #agent-payments · #pay-sh · #solana",
+              "flipX": false,
+              "flipY": false,
+              "width": 699,
+              "height": 114,
+              "x": 0,
+              "y": 58,
+              "textGrowth": "fixed-width-height"
+            }
+          }
+        }
+      ]
     }
   ],
   "variables": {

@@ -3,6 +3,7 @@ title: "How I Built OpenSecondBrain"
 description: "The story of open-second-brain: how Hermes on a VPS, Obsidian, MCP, CLI, and several agent runtimes came together into a small file-based memory for AI agents."
 pubDate: 2026-05-09
 locale: en
+prNumber: 5
 tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: f0d6ac5f8c4cc74a943975e6edc488faaedfea790c1f43c4bf19319d9f4021b8
