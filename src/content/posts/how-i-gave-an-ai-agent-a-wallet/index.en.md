@@ -23,6 +23,10 @@ If you want to trust the agent with anything autonomous, "read the scrollback" d
 
 I figured out pretty quickly that the task wasn't "teach the agent to pay" — it was "make sure every payment leaves behind a meaningful trace."
 
+![An AI agent holding a digital wallet while a micropayment trail flows into linked Markdown receipt cards](./image.png)
+
+This illustration was generated the same way the post describes: through `pay.sh`, using the `paysponge/fal` x402 gateway and the `fal-ai/fast-sdxl` endpoint. The generation cost was **0.01 USDC** from the mainnet wallet `64FaukkZDUdFTufXF49H1CrHjDfsmBFqfrUjsAS8XrgP`; the public Solana transaction is [`5ZYnkabzLvHqEgXNJfKopiRwbGkriHJ2bps2NnkX7HzqQAyTZYjcyJVCTvZwMquyMviv2juyAdbP9P2depHrJxQW`](https://solscan.io/tx/5ZYnkabzLvHqEgXNJfKopiRwbGkriHJ2bps2NnkX7HzqQAyTZYjcyJVCTvZwMquyMviv2juyAdbP9P2depHrJxQW). The request id was `019e135a-357b-71f3-8b9d-305e728b05fb`, and the generated asset was saved locally as `image.png`.
+
 And open-second-brain fit perfectly here.
 
 ## Pay Memory
