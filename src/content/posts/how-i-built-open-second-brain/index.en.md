@@ -4,7 +4,7 @@ description: "The story of open-second-brain: how Hermes on a VPS, Obsidian, MCP
 pubDate: 2026-05-09
 locale: en
 prNumber: 5
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: f0d6ac5f8c4cc74a943975e6edc488faaedfea790c1f43c4bf19319d9f4021b8
 ---
@@ -17,15 +17,15 @@ There was too much repetitive work. So the next natural step wasn't another feat
 
 That's how [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) came to be — an attempt to give agents proper memory about what we're doing, why we're doing it, and what decisions have already been made.
 
-## From Manual Workflows to Dark Fabric
+## From Manual Workflows to Dark Factory
 
 In [the first post](/posts/building-techmeat-dev-with-coding-agents/), I wrote about launching this blog with coding agents. The workflow there was deliberately simple: set the context, build an Astro project, go through the design, add posts, verify the result.
 
 But my usual process is more complex. It has roles, intermediate reviews, separate agents for different task types, and quality control at every step. When there are many such tasks, the human turns into a dispatcher: move the context here, ask that one to check this, give the next agent the output from the previous one, don't forget to record the decision.
 
-I wanted to arrive at a more rigid model that increasingly sounds like Dark Fabric: a feature idea goes in, a feature comes out — implemented, tested, and deployed. Not "an agent wrote a piece of code," but a factory that knows how to break down work into stages and carry it through the process.
+I wanted to arrive at a more rigid model that increasingly sounds like Dark Factory: a feature idea goes in, a feature comes out — implemented, tested, and deployed. Not "an agent wrote a piece of code," but a factory that knows how to break down work into stages and carry it through the process.
 
-We're still far from a full Dark Fabric. But the first practical step already exists: Hermes, running on a VPS, with agents for different tasks, skills, a Telegram interface, and cheap model routing through OmniRoute.
+We're still far from a full Dark Factory. But the first practical step already exists: Hermes, running on a VPS, with agents for different tasks, skills, a Telegram interface, and cheap model routing through OmniRoute.
 
 And almost immediately, the second mandatory component of this factory became apparent: agents need memory.
 
@@ -114,7 +114,7 @@ For me, this is an important part of the experiment. I don't want AI-assisted wo
 
 The result is a rather strange but working picture: I can write to the agent in Telegram from my phone, it'll parse the task on the VPS, go to the repository, use the necessary skills, create an artifact, run checks, and write an important event to the Second Brain.
 
-This isn't Dark Fabric yet. But it's also not just "chatting with a model."
+This isn't Dark Factory yet. But it's also not just "chatting with a model."
 
 ## What Came Out
 
@@ -143,7 +143,7 @@ Beyond that, I want to:
 - better connect Daily logs with wiki pages;
 - add more useful search and summaries of project history;
 - write a separate post about how exactly Hermes works on the VPS and how communication through Telegram is set up;
-- transform current workflows into a more autonomous Dark Fabric;
+- transform current workflows into a more autonomous Dark Factory;
 - test whether different agents can share a single vault without pain and without breaking each other's context.
 
 The main takeaway so far is simple: agents need not just a model and not just access to a repository. They need an environment where decisions, facts, and events become a durable part of the process.

@@ -10,6 +10,9 @@ import rehypeExternalLinks from "rehype-external-links";
 // https://astro.build/config
 export default defineConfig({
   site: "https://techmeat.dev",
+  server: {
+    allowedHosts: ["dev.techmeat.dev"],
+  },
   build: {
     inlineStylesheets: "always",
   },

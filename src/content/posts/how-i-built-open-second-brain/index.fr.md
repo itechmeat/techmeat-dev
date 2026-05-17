@@ -3,7 +3,7 @@ title: "Comment j'ai construit OpenSecondBrain"
 description: "L'histoire d'open-second-brain : comment Hermes sur un VPS, Obsidian, MCP, CLI et plusieurs runtimes d'agents se sont réunis en une petite mémoire basée sur des fichiers pour les agents IA."
 pubDate: 2026-05-09
 locale: fr
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: dd85b0ca6ecbdd8fb291706ef1aa5df08d22a37c95e2deb8433f72a178b70631
 ---
@@ -16,15 +16,15 @@ Le travail répétitif devenait trop important. Donc la prochaine étape naturel
 
 C'est ainsi qu'est né [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — une tentative de donner aux agents une véritable mémoire sur ce que nous faisons, pourquoi nous le faisons et quelles décisions ont déjà été prises.
 
-## Des flux de travail manuels à Dark Fabric
+## Des flux de travail manuels à Dark Factory
 
 Dans [le premier article](/fr/posts/building-techmeat-dev-with-coding-agents/), j'ai raconté comment j'avais lancé ce blog avec des agents de codage. Là, le flux de travail était délibérément simple : définir le contexte, construire un projet Astro, passer par le design, ajouter des articles, vérifier le résultat.
 
 Mais mon processus habituel est plus complexe. Il y a des rôles, des revues intermédiaires, des agents séparés pour différents types de tâches et un contrôle qualité à chaque étape. Quand les tâches se multiplient, l'humain se transforme en dispatcheur : déplace le contexte ici, demande à celui-ci de vérifier cela, donne au prochain agent le résultat du précédent, n'oublie pas d'enregistrer la décision.
 
-Je voulais aboutir à un modèle plus rigide qui ressemble de plus en plus à ce qu'on appelle Dark Fabric : une idée de fonctionnalité entre, une fonctionnalité sort — implémentée, testée et déployée. Pas « un agent a écrit un bout de code », mais une usine qui sait décomposer le travail en étapes et le faire passer par tout le processus.
+Je voulais aboutir à un modèle plus rigide qui ressemble de plus en plus à ce qu'on appelle Dark Factory : une idée de fonctionnalité entre, une fonctionnalité sort — implémentée, testée et déployée. Pas « un agent a écrit un bout de code », mais une usine qui sait décomposer le travail en étapes et le faire passer par tout le processus.
 
-On est encore loin d'une Dark Fabric complète. Mais le premier pas pratique existe déjà : Hermes, qui tourne sur un VPS, avec des agents pour différentes tâches, des compétences, une interface Telegram et un routage économique des modèles via OmniRoute.
+On est encore loin d'une Dark Factory complète. Mais le premier pas pratique existe déjà : Hermes, qui tourne sur un VPS, avec des agents pour différentes tâches, des compétences, une interface Telegram et un routage économique des modèles via OmniRoute.
 
 Et presque immédiatement, le deuxième composant obligatoire de cette usine est apparu : les agents ont besoin de mémoire.
 
@@ -113,7 +113,7 @@ Pour moi, c'est une partie importante de l'expérience. Je ne veux pas que les f
 
 Le résultat est un tableau plutôt étrange mais fonctionnel : je peux écrire à l'agent sur Telegram depuis mon téléphone, il analysera la tâche sur le VPS, ira dans le dépôt, utilisera les compétences nécessaires, créera un artefact, lancera les vérifications et écrira un événement important dans le Second Brain.
 
-Ce n'est pas encore Dark Fabric. Mais ce n'est pas non plus juste « discuter avec un modèle ».
+Ce n'est pas encore Dark Factory. Mais ce n'est pas non plus juste « discuter avec un modèle ».
 
 ## Ce qui en est ressorti
 
@@ -142,7 +142,7 @@ Au-delà, je veux :
 - mieux connecter les journaux Daily avec les pages wiki ;
 - ajouter une recherche plus utile et des résumés de l'historique du projet ;
 - écrire un article séparé sur la façon dont Hermes fonctionne exactement sur le VPS et comment la communication via Telegram est configurée ;
-- transformer les flux de travail actuels en une Dark Fabric plus autonome ;
+- transformer les flux de travail actuels en une Dark Factory plus autonome ;
 - vérifier si différents agents peuvent partager un seul vault sans douleur et sans casser le contexte mutuel.
 
 La conclusion principale pour l'instant est simple : les agents n'ont pas besoin seulement d'un modèle ni seulement d'un accès à un dépôt. Ils ont besoin d'un environnement où les décisions, les faits et les événements deviennent une partie durable du processus.
