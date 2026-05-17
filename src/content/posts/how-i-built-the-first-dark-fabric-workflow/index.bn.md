@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: bn
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: 6f2317189fa08c198b68f10f7f76bf4c6206d8a08b1b7e4e618e7f27cfcda1d4
 ---
 
 [আগের পোস্টে](/bn/posts/how-i-built-open-second-brain/) আমি OpenSecondBrain নিয়ে লিখেছিলাম — সেই মেমোরি স্তর যেটার ওপর AI এজেন্টরা নির্ভর করে। মেমোরি গল্পের অর্ধেক মাত্র। বাকি অর্ধেক হলো প্রক্রিয়াটাই: কে কী করে, কে কাকে রিভিউ করে, কোনটাকে "শেষ" ধরা হয়, আর এই সব কিছু চ্যাটে একটামাত্র বাক্যে কীভাবে শুরু হয়।

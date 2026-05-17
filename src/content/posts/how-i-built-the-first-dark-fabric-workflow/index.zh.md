@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: zh
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: aaebca531d01557398e832aa52133e5fec95a759c6b8a83af2ac9ad267026ff0
 ---
 
 在[上一篇文章](/zh/posts/how-i-built-open-second-brain/)中，我介绍了 OpenSecondBrain——AI 代理所依赖的记忆层。记忆只是故事的一半，另一半是流程本身：谁做什么、谁审阅谁、什么算"完成"，以及这一切如何由聊天中的一句话启动。

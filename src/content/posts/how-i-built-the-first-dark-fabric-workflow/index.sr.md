@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: sr
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: 366b1393cc0b746b234ced0e64a5031d5722b7d4ea08a7ac0d792aba02f673be
 ---
 
 U [prethodnom postu](/sr/posts/how-i-built-open-second-brain/) pisao sam o OpenSecondBrain — sloju memorije koji koriste AI agenti. Memorija je samo polovina priče. Druga polovina je sam proces: ko šta radi, ko koga proverava, šta se računa kao „gotovo", i kako sve to kreće jednom rečenicom u četu.

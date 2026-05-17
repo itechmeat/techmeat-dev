@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: ru
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: 2fff05ad9c8ad0d875b6b4cf7f949a31175b729f976840af22d7648298d732de
 ---
 
 В [предыдущем посте](/ru/posts/how-i-built-open-second-brain/) я писал про OpenSecondBrain - память, которой пользуются AI-агенты. Память - это только половина истории. Вторая половина - это сам процесс: кто чем занимается, кто кого проверяет, что считается готовым и как всё это запускается одной фразой в чате.

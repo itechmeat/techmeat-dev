@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: es
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: f437da1df4ad9d05300787b47117a17551261cd17aa5ab05a691717016351ebd
 ---
 
 En el [post anterior](/es/posts/how-i-built-open-second-brain/) escribí sobre OpenSecondBrain — la capa de memoria que usan los agentes de IA. La memoria es solo la mitad de la historia. La otra mitad es el proceso en sí: quién hace qué, quién revisa a quién, qué cuenta como "hecho", y cómo todo arranca con una sola frase en el chat.

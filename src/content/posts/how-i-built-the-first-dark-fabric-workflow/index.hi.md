@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: hi
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: ec9d09d22708f840c3b5268bbfba565397b4a86a4991867855d0657d063ff817
 ---
 
 [पिछली पोस्ट](/hi/posts/how-i-built-open-second-brain/) में मैंने OpenSecondBrain के बारे में लिखा था — वह मेमोरी परत जिसका AI एजेंट उपयोग करते हैं। मेमोरी तो कहानी का बस आधा हिस्सा है। दूसरा आधा हिस्सा है खुद प्रक्रिया: कौन क्या करता है, कौन किसकी समीक्षा करता है, "हो गया" किसे माना जाए, और यह सब चैट में एक वाक्य से कैसे शुरू होता है।

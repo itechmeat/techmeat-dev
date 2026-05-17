@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: de
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: e0734ef343a1076446ad001adc8a5c66c5fb5e1049f9795006529159f66f1f49
 ---
 
 Im [vorigen Beitrag](/de/posts/how-i-built-open-second-brain/) habe ich über OpenSecondBrain geschrieben — die Speicherebene, auf die KI-Agenten zurückgreifen. Speicher ist nur die halbe Geschichte. Die andere Hälfte ist der Prozess selbst: wer was macht, wer wen prüft, was als „fertig" gilt, und wie das Ganze mit einem einzigen Satz im Chat anläuft.

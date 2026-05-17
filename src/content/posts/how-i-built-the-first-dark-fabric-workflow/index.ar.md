@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: ar
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: 4efbeb7e380e2c19fac8f32d4d2655bc6774110d318a8ba0ddb740b90b4ce0ec
 ---
 
 في [المنشور السابق](/ar/posts/how-i-built-open-second-brain/) كتبت عن OpenSecondBrain — طبقة الذاكرة التي يعتمد عليها وكلاء الذكاء الاصطناعي. الذاكرة نصف القصة فقط. النصف الآخر هو العملية نفسها: من يفعل ماذا، ومن يراجع من، وما الذي يُعدّ "منجزًا"، وكيف يبدأ كل هذا بجملة واحدة في الدردشة.

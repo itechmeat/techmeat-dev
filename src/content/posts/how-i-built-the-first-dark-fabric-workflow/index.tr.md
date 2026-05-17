@@ -5,6 +5,7 @@ pubDate: 2026-05-17
 locale: tr
 tags: [dark-factory, hermes, kanban, workflow, claude-code, codex]
 ogImage: "/posters/og/posts/how-i-built-the-first-dark-fabric-workflow.png"
+prFileId: 3301ca93200e61838ca216a34665293b4e0992a1efea25ef0001731519d4ba82
 ---
 
 [Önceki yazıda](/tr/posts/how-i-built-open-second-brain/) OpenSecondBrain'i — yani AI ajanlarının kullandığı bellek katmanını — anlatmıştım. Bellek hikâyenin yalnızca yarısı. Diğer yarısı sürecin kendisi: kim ne yapıyor, kim kimi denetliyor, neye "bitti" denir ve tüm bunlar chat'te tek bir cümleyle nasıl başlatılır.
