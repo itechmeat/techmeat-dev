@@ -3,7 +3,7 @@ title: "Kako sam napravio OpenSecondBrain"
 description: "Priča o open-second-brain: kako su Hermes na VPS-u, Obsidian, MCP, CLI i nekoliko agentskih runtime-a postali mala fajl-bazirana memorija za AI agente."
 pubDate: 2026-05-09
 locale: sr
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: 145afac48f95d2f8e5af5a3f4af2da00d95d4cd290d815604f6a33418b672311
 ---
@@ -16,15 +16,15 @@ Ponavljajućeg posla je bilo previše. Zato sledeći prirodni korak nije bila jo
 
 Tako je nastao [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — pokušaj da se agentima da normalna memorija o tome šta radimo, zašto to radimo i koje odluke su već donete.
 
-## Od ručnih tokova rada do Dark Fabric
+## Od ručnih tokova rada do Dark Factory
 
 U [prvom postu](/sr/posts/building-techmeat-dev-with-coding-agents/) sam pisao o tome kako sam pokrenuo ovaj blog uz pomoć koding agenata. Tamo je tok rada bio namerno jednostavan: postaviti kontekst, izgraditi Astro projekat, proći kroz dizajn, dodati postove, proveriti rezultat.
 
 Ali moj uobičajeni proces je složeniji. Ima uloge, međurevizije, odvojene agente za različite tipove zadataka i kontrolu kvaliteta na svakom koraku. Kada takvih zadataka bude mnogo, čovek postaje dispečer: prebaci kontekst ovamo, zamoli onoga da proveri ovo, daj sledećem agentu izlaz prethodnog, ne zaboravi da zabeležiš odluku.
 
-Želeo sam da dođem do rigidnijeg modela koji sve češće zvuči kao Dark Fabric: na ulazu ideja funkcije, na izlazu — funkcija realizovana, testirana i deplojovana. Ne „agent je napisao komad koda", već fabrika koja ume sama da rastavi posao na faze i provuče ga kroz proces.
+Želeo sam da dođem do rigidnijeg modela koji sve češće zvuči kao Dark Factory: na ulazu ideja funkcije, na izlazu — funkcija realizovana, testirana i deplojovana. Ne „agent je napisao komad koda", već fabrika koja ume sama da rastavi posao na faze i provuče ga kroz proces.
 
-Do punopravne Dark Fabric je još daleko. Ali prvi praktični korak već postoji: Hermes, podignut na VPS-u, sa agentima za različite zadatke, veštinama, Telegram interfejsom i jeftinom maršrutizacijom modela kroz OmniRoute.
+Do punopravne Dark Factory je još daleko. Ali prvi praktični korak već postoji: Hermes, podignut na VPS-u, sa agentima za različite zadatke, veštinama, Telegram interfejsom i jeftinom maršrutizacijom modela kroz OmniRoute.
 
 I gotovo odmah je otkrivena druga obavezna komponenta ove fabrike: agentima treba memorija.
 
@@ -113,7 +113,7 @@ Za mene je to važan deo eksperimenta. Ne želim da AI-asistirani tok rada zahte
 
 Dobija se prilično čudna, ali radna slika: mogu sa telefona napisati agentu na Telegram, on će na VPS-u rastaviti zadatak, otići u repozitorijum, iskoristiti potrebne veštine, kreirati artefakt, pokrenuti provere i zabeležiti važan događaj u Second Brain.
 
-To još nije Dark Fabric. Ali to nije ni prosto „ćaskanje sa modelom".
+To još nije Dark Factory. Ali to nije ni prosto „ćaskanje sa modelom".
 
 ## Šta je ispalo
 
@@ -142,7 +142,7 @@ Dalje želim da:
 - bolje povežem Daily logove sa wiki stranicama;
 - dodam korisniju pretragu i sumare po istoriji projekta;
 - opišem u posebnom postu kako tačno Hermes radi na VPS-u i kako je ustrojena komunikacija kroz Telegram;
-- pretvorim trenutne tokove rada u autonomniju Dark Fabric;
+- pretvorim trenutne tokove rada u autonomniju Dark Factory;
 - proverim da li različiti agenti mogu bez bola deliti jedan volt i ne kvariti međusobni kontekst.
 
 Glavni zaključak za sada je jednostavan: agentima nije potreban samo model ni samo pristup repozitorijumu. Treba im okruženje gde odluke, činjenice i događaji postaju trajni deo procesa.

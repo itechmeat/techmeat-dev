@@ -3,7 +3,7 @@ title: "Como construí o OpenSecondBrain"
 description: "A história do open-second-brain: como o Hermes num VPS, Obsidian, MCP, CLI e vários runtimes de agentes formaram uma pequena memória baseada em arquivos para agentes de IA."
 pubDate: 2026-05-09
 locale: pt
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: 5eb3f4f34e5b72b4dc58b865f9490558e4bf35eaf4637e64266b3b2c02b657c7
 ---
@@ -16,15 +16,15 @@ O trabalho repetitivo se tornou excessivo. Por isso, o próximo passo natural n�
 
 Foi assim que surgiu o [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — uma tentativa de dar aos agentes uma memória adequada sobre o que fazemos, por que fazemos e quais decisões já foram tomadas.
 
-## Dos fluxos de trabalho manuais à Dark Fabric
+## Dos fluxos de trabalho manuais à Dark Factory
 
 No [primeiro post](/pt/posts/building-techmeat-dev-with-coding-agents/), escrevi sobre como lancei este blog com agentes de codificação. Lá o fluxo de trabalho foi deliberadamente simples: definir o contexto, construir um projeto Astro, passar pelo design, adicionar posts, verificar o resultado.
 
 Mas meu processo habitual é mais complexo. Tem papéis, revisões intermediárias, agentes separados para diferentes tipos de tarefas e controle de qualidade em cada etapa. Quando há muitas tarefas desse tipo, a pessoa se torna um despachante: move o contexto para cá, pede àquele que verifique isto, entrega ao próximo agente a saída do anterior, não esquece de registrar a decisão.
 
-Eu queria chegar a um modelo mais rígido que cada vez mais soa como Dark Fabric: uma ideia de funcionalidade entra, uma funcionalidade sai — implementada, testada e publicada. Não "um agente escreveu um pedaço de código", mas uma fábrica que sabe decompor o trabalho em etapas e conduzi-lo pelo processo.
+Eu queria chegar a um modelo mais rígido que cada vez mais soa como Dark Factory: uma ideia de funcionalidade entra, uma funcionalidade sai — implementada, testada e publicada. Não "um agente escreveu um pedaço de código", mas uma fábrica que sabe decompor o trabalho em etapas e conduzi-lo pelo processo.
 
-Ainda estamos longe de uma Dark Fabric completa. Mas o primeiro passo prático já existe: o Hermes, rodando num VPS, com agentes para diferentes tarefas, skills, uma interface de Telegram e roteamento barato de modelos através do OmniRoute.
+Ainda estamos longe de uma Dark Factory completa. Mas o primeiro passo prático já existe: o Hermes, rodando num VPS, com agentes para diferentes tarefas, skills, uma interface de Telegram e roteamento barato de modelos através do OmniRoute.
 
 E quase imediatamente, o segundo componente obrigatório dessa fábrica se revelou: os agentes precisam de memória.
 
@@ -113,7 +113,7 @@ Para mim, essa é uma parte importante do experimento. Não quero que fluxos de 
 
 O resultado é um cenário bastante estranho mas funcional: posso escrever para o agente no Telegram pelo celular, ele vai analisar a tarefa no VPS, ir ao repositório, usar as skills necessárias, criar um artefato, executar verificações e escrever um evento importante no Second Brain.
 
-Isso ainda não é Dark Fabric. Mas também não é apenas "conversar com um modelo".
+Isso ainda não é Dark Factory. Mas também não é apenas "conversar com um modelo".
 
 ## O que saiu
 
@@ -142,7 +142,7 @@ Além disso, quero:
 - conectar melhor os logs Daily com as páginas wiki;
 - adicionar uma busca mais útil e resumos do histórico do projeto;
 - escrever um post separado sobre como exatamente o Hermes funciona no VPS e como a comunicação via Telegram está configurada;
-- transformar os fluxos de trabalho atuais numa Dark Fabric mais autônoma;
+- transformar os fluxos de trabalho atuais numa Dark Factory mais autônoma;
 - testar se diferentes agentes podem compartilhar um único vault sem dor e sem quebrar o contexto uns dos outros.
 
 A principal conclusão até agora é simples: os agentes não precisam apenas de um modelo nem apenas de acesso a um repositório. Eles precisam de um ambiente onde decisões, fatos e eventos se tornem uma parte durável do processo.

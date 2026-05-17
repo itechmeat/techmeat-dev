@@ -3,7 +3,7 @@ title: "OpenSecondBrain'i Nasıl Kurdum"
 description: "open-second-brain'in hikayesi: bir VPS üzerinde Hermes, Obsidian, MCP, CLI ve birkaç agent çalışma zamanının AI agentları için küçük bir dosya tabanlı belleğe nasıl dönüştüğü."
 pubDate: 2026-05-09
 locale: tr
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: df27f9905ce6d3a931e9c813b4f791a1cf33dbc7741d63cbfc9cfdd19e4983b1
 ---
@@ -16,15 +16,15 @@ Tekrarlanan işler fazla arttı. Bu yüzden bir sonraki doğal adım yeni bir ö
 
 Böylece [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) projesi ortaya çıktı — agentlara ne yaptığımızı, neden yaptığımızı ve hangi kararların zaten alındığını hatırlayabilecekleri normal bir bellek vermeye çalışan bir deney.
 
-## Manuel workflow'lardan Dark Fabric'e
+## Manuel workflow'lardan Dark Factory'e
 
 [İlk yazımda](/tr/posts/building-techmeat-dev-with-coding-agents/), bu blogu kodlama agentlarıyla nasıl kurduğumu anlattım. Orada workflow bilerek basitti: bağlamı ver, Astro projesini derle, tasarımı geçir, posterları ekle, sonucu kontrol et.
 
 Ama benim normal sürecim daha karmaşık. Orada roller var, ara incelemeler, farklı görev türleri için ayrı agentlar ve her adımda kalite kontrolü. Bu tür görevler çoğaldığında, insan bir dispatchere dönüşüyor: bağlamı şuraya taşı, bunu kontrol etmesini iste, bir sonrakine öncekinin çıktısını ver, kararı kaydetmeyi unutma.
 
-Daha sıkı bir modele ulaşmak istiyordum; gittikçe daha sık duyulan bir kavram olan Dark Fabric'e benzer bir şeye: girişte bir özellik fikri, çıkışta özellik implemente edilmiş, test edilmiş ve deploy edilmiş. "Agent bir kod parçası yazdı" değil, işi aşamalara bölmeyi ve süreçten geçirmeyi bilen bir fabrika.
+Daha sıkı bir modele ulaşmak istiyordum; gittikçe daha sık duyulan bir kavram olan Dark Factory'e benzer bir şeye: girişte bir özellik fikri, çıkışta özellik implemente edilmiş, test edilmiş ve deploy edilmiş. "Agent bir kod parçası yazdı" değil, işi aşamalara bölmeyi ve süreçten geçirmeyi bilen bir fabrika.
 
-Tam teşekküllü Dark Fabric'e daha çok var. Ama ilk pratik adım atıldı: bir VPS üzerinde çalışan Hermes, farklı görevler için agentlar, yetenekler, Telegram arayüzü ve OmniRoute üzerinden ucuz model yönlendirmesi.
+Tam teşekküllü Dark Factory'e daha çok var. Ama ilk pratik adım atıldı: bir VPS üzerinde çalışan Hermes, farklı görevler için agentlar, yetenekler, Telegram arayüzü ve OmniRoute üzerinden ucuz model yönlendirmesi.
 
 Ve neredeyse hemen bu fabrikanın ikinci zorunlu parçası ortaya çıktı: agentların belleğe ihtiyacı var.
 
@@ -113,7 +113,7 @@ Benim için bu deneyin önemli bir parçası. AI destekli workflow'nun ayrı pah
 
 Oldukça tuhaf ama çalışan bir tablo çıkıyor: telefondan Telegram'da agent'a yazabiliyorum, o VPS'te görevi çözüyor, depoya giriyor, gereken yetenekleri kullanıyor, artefakt oluşturuyor, kontrolleri çalıştırıyor ve önemli olayı Second Brain'e yazıyor.
 
-Bu henüz Dark Fabric değil. Ama artık sadece "modelle sohbet" de değil.
+Bu henüz Dark Factory değil. Ama artık sadece "modelle sohbet" de değil.
 
 ## Ne ortaya çıktı
 
@@ -142,7 +142,7 @@ Daha sonra istenenler:
 - Daily logları wiki sayfalarıyla daha iyi bağlamak;
 - proje geçmişi üzerinde daha kullanışlı arama ve özetler eklemek;
 - Hermes'in VPS'te tam olarak nasıl çalıştığını ve Telegram üzerinden iletişimin nasıl kurulduğunu ayrı bir yazıda anlatmak;
-- mevcut workflow'ları daha otonom bir Dark Fabric'e dönüştürmek;
+- mevcut workflow'ları daha otonom bir Dark Factory'e dönüştürmek;
 - farklı agentların bir vault'u sorunsuz paylaşabileceğini ve birbirlerinin bağlamını bozmayacağını kontrol etmek.
 
 Şimdilik ana sonuç basit: agentların sadece modele ve depoya erişimi yetmez. Onlara kararların, gerçeklerin ve olayların sürecin kalıcı bir parçası haline geldiği bir ortam lazım.

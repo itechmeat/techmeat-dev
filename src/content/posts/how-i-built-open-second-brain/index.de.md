@@ -3,7 +3,7 @@ title: "Wie ich OpenSecondBrain entwickelt habe"
 description: "Die Geschichte von open-second-brain: wie Hermes auf einem VPS, Obsidian, MCP, CLI und mehrere Agent-Runtimes zu einem kleinen dateibasierten Gedächtnis für KI-Agenten wurden."
 pubDate: 2026-05-09
 locale: de
-tags: [second-brain, dark-fabric, hermes, openclaw, claude-code, codex]
+tags: [second-brain, dark-factory, hermes, openclaw, claude-code, codex]
 ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
 prFileId: fbd326e7b2da5fe0dd3c4857b437c7cabaf4f63a972a174a7ab7a48bf78ca69d
 ---
@@ -16,15 +16,15 @@ Es gab zu viel wiederkehrende Arbeit. Also war der nächste logische Schritt nic
 
 So entstand [OpenSecondBrain](https://github.com/itechmeat/open-second-brain) — der Versuch, Agenten ein ordentliches Gedächtnis darüber zu geben, was wir tun, warum wir es tun und welche Entscheidungen bereits getroffen wurden.
 
-## Von manuellen Workflows zu Dark Fabric
+## Von manuellen Workflows zu Dark Factory
 
 Im [ersten Beitrag](/de/posts/building-techmeat-dev-with-coding-agents/) habe ich beschrieben, wie ich diesen Blog mit Coding-Agenten gestartet habe. Dort war der Workflow bewusst einfach: Kontext setzen, ein Astro-Projekt aufbauen, das Design durchlaufen, Beiträge hinzufügen, das Ergebnis prüfen.
 
 Aber mein üblicher Prozess ist komplexer. Er hat Rollen, Zwischenreviews, separate Agenten für verschiedene Aufgabentypen und Qualitätskontrolle an jedem Schritt. Wenn es viele solcher Aufgaben gibt, wird der Mensch zum Dispatcher: verschieb den Kontext hierhin, bitte denjenigen das zu prüfen, gib dem nächsten Agenten die Ausgabe des vorherigen, vergiss nicht, die Entscheidung festzuhalten.
 
-Ich wollte zu einem rigideren Modell kommen, das zunehmend wie Dark Fabric klingt: Eine Feature-Idee geht rein, ein Feature kommt raus — implementiert, getestet und deployed. Nicht „ein Agent hat ein Stück Code geschrieben", sondern eine Fabrik, die Arbeit in Phasen zerlegen und durch den Prozess führen kann.
+Ich wollte zu einem rigideren Modell kommen, das zunehmend wie Dark Factory klingt: Eine Feature-Idee geht rein, ein Feature kommt raus — implementiert, getestet und deployed. Nicht „ein Agent hat ein Stück Code geschrieben", sondern eine Fabrik, die Arbeit in Phasen zerlegen und durch den Prozess führen kann.
 
-Wir sind noch weit von einer vollständigen Dark Fabric entfernt. Aber der erste praktische Schritt existiert bereits: Hermes, laufend auf einem VPS, mit Agenten für verschiedene Aufgaben, Skills, einer Telegram-Schnittstelle und günstigem Modell-Routing über OmniRoute.
+Wir sind noch weit von einer vollständigen Dark Factory entfernt. Aber der erste praktische Schritt existiert bereits: Hermes, laufend auf einem VPS, mit Agenten für verschiedene Aufgaben, Skills, einer Telegram-Schnittstelle und günstigem Modell-Routing über OmniRoute.
 
 Und fast sofort zeigte sich die zweite zwingende Komponente dieser Fabrik: Agenten brauchen ein Gedächtnis.
 
@@ -113,7 +113,7 @@ Für mich ist das ein wichtiger Teil des Experiments. Ich möchte nicht, dass KI
 
 Das Ergebnis ist ein ziemlich seltsames, aber funktionierendes Bild: Ich kann dem Agenten vom Handy aus auf Telegram schreiben, er analysiert die Aufgabe auf dem VPS, geht ins Repository, nutzt die nötigen Skills, erstellt ein Artefakt, führt Prüfungen durch und schreibt ein wichtiges Ereignis ins Second Brain.
 
-Das ist noch keine Dark Fabric. Aber es ist auch nicht einfach nur „mit einem Modell chatten".
+Das ist noch keine Dark Factory. Aber es ist auch nicht einfach nur „mit einem Modell chatten".
 
 ## Was dabei herausgekommen ist
 
@@ -142,7 +142,7 @@ Darüber hinaus möchte ich:
 - Daily-Logs besser mit Wiki-Seiten verknüpfen;
 - eine nützlichere Suche und Zusammenfassungen der Projektgeschichte hinzufügen;
 - einen separaten Beitrag darüber schreiben, wie genau Hermes auf dem VPS funktioniert und wie die Kommunikation über Telegram eingerichtet ist;
-- die aktuellen Workflows in eine autonomere Dark Fabric umwandeln;
+- die aktuellen Workflows in eine autonomere Dark Factory umwandeln;
 - prüfen, ob verschiedene Agenten schmerzfrei ein gemeinsames Vault teilen können, ohne sich gegenseitig den Kontext zu zerstören.
 
 Die wichtigste Erkenntnis bisher ist einfach: Agenten brauchen nicht nur ein Modell und nicht nur Zugang zu einem Repository. Sie brauchen eine Umgebung, in der Entscheidungen, Fakten und Ereignisse zu einem beständigen Teil des Prozesses werden.
