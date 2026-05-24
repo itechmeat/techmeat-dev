@@ -284,6 +284,39 @@
               "content": "Cloudflare Pages"
             }
           }
+        },
+        {
+          "id": "DD9ep",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "Home",
+          "descendants": {
+            "vldwr": {
+              "content": "ai",
+              "x": 107,
+              "y": 118,
+              "fontSize": 1260
+            },
+            "Gwhpd": {
+              "content": "Building real projects",
+              "fontSize": 96,
+              "letterSpacing": -2.6
+            },
+            "x7YX7S": {
+              "content": "with AI-assisted coding",
+              "fontSize": 96,
+              "letterSpacing": -2.6
+            },
+            "WFt1u": {
+              "content": "Sergey Eroshenkov"
+            },
+            "D2X07m": {
+              "content": "Writing code since 2006"
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
         }
       ]
     },
@@ -764,6 +797,264 @@
               "x": 0,
               "y": 58,
               "textGrowth": "fixed-width-height"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "KA4yD",
+      "type": "ref",
+      "ref": "e4Zd4",
+      "name": "How I built my blog with coding agents (wide)",
+      "y": 5700,
+      "x": 0,
+      "descendants": {
+        "CrwU5": {
+          "content": "04"
+        },
+        "w98LjB": {
+          "content": "How I Built the First"
+        },
+        "w1luCY": {
+          "content": "Dark Factory Workflow"
+        },
+        "CY8fm": {
+          "content": "May 17, 2026"
+        },
+        "Igd9v": {
+          "enabled": false
+        },
+        "FTrZW": {
+          "content": "#second-brain · #dark-factory · #hermes · #kanban · #workflow",
+          "flipX": false,
+          "flipY": false,
+          "width": 699,
+          "height": 114,
+          "x": 0,
+          "y": 58,
+          "textGrowth": "fixed-width-height"
+        }
+      }
+    },
+    {
+      "id": "xwrh4",
+      "type": "ref",
+      "ref": "e4Zd4",
+      "name": "How I built my blog with coding agents (wide)",
+      "y": 6410,
+      "x": 0,
+      "descendants": {
+        "CrwU5": {
+          "content": "05"
+        },
+        "w98LjB": {
+          "content": "Dark Factory and"
+        },
+        "w1luCY": {
+          "content": "Open Second Brain"
+        },
+        "CY8fm": {
+          "content": "May 24, 2026"
+        },
+        "Igd9v": {
+          "enabled": false
+        },
+        "FTrZW": {
+          "content": "#second-brain · #dark-factory · #hermes · #agents",
+          "flipX": false,
+          "flipY": false,
+          "width": 699,
+          "height": 114,
+          "x": 0,
+          "y": 58,
+          "textGrowth": "fixed-width-height"
+        }
+      }
+    },
+    {
+      "type": "frame",
+      "id": "aPyMC",
+      "x": 1160,
+      "y": 1430,
+      "name": "Posts",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "NI21I",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "How I built my blog with coding agents",
+          "descendants": {
+            "yFCFw": {
+              "fill": "#74787eff"
+            },
+            "vldwr": {
+              "content": "02"
+            },
+            "Gwhpd": {
+              "content": "How I Built "
+            },
+            "x7YX7S": {
+              "content": "OpenSecondBrain"
+            },
+            "WFt1u": {
+              "content": "May 09, 2026"
+            },
+            "D2X07m": {
+              "content": "#second-brain · #dark-factory · #hermes · #openclaw · \n#claude-code · #codex",
+              "textGrowth": "fixed-width-height",
+              "width": 932,
+              "height": 224,
+              "flipX": false,
+              "flipY": false,
+              "x": 0,
+              "y": 86
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Hb3zQ",
+      "x": 2320,
+      "y": 1430,
+      "name": "Posts",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "ykWli",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "How I built my blog with coding agents",
+          "descendants": {
+            "yFCFw": {
+              "fill": "#74787eff"
+            },
+            "vldwr": {
+              "content": "03"
+            },
+            "Gwhpd": {
+              "content": "How I gave "
+            },
+            "x7YX7S": {
+              "content": "my AI agent a wallet"
+            },
+            "WFt1u": {
+              "content": "May 10, 2026"
+            },
+            "D2X07m": {
+              "content": "#second-brain · #pay-memory · #agent-payments · #pay-sh · #solana",
+              "textGrowth": "fixed-width-height",
+              "width": 932,
+              "height": 224,
+              "flipX": false,
+              "flipY": false,
+              "x": 0,
+              "y": 86
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "E5mVUC",
+      "x": 3480,
+      "y": 1430,
+      "name": "Posts",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "SNUIx",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "How I built my blog with coding agents",
+          "descendants": {
+            "yFCFw": {
+              "fill": "#74787eff"
+            },
+            "vldwr": {
+              "content": "04"
+            },
+            "Gwhpd": {
+              "content": "How I Built the First"
+            },
+            "x7YX7S": {
+              "content": "Dark Factory\nWorkflow"
+            },
+            "WFt1u": {
+              "content": "May 17, 2026"
+            },
+            "D2X07m": {
+              "content": "#second-brain · #dark-factory · #hermes · #kanban · #workflow",
+              "textGrowth": "fixed-width-height",
+              "width": 932,
+              "height": 224,
+              "flipX": false,
+              "flipY": false,
+              "x": 0,
+              "y": 86
+            },
+            "z3GUZ": {
+              "enabled": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fMtef",
+      "x": 4640,
+      "y": 1430,
+      "name": "Posts",
+      "fill": "#FFFFFF00",
+      "gap": 80,
+      "children": [
+        {
+          "id": "sV0e7",
+          "type": "ref",
+          "ref": "d6WmVB",
+          "name": "How I built my blog with coding agents",
+          "descendants": {
+            "yFCFw": {
+              "fill": "#74787eff"
+            },
+            "vldwr": {
+              "content": "05"
+            },
+            "Gwhpd": {
+              "content": "Dark Factory and"
+            },
+            "x7YX7S": {
+              "content": "Open Second Brain"
+            },
+            "WFt1u": {
+              "content": "May 24, 2026"
+            },
+            "D2X07m": {
+              "content": "#second-brain · #dark-factory · #hermes · #agents",
+              "textGrowth": "fixed-width-height",
+              "width": 932,
+              "height": 224,
+              "flipX": false,
+              "flipY": false,
+              "x": 0,
+              "y": 86
+            },
+            "z3GUZ": {
+              "enabled": false
             }
           }
         }
