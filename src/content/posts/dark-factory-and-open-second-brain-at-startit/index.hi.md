@@ -4,7 +4,9 @@ description: "मेरे दो प्रोजेक्ट्स - Dark Facto
 pubDate: 2026-05-24
 locale: hi
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 7f4b290ccb54ae712806335d331262a92b794cabe5458571b218aedbd9cc9b85
 ---
 
 ![मैं startit के मंच पर, मेरे पीछे प्रोजेक्टर](./hero.jpg)

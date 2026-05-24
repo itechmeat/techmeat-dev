@@ -4,7 +4,9 @@ description: "İki projem üzerine kısa bir konuşma — Dark Factory ve Open S
 pubDate: 2026-05-24
 locale: tr
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 7420b9320543ed09aef926ea3fbdd59cf12b4d4b71659f9e484e96aab2ccff9c
 ---
 
 ![startit sahnesinde, arkamda projeksiyonla](./hero.jpg)

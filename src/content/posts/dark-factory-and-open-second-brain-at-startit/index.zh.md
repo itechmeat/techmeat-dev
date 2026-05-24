@@ -4,7 +4,9 @@ description: "一场关于我两个项目的简短演讲——Dark Factory 与 O
 pubDate: 2026-05-24
 locale: zh
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 86cb79bde15e96b554161c2b0b594b291ee062023bd5e7b5161cc7fcc0afa7e6
 ---
 
 ![我站在 startit 舞台上，身后是投影仪](./hero.jpg)

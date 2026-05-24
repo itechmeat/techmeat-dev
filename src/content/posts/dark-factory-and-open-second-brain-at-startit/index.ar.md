@@ -4,7 +4,9 @@ description: "حديث قصير عن مشروعَيّ - Dark Factory و Open Sec
 pubDate: 2026-05-24
 locale: ar
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: a058ac0ce9a8f607a6430f09dbf106888c47a59c7abf8c9e8161d3510ec6e369
 ---
 
 ![أنا على المسرح في startit مع جهاز العرض خلفي](./hero.jpg)

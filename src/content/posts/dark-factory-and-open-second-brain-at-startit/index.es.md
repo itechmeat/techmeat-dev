@@ -4,7 +4,9 @@ description: "Una charla breve sobre mis dos proyectos —Dark Factory y Open Se
 pubDate: 2026-05-24
 locale: es
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: ad99c2eae59ac00740d7c8421a7ae23a3b3298024e72b673d0f2e41a87f57af2
 ---
 
 ![Yo en el escenario de startit con el proyector detrás](./hero.jpg)

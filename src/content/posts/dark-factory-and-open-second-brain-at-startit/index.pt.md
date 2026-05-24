@@ -4,7 +4,9 @@ description: "Uma palestra curta sobre dois dos meus projetos — Dark Factory e
 pubDate: 2026-05-24
 locale: pt
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: b0043c21b2c6f81aa73b5fc9938ad3f8bbf91f6e28f4b1345577eab46ae9d447
 ---
 
 ![Eu no palco do startit com o projetor às minhas costas](./hero.jpg)

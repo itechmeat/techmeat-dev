@@ -4,7 +4,9 @@ description: "আমার দুটি প্রজেক্ট নিয়ে
 pubDate: 2026-05-24
 locale: bn
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: ab6bbc5fe600267356be1c1bb523094af2106f053e139f39427ab981f529c749
 ---
 
 ![পিছনে প্রোজেক্টর নিয়ে startit-এর মঞ্চে আমি](./hero.jpg)

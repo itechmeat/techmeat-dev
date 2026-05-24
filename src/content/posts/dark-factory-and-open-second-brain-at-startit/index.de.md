@@ -4,7 +4,9 @@ description: "Ein kurzer Vortrag über zwei meiner Projekte — Dark Factory und
 pubDate: 2026-05-24
 locale: de
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 33a6adc0ce30818798fe60fabf5b26df0c6dfa74bb40af46b19a599183ef5134
 ---
 
 ![Ich auf der Bühne bei startit mit dem Projektor hinter mir](./hero.jpg)

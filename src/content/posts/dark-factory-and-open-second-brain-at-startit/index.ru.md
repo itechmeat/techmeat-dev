@@ -4,7 +4,9 @@ description: "Короткий доклад про два моих проект�
 pubDate: 2026-05-24
 locale: ru
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 0093da09b591c9064e1d91cb9a9570753094bf654743ffecd24ce71491622246
 ---
 
 ![Я на сцене в startit с проектором за спиной](./hero.jpg)

@@ -4,7 +4,9 @@ description: "Kratko izlaganje o moja dva projekta — Dark Factory i Open Secon
 pubDate: 2026-05-24
 locale: sr
 tags: [dark-factory, open-second-brain, startit, demo, hermes, agents]
-draft: true
+prNumber: 8
+ogImage: "/posters/og/posts/building-techmeat-dev-with-coding-agents.png"
+prFileId: 4b949b2ab3e516c81793a8e1472f3bf7f9f6eea48d159b9791877b894bf62938
 ---
 
 ![Ja na bini u startit-u sa projektorom iza leđa](./hero.jpg)
