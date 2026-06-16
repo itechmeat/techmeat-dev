@@ -5,6 +5,7 @@ pubDate: 2026-06-16
 locale: es
 tags: [open-second-brain, dark-factory, hermes, workflows, agents, memory]
 ogImage: "/posters/og/posts/open-second-brain-stable-and-hermes-workflows.png"
+prFileId: 1a8a29ef984eccf695c7c483acfe2747def5bbc39d8f08a902acd3b0c1a4ffe7
 ---
 
 Sigo metiéndome cada vez más en el ecosistema de Hermes Agent. En mayo todavía parecía una serie de experimentos conectados - memoria, Kanban, Telegram, subagentes, revisiones entre etapas -, pero ahora todo empieza a formar un sistema más completo.

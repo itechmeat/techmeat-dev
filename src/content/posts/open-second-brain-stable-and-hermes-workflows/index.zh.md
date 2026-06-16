@@ -5,6 +5,7 @@ pubDate: 2026-06-16
 locale: zh
 tags: [open-second-brain, dark-factory, hermes, workflows, agents, memory]
 ogImage: "/posters/og/posts/open-second-brain-stable-and-hermes-workflows.png"
+prFileId: f21a47c09ca514c07bda7ad62fe5869de55ba6e8a3efd8c1869babf557dccfc7
 ---
 
 我还在继续深入 Hermes Agent 生态。五月时，这还像是一组彼此相关的实验：记忆、Kanban、Telegram、子代理、阶段之间的 review。现在这些东西开始拼成一个更完整的系统。
