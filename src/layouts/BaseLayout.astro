@@ -35,6 +35,7 @@ interface Props {
   keywords?: string;
   availableLocales?: Locale[];
   showLanguageSwitcher?: boolean;
+  markdownUrl?: string;
 }
 
 const {
@@ -48,9 +49,11 @@ const {
   keywords,
   availableLocales,
   showLanguageSwitcher = true,
+  markdownUrl,
 } = Astro.props;
 const currentLocale = (locale ?? Astro.currentLocale ?? "en") as Locale;
 const cfToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN;
+const webmcpOriginTrialToken = import.meta.env.PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN;
 const site = resolveSite(Astro.site);
 
 function stripLocalePrefix(pathname: string, locale: Locale): string {
@@ -107,6 +110,9 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    {webmcpOriginTrialToken && (
+      <meta http-equiv="origin-trial" content={webmcpOriginTrialToken} />
+    )}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -129,6 +135,9 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
     )}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="application/rss+xml" title={rssTitle} href={rssHref} />
+    {markdownUrl && (
+      <link rel="alternate" type="text/markdown" href={markdownUrl} />
+    )}
     {hreflangLinks.map((link) => (
       <link rel="alternate" hreflang={link.hreflang} href={link.href} />
     ))}
@@ -195,6 +204,9 @@ const articleAuthorUrl = `${SITE_URL}/about/`;
       <slot />
     </main>
     <Footer locale={currentLocale} />
+    <script>
+      import "../lib/webmcp/register";
+    </script>
     {
       cfToken && (
         <script

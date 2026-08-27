@@ -17,5 +17,6 @@ Contact: https://techmeat.dev/about/
 Sitemap: https://techmeat.dev/sitemap-index.xml
 LLMs-Index: https://techmeat.dev/llms.txt
 Summary: https://techmeat.dev/ai/summary.json
+WebMCP: https://techmeat.dev/webmcp/manifest.json
 
 # Source: https://github.com/itechmeat/techmeat-dev
