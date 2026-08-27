@@ -94,6 +94,7 @@ const related = relatedPosts(
   articleData={{ publishedTime, modifiedTime, tags: localizedTags }}
   keywords={keywords}
   availableLocales={availableLocales}
+  markdownUrl={`/${locale}/posts/${slug}.md`}
 >
   <SchemaJsonLd type="Article" data={articleSchema} />
   <article class="post">

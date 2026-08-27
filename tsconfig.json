@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": ["bun-types"],
+    "types": ["bun-types", "webmcp-types"],
     "jsxImportSource": "solid-js"
   },
   "include": [".astro/types.d.ts", "**/*"],
