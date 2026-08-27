@@ -32,7 +32,8 @@
   "feeds": {
     "rss": "https://techmeat.dev/rss.xml",
     "sitemap": "https://techmeat.dev/sitemap-index.xml",
-    "llms": "https://techmeat.dev/llms.txt"
+    "llms": "https://techmeat.dev/llms.txt",
+    "markdown_alternates": "Every post is also served as plain Markdown at /posts/<slug>.md (English) or /<locale>/posts/<slug>.md (translations)."
   },
   "key_pages": {
     "home": "https://techmeat.dev/",
@@ -46,5 +47,11 @@
     "citation": "required",
     "training": "allowed",
     "derivative_works": "allowed-with-attribution"
+  },
+  "webmcp": {
+    "available": true,
+    "api": "document.modelContext",
+    "tools": ["search_posts", "list_posts", "get_post", "get_page_info", "get_site_info"],
+    "manifest": "https://techmeat.dev/webmcp/manifest.json"
   }
 }

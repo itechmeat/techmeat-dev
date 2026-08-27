@@ -19,6 +19,12 @@ The site is multilingual (English canonical, plus Spanish, French, German, Portu
 - [RSS — English (canonical)](https://techmeat.dev/rss.xml)
 - [Privacy notice](https://techmeat.dev/privacy/)
 
+## Agent tools
+
+- WebMCP (`document.modelContext`) is available in-browser on every page: `search_posts`, `list_posts`, `get_post`, `get_page_info`, and `get_site_info` tools, all read-only.
+- Tool data source: [WebMCP manifest](https://techmeat.dev/webmcp/manifest.json) — every post, in every language, with its canonical and Markdown-alternate URLs.
+- Every post is also available as plain Markdown at `/posts/<slug>.md` (English) or `/<locale>/posts/<slug>.md` (translations), linked from each HTML page via `<link rel="alternate" type="text/markdown">`.
+
 ## Optional
 
 - [GitHub profile](https://github.com/itechmeat)

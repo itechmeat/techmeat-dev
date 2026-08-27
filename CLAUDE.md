@@ -92,6 +92,31 @@ MCP option: a co-installed `geo-mcp` binary exposes the same checks as MCP tools
 
 When asked to "prepare an article" without further detail, run: keyword/SERP research → draft via `seo-content-writer` → on-page audit → meta + schema → quality + GEO audits → internal linking. Each step is gated.
 
+### WebMCP
+
+The site exposes W3C WebMCP (`document.modelContext`) tools in the browser, plus
+supporting agent-readability artifacts, so an AI agent running in the user's own
+browser can search, list, and read posts without scraping HTML:
+
+- **Tools**: `search_posts`, `list_posts`, `get_post`, `get_page_info`, `get_site_info`
+  — all read-only, registered client-side by `src/lib/webmcp/register.ts` and loaded
+  from `BaseLayout.astro` on every page.
+- **Manifest**: `/webmcp/manifest.json` (built by `src/pages/webmcp/manifest.json.ts`)
+  is the tools' data source — every visible post, in every locale, with its
+  locale-correct URL, canonical (English) URL, and Markdown-alternate URL.
+- **Markdown alternates**: every post is also served as plain Markdown at
+  `/posts/<slug>.md` (English) or `/<locale>/posts/<slug>.md` (translations), linked
+  from the HTML page via `<link rel="alternate" type="text/markdown">`.
+- **Origin trial**: set `PUBLIC_WEBMCP_ORIGIN_TRIAL_TOKEN` in Cloudflare Pages env to
+  emit the `origin-trial` meta tag (mirrors the `PUBLIC_CF_ANALYTICS_TOKEN` gating
+  pattern — empty/unset means no meta tag). The Chrome origin trial for WebMCP spans
+  Chrome 149–156; renew or remove the token when native (non-trial) support ships.
+- **Maintenance**: WebMCP is a moving Draft Community Group Report. Re-verify the API
+  shape against https://webmachinelearning.github.io/webmcp/ quarterly — in particular
+  that `document.modelContext` (not `navigator.modelContext`) is still the entry point,
+  and that no code reintroduces `provideContext()`, `clearContext()`, or
+  `unregisterTool()`, all of which were removed from the draft.
+
 ## Skills for project work
 
 - **UI/visual design** — go through the `impeccable` skill. Do not freestyle layouts, palettes, or typography.
