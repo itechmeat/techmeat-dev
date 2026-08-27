@@ -196,13 +196,30 @@ async function executeGetPost(inputObject: Record<string, unknown>): Promise<Too
     return toolJson({ error: `no post found for slug "${slug}"` }, GET_POST_CAP, POSTS_INDEX_URL);
   }
 
+  // Fetch same-origin: markdownUrl in the manifest is always an absolute
+  // production URL (built from SITE_URL), which would fail or 404 in any
+  // environment other than deployed production (local preview, staging,
+  // mid-deploy skew). markdownUrl still reaches the payload unchanged below
+  // — it is correct there for citation purposes.
   let content = "";
+  let fetchFailed = false;
   try {
-    const res = await fetch(post.markdownUrl);
-    if (res.ok) content = await res.text();
+    const mdPath = new URL(post.markdownUrl).pathname;
+    const res = await fetch(mdPath);
+    if (res.ok) {
+      content = await res.text();
+    } else {
+      fetchFailed = true;
+    }
   } catch {
-    // Network failure fetching the markdown alternate: fall through with
-    // empty content rather than throwing out of a tool execute callback.
+    // Network failure fetching the markdown alternate: fall through and
+    // surface it via the note field rather than throwing out of a tool
+    // execute callback or silently returning empty content.
+    fetchFailed = true;
+  }
+  if (fetchFailed) {
+    const fetchNote = `Markdown content could not be fetched; read the post at ${post.url}`;
+    note = note ? `${note} ${fetchNote}` : fetchNote;
   }
 
   const payload = {
